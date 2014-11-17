@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+        <title>Technology - Scout Docs</title>
+
+        <link href="../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Scout Docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../development">Development</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href=".">Technology</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../user-guide/pages">Pages</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../development">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../user-guide/pages">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/Clinical-Genomics/scout">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#technology">Technology</a></li>
+        
+            <li><a href="#server">Server</a></li>
+        
+            <li><a href="#database">Database</a></li>
+        
+            <li><a href="#frontend">Frontend</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="technology">Technology</h1>
+<p>Scout sits on a technology stack that is built on and around Python. When Python isn't enough, we have made calculated descisions to integrate with additional tools.</p>
+<h2 id="server">Server</h2>
+<p>A choice of Python servers comes down to Django, Tornado, and Flask. They are all capable options and we probably could've have gone either way.</p>
+<p>Internally, we had more experience using <strong>Flask</strong> in the past and this was also the choice we settled for. It feature a very Pythonic API, has a large and growing user base, lots of actively developed extensions, and uses Jinja2 which is the best templating engine around. Flask covers all necessary requirements but the nail in the coffin was reading <a href="https://news.ycombinator.com/item?id=2705770">these comments</a>.</p>
+<h2 id="database">Database</h2>
+<p>We use <strong>MongoDB</strong>. It's a popular NoSQL database, meaning no migrations and simple development. MongoDB simplifies filter queries and database loading through "upserts".</p>
+<h3 id="database-interfaceodm">Database interface/ODM</h3>
+<p><strong>MongoEngine</strong> is used for some of the documents in the data store. Using an ODM has the benefit of dealing with a cleaner interface to the database which increases code readability. It also supports Flask-Admin and Flask-WTForms plugins.</p>
+<p>To optimize query execution, parts of the database will require extensive customization. For working with these collections, we will use drop into the raw <strong>pymongo</strong> API.</p>
+<h2 id="frontend">Frontend</h2>
+<p>Most data will be rendered server side. However, everyone needs a JavaScript abstraction layer these days and jQuery often isn't enough. Because the future is almost here and the audience is limited, <strong>Polymer</strong> will be used in Scout. This also means that we only plan to target the most recent version of all major browsers.</p>
+<p>The main benefit of Polymer is that it will let us decide what regions will be made interactive and what regions won't. Polymer also ties in nicely with material design which will influence the interface design a lot.</p>
+<h3 id="stylesheets">Stylesheets</h3>
+<p><strong>SCSS</strong> preprocessing is the closest thing to a standard (besided CSS) and allows fast libsass compilation. Compared to raw CSS it will increse readability and enable simple modularization of the code base.</p>
+<h3 id="scripts">Scripts</h3>
+<p>The scripts will be written in either <strong>JavaScript</strong> or <strong>CoffeeScript</strong> (CS). CS is more readable, requires less boilerplate, and makes it easier to write quality JavaScript code. We do enforce that authors first learn the basics of JavaScript before picking up CoffeeScript.</p>
+<h3 id="build-pipeline">Build pipeline</h3>
+<p><strong>Gulp</strong> is the build tool. It brings readable config files and fast rebuilds. It handles compilation of all frontend code, both during development and in preparation of deployment (minify etc.). This means we will also use <strong>Node.js</strong> which, besides Rails, is standard in the industry. It simply offers too many benefits during development to give up for any Python native solution.</p>
+<p>Gulp is reposible for:</p>
+<ul>
+<li><em>vulcanizing</em> Polymer elements into a single HTML import ready file,</li>
+<li>comiling SCSS files both for custom Polymer elements and the global site styles,</li>
+<li>compiling CoffeeScript for custom Polymer elements,</li>
+<li>minifing and optimizing the assets for production,</li>
+<li>enabling live reload and style injection using <strong>BrowserSync</strong>,</li>
+<li>integrate with <strong>bower</strong> to download Polymer dependencies</li>
+</ul>
+<p>The build system will be tightly integrated with the Flask server setup to avoid adding more complexity than necessary (one extra process).</p>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/prettify-1.0.min.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>
