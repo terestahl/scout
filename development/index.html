@@ -114,6 +114,8 @@
         
             <li><a href="#fixtures-data">Fixtures data</a></li>
         
+            <li><a href="#frontend">Frontend</a></li>
+        
     
     </ul>
 </div></div>
@@ -131,6 +133,17 @@
 <p>Blueprints separate as much logic as possible from the central Flask server. This includes views, templates, and static assets but not yet Flask extensions.</p>
 <h2 id="fixtures-data">Fixtures data</h2>
 <p>The default fixtures adapter is implemented in <code>chanjo.ext.backend.FixtureAdapter</code>. If you are writing a new adapter, please look at the implementation of the <code>FixtureAdapter</code> and <code>BaseAdapter</code> to follow the defined API style.</p>
+<h2 id="frontend">Frontend</h2>
+<p>Node.js compiles frontend assets such as <a href="http://sass-lang.com/">SCSS</a> modules and <a href="http://vuejs.org/">Vue.js</a> components. It's also responsible for auto-reloading the browser when updates are made to the files. All this functionality is centralized to <a href="http://gulpjs.com/">gulp.js</a>. An overview of how all components of this system are connected is visualized below:</p>
+<p><img alt="Scout Frontend" src="../img/frontend.png" /></p>
+<p>To start watching files and compile and reload automatically run:</p>
+<pre class="prettyprint well"><code class="bash">$ gulp
+</code></pre>
+
+<p>All assets are already bundled but before deployment one should compile the files for production (Uglify + minify). This is accomplished as such:</p>
+<pre class="prettyprint well"><code class="bash">$ gulp build --production
+</code></pre>
+
 </div>
         </div>
 
