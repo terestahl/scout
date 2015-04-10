@@ -132,8 +132,6 @@
         
             <li><a href="#installation">Installation</a></li>
         
-            <li><a href="#goals">Goals</a></li>
-        
             <li><a href="#contributing">Contributing</a></li>
         
     
@@ -145,56 +143,31 @@
 <p>Analyze VCFs quicker and easier.</p>
 <hr />
 <h2 id="overview">Overview</h2>
-<p>Scout is a <strong>visualizer for VCF files</strong> intended for a clinical audience. As such it will presents advanced features like variant filters in an intutative web interface. Scout enables team collaboration by URL sharing and user comments tied to families and variants.</p>
+<p>Scout is a <strong>visualizer for VCF files</strong> intended for a clinical audience. As such it will enable advanced features like variant filters in an intutative web interface. Scout enables team collaboration by URL sharing and user comments tied to families and variants.</p>
 <hr />
-<p><strong>N.B. Scout is currently under active development.</strong></p>
-<p>Most of the features are already planned out but the code base will still change significantly before the eventual 1.0 release.</p>
+<p><strong>N.B. Portable version of Scout.</strong>
+A more easily installable version of Scout is under early development and we will make further announcements when it's ready for testing.</p>
 <hr />
 <h2 id="motivation">Motivation</h2>
 <p>DNA sequencing is quickly entering clinical settings. As such doctors and genetcists need tools that cater to non-bioinformatians. Scout is an attempt to provide a simple interface for bioinformaticians and clinicians alike to collaborate on the interpretation of variant calling results.</p>
 <hr />
 <h2 id="installation">Installation</h2>
 <p>For now, install as:</p>
-<pre class="prettyprint well"><code class="bash">$ pip install git+https://github.com/Clinical-Genomics/scout.git
+<pre><code class="bash">$ pip install git+https://github.com/Clinical-Genomics/scout.git
 </code></pre>
 
-<p>Extended installation instructions, including how to setup MongoDB, will be added here in the future. We also plan to define a couple of Dockerfiles to simplify deployment to a single command and a single dependency (Docker).</p>
+<p>Extended installation instructions, including how to setup MongoDB, will be added in the future. We also plan to define a Vagrantfile to setting up a demo/development environment for testing.</p>
 <hr />
-<h2 id="goals">Goals</h2>
-<p>There are three main goals stated for the project.</p>
-<ol>
-<li>Visualize (annotated) VCFs</li>
-<li>Follow (coding) best practices</li>
-<li>Be reasonably easy to setup</li>
-</ol>
 <h3 id="roadmap">Roadmap</h3>
 <p>We are trying to build Scout piece-by-piece. This is the prioritized order we are planning on implementing those pieces.</p>
 <ol>
 <li>Release a MVP of the working interface (core functionality)</li>
+<li>Take in a first round of feedback from close collaborators</li>
 <li>
-<p>Make sure that the package is installable with pip and/or Docker</p>
+<p>Make sure that the package is installable with pip and/or Vagrant</p>
 <ul>
 <li>Include logging and error reports</li>
 <li>Setup testing suite</li>
-</ul>
-</li>
-<li>
-<p>Take in a first round of feedback from close collaborators</p>
-</li>
-<li>
-<p>Add functionality for user management and comments</p>
-<ul>
-<li>Profile, settings, feedback functionality</li>
-<li>Feeds and actitivy indicator in case list</li>
-</ul>
-</li>
-<li>
-<p>Implement MIP/Clinical Genomics specific functionality</p>
-<ul>
-<li>Access rights connected with cases/families. "Admin" users should be able to view any case.</li>
-<li>IGV</li>
-<li>Sanger email order (+ image from IGV?)</li>
-<li>Show gene list and ethical approval in case list</li>
 </ul>
 </li>
 </ol>

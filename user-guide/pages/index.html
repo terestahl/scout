@@ -154,50 +154,37 @@
 <h3 id="sign-in">Sign in</h3>
 <p>We have chosen to use Google OAuth for the signup process. This means that you click on a button on the first page which launches the OAuth process. When the user is returned, you will see your customized welcome page.</p>
 <p>We also use separate <code>@clinicalgenomics.se</code> accounts to be able to enforce 2-factor authentication.</p>
-<blockquote>
-<p>Should we still regularly discard the authentication token in (short) intervals?</p>
-</blockquote>
 <hr />
 <h2 id="welcome-page">Welcome page</h2>
-<p>This is the first page a you see after logging in. Notice your initials in the upper right corner. You can also access the list of institutes you belong to.</p>
+<p>This is the first page a you see after logging in. Notice your first name in the upper right corner. You can also access the list of institutes you belong to.</p>
 <h3 id="institute-selection">Institute selection</h3>
 <p>Users can belong to multiple institutes. Each institutes defines what cases can be viewed by the user. If you only belong to a single institute you will be redirected automatically to "Cases".</p>
 <hr />
 <h2 id="cases">Cases</h2>
-<p>This page displays the list of active cases for any particular institute. Each item links to the detailed view for that case. You can filter the list for any given search term by typing it in the search box above the list.</p>
-<p>A quick link to get straight to the list of all variants is also displayed. To indicate what cases have recently been added/updated, a "last updated" date is also displayed.</p>
+<p>This page displays the list of active cases for a particular institute. Each item links to the detailed view for that case. You can filter the list by typing into the search box above the list.</p>
+<p>A quick link to get straight to the list of all clinical variants is also displayed. To indicate what cases have recently been added/updated, a "last updated" date is also displayed.</p>
 <p>Sometimes you will also see a cyan colored dot to the left of the case ID. This is an indicator that there's been some recent activity in the case such as a new comment.</p>
-<p>A tag "ASSIGNED" will be displayed for each case that you are assigned to.</p>
+<p>Your name will be tagged for each case that is assigned to you. For cases that are assigned to other people you will see a tag "ASSIGNED".</p>
 <hr />
 <h2 id="case">Case</h2>
 <p>This is the detailed view of one individual case. The intended use is to give a consise overview of the family under investigation and show recent activity related to the case.</p>
-<p>There's a list of "Strong candidates" on the page. This list is curated by the collaborators and consists of "pinned" variants from the variants list. This feature can be used to mark variants of particular interest that you might want to highlight to other users.</p>
-<p>The "Individuals" list includes all individuals in the analysis. You can view the ID of each individual as well as which capture kit during the library prep. The rest of the information is encoded in the left-most symbol which is the same as you would find in a pedigree tree.</p>
-<ul>
-<li>circle = female</li>
-<li>square = male</li>
-<li>filled = affected</li>
-<li>hollow = unaffected</li>
-</ul>
+<h3 id="pinned-variants">Pinned variants</h3>
+<p>There's a list of "Strong candidates" on the page. This list is curated by the collaborators and consists of "pinned" variants from the variants list. This feature can be used to mark variants of particular interest that you might want to highlight to other users (See more under "Variant".)</p>
+<h3 id="misc">Misc.</h3>
 <p>The case page also displays a simple wiki-style synopsis on the current case that can be used to communicate information on the case to collaborators.</p>
 <p>The "Activity" feed is a reverse chronological list of events and comments related to the case. Examples of events include comments, status updates, assignments, Sanger sequencing orders etc.</p>
 <h3 id="actions">Actions</h3>
-<p>There are many actions you can take on this page.</p>
+<p>There are a few actions you can take on this page.</p>
 <p><strong>Adopt case</strong>: By clicking the button next to "Adopt" you can assign yourself to a case unless someone else has already done so. If you have assigned yourself to a case you can click your name to "unassign".</p>
-<p><strong>Update case status</strong>: The status dropdown allows anyone to chage the status of a case. Before anyone has looked at the variant list, the case will be marked as "Inactive".</p>
-<p>The case can be moved to "Research" which means all variants will be made visible for the entire exome. This will send an email to the administrators of the site. The user agrees that she is reponsible to have acquired an informed consent for this action. This will also be logged as a new event in the case log.</p>
-<p>Setting the status to "Archived" will hide the case from the normal case list. Marking the case as "Solved" will permanently archive the case.</p>
+<p>The case can be moved to "Research" which means all variants will be made visible for the entire exome. Clicking "Open research" will notify the administrators of the site. The user agrees that she is reponsible to have acquired an informed consent relevant for this action. This will also be logged as a new event in the case log.</p>
 <p><strong>Edit case synopsis</strong>: The case sysnopsis can be edited in a format known as <a href="https://help.github.com/articles/markdown-basics/">Markdown</a>. Just click "EDIT" to open the editor view. When you are finished click "SAVE" to save changes or "CANCEL" to abort.</p>
 <p><strong>Comment</strong>: You can leave comments in the activity log by writing a message in the input box next to the feed. Click "COMMENT" to submit the comment.</p>
-<blockquote>
-<p>How are we going to handle tagging comments as "finding", "action", "conclusion"? Perhaps we should just stick with something more general; tags + category etc.</p>
-</blockquote>
 <hr />
 <h2 id="variants">Variants</h2>
 <p>The big list of variants. This page serves as an overview of all data and annotations for a single case. It's meant to allow you to skim through many variants ordered by the ranking.</p>
 <p>The first couple of columns are meant to give you a sense of place in the overall ranked list. The "Rank" column is especially useful after applying various filters.</p>
 <p>Hovering over both "1000 Genomes" (frequency) and "CADD score" (severity) columns will reveal additional metrics in a popup.</p>
-<p>Hover over "Inheritance models" will pop up a list of all possible compounds if the variants follows this pattern.</p>
+<p>Hovering over "Inheritance models" will pop up a list of all possible compounds if the variants follows this pattern.</p>
 <p>At the bottom of the list you will find a button to load the next batch of variants in the list. To return to the previous batch of variants, just press the browser back button.</p>
 <p>It's also possible to filter the variants using a number of different criteria. Open the filters panel by clicking the "filter" icon in the top right. Here you can fill in form and click "Filter variants" to update the list. This is also the place where you switch gene lists.</p>
 <hr />
@@ -208,18 +195,17 @@
 <ul>
 <li>Send Sanger email to an institute related email address.</li>
 <li>Pin the current variant as interesting so that it shows up in the case view.</li>
+<li>Mark variant as causative. This is only to be used when a variant is confirmed to be causative - it will set the case to "solved" automatically.</li>
 </ul>
 <h3 id="fixed-header">Fixed header</h3>
-<p>"This is the variant." Introduces the basic facts of the variant that the user is often referring back to. As an example you need to refer back to the chromosome when assessing possible inheritance models. Some more details are hidden until the user hovers over each section.</p>
-<h3 id="important-data">Important data</h3>
+<p>Introduces the basic facts of the variant that the user is often referring back to. As an example you need to refer back to the chromosome when assessing possible inheritance models.</p>
+<h3 id="summary">Summary</h3>
 <p>This is the first a user looks at when assesing the variant.</p>
 <ul>
-<li>OMIM</li>
+<li>Rank score/CADD score</li>
 <li>Disease gene model, possible inheritance models, OMIM model</li>
-<li>Frequencies<ul>
-<li>local</li>
-</ul>
-</li>
+<li>Frequencies</li>
+<li>CLINSIG number</li>
 </ul>
 <h3 id="details">Details</h3>
 <p>Depending on the first assessment, this section represents what a user digs deeper into.</p>
@@ -232,13 +218,6 @@
 <h3 id="gt-call">GT Call</h3>
 <h3 id="compounds">Compounds</h3>
 <p>Only interesting when the compound inheritance pattern is required, the list can be very long - best to put it far down the page.</p>
-<ul>
-<li>Mark a variant with it's compound pair =&gt; link as "/.../variants/<id>?compound=<compound_id>" (pinnable URL)</li>
-</ul>
-<h3 id="links">Links</h3>
-<p>Consider moving them somewhere where they are easier to reach.</p>
-<h3 id="comments">Comments</h3>
-<p>"Discuss."</p>
 </div>
         </div>
 

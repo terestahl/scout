@@ -150,7 +150,7 @@ separately. Runtime requirements include Python and MongoDB. Development
 and asset compilation requires Node.js.</p>
 <h2 id="1-install">1. Install</h2>
 <p>Let's start by pulling down the GitHub repository with the source code.</p>
-<pre class="prettyprint well"><code class="bash">$ git clone https://github.com/Clinical-Genomics/scout
+<pre><code class="bash">$ git clone https://github.com/Clinical-Genomics/scout
 $ cd scout
 </code></pre>
 
@@ -159,7 +159,7 @@ for Ubuntu. I will from this point on assume that you have <a href="https://www.
 installed on you local development machine. If you plan to setup the
 project in any other way you should take a closer look at the <em>Vagrantfile</em>
 and the <em>provision.sh</em> script.</p>
-<pre class="prettyprint well"><code class="bash">$ vagrant up
+<pre><code class="bash">$ vagrant up
 $ vagrant ssh
 $ cd /vagrant
 </code></pre>
@@ -176,13 +176,13 @@ find your "CLIENT ID" and "CLIENT SECRET". You also need to add some
 "REDIRECT URLS" and "JAVASCRIPT ORIGINS".</p>
 <p><strong>REDIRECT URLS</strong>:</p>
 <ul>
-<li>http://localhost:5000/authorized</li>
-<li>https://localhost:5000/authorized</li>
+<li>http://localhost:5023/authorized</li>
+<li>https://localhost:5023/authorized</li>
 </ul>
 <p><strong>JAVASCRIPT ORIGINS</strong>:</p>
 <ul>
-<li>http://localhost:5000</li>
-<li>https://localhost:5000</li>
+<li>http://localhost:5023</li>
+<li>https://localhost:5023</li>
 </ul>
 <p>Remember that it might take a while for the tokens to start working.</p>
 <h3 id="omim-api">OMIM API</h3>
@@ -196,32 +196,15 @@ account should work so you don't need to sign up for any special access.</p>
 the authentication details to the instance config.</p>
 <h2 id="3-boostrap">3. Boostrap</h2>
 <p>We use gulp.js to compile the statis assets (CSS, JS, etc.)</p>
-<pre class="prettyprint well"><code class="bash">$ gulp build
-</code></pre>
-
-<p>The included <a href="http://invoke.readthedocs.org/en/latest/">invoke</a> tasks can help you to populate the database
-with some demo data. It's important that you use the correct email address
-when adding a user to the database.</p>
-<pre class="prettyprint well"><code class="bash"># load variants, cases, and a default institute
-$ inv init-data
-# add user
-$ inv add-user --email=&quot;your.name@example.com&quot; --name=&quot;Your Name&quot;
+<pre><code class="bash">$ gulp build --production
 </code></pre>
 
 <h2 id="4-develop">4. Develop</h2>
 <p>You are now ready to start the development server and complete the setup
 in the admin interface.</p>
-<pre class="prettyprint well"><code class="bash">$ python manage.py -c &quot;$(pwd)/configs/boilerplate.cfg&quot; vagrant
+<pre><code class="bash">$ python manage.py -c &quot;$(pwd)/configs/boilerplate.cfg&quot; vagrant
 </code></pre>
 
-<p>The user you created with <code>inv add-user</code> has admin rights. You can
-access the admin interface by visiting <code>/admin</code>.</p>
-<pre class="prettyprint well"><code class="bash">$ open http://localhost:5000/admin
-</code></pre>
-
-<p>Go to the tab "Institute" and add a few "Cases" before pressing "Submit".
-Exit the admin interface and you will now see the list of cases that you
-added to the default institute.</p>
 <p>That's it! Go and explore Scout.</p>
 </div>
         </div>
