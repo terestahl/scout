@@ -7,14 +7,14 @@
         
         
         
-        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Pinning a variant - Scout Docs</title>
+	<title>Using scout - Scout Docs</title>
 
-        <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
-        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../../css/highlight.css">
-        <link href="../../../css/base.css" rel="stylesheet">
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -41,7 +41,7 @@
             </button>
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../../..">Scout Docs</a>
+            <a class="navbar-brand" href="../..">Scout Docs</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -51,25 +51,25 @@
             
             
                 <li >
-                    <a href="../../..">Home</a>
+                    <a href="../..">Home</a>
                 </li>
             
             
             
                 <li >
-                    <a href="../../../development/">Development</a>
+                    <a href="../../development/">Development</a>
                 </li>
             
             
             
                 <li >
-                    <a href="../../../install/">Install</a>
+                    <a href="../../install/">Install</a>
                 </li>
             
             
             
                 <li >
-                    <a href="../../../technology/">Technology</a>
+                    <a href="../../technology/">Technology</a>
                 </li>
             
             
@@ -79,26 +79,26 @@
                     <ul class="dropdown-menu">
                     
                         <li >
-                            <a href="../../cases/">Cases</a>
+                            <a href="../cases/">Cases</a>
                         </li>
                     
                         <li >
-                            <a href="../../getting-started/">Getting started</a>
+                            <a href="../getting-started/">Getting started</a>
                         </li>
                     
                         <li >
-                            <a href="../../pages/">Pages</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../">Using scout</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../variants/">Variants</a>
+                            <a href="../pages/">Pages</a>
                         </li>
                     
                         <li class="active">
+                            <a href="./">Using scout</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../variants/">Variants</a>
+                        </li>
+                    
+                        <li >
                             <a href="">Using scout</a>
                         </li>
                     
@@ -111,12 +111,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../../variants/">
+                    <a rel="next" href="../pages/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../sending-sanger-email/">
+                    <a rel="prev" href="../variants/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -142,6 +142,12 @@
         <li class="main active"><a href="#pinning-a-variant">Pinning a variant</a></li>
         
     
+        <li class="main "><a href="#sending-sanger-email">Sending Sanger email</a></li>
+        
+    
+        <li class="main "><a href="#local-frequency-database">Local Frequency Database</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -151,7 +157,18 @@
 <p>A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.</p>
 <blockquote>
 <p>In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.</p>
-</blockquote></div>
+</blockquote>
+<h1 id="sending-sanger-email">Sending Sanger email</h1>
+<p>It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.</p>
+<h1 id="local-frequency-database">Local Frequency Database</h1>
+<p>This is not really a local <em>frequency</em> database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.
+Variants are added to the database in the following way:</p>
+<ul>
+<li>For each case we pick one affected individual</li>
+<li>Variants are filtered out based on if they are common or have a very low call quality</li>
+<li>The remaining variants are stored in loqusdb</li>
+</ul>
+<p>Each time the user looks at a variant scout will ask locusdb how many times it has been seen across <em>all</em> cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).</p></div>
         </div>
 
 	<footer class="col-md-12">
@@ -161,9 +178,9 @@
 	</footer>
 
 
-        <script src="../../../js/jquery-1.10.2.min.js"></script>
-        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../../../js/highlight.pack.js"></script>
-        <script src="../../../js/base.js"></script>
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
     </body>
 </html>

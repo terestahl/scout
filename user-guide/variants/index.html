@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Getting started - Scout Docs</title>
+	<title>Variants - Scout Docs</title>
 
         <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -82,8 +82,8 @@
                             <a href="../cases/">Cases</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Getting started</a>
+                        <li >
+                            <a href="../getting-started/">Getting started</a>
                         </li>
                     
                         <li >
@@ -94,8 +94,8 @@
                             <a href="../using-scout/">Using scout</a>
                         </li>
                     
-                        <li >
-                            <a href="../variants/">Variants</a>
+                        <li class="active">
+                            <a href="./">Variants</a>
                         </li>
                     
                         <li >
@@ -111,12 +111,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../cases/">
+                    <a rel="next" href="../using-scout/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../pages/">
+                    <a rel="prev" href="../using-scout/pinning-a-variant/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -139,30 +139,83 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#getting-started-with-scout">Getting started with Scout</a></li>
+        <li class="main active"><a href="#variants">Variants</a></li>
         
-            <li><a href="#institutes-cases-variants">Institutes, Cases, Variants</a></li>
+    
+        <li class="main "><a href="#variant">Variant</a></li>
+        
+            <li><a href="#toolbar">Toolbar</a></li>
+        
+            <li><a href="#fixed-header">Fixed header</a></li>
+        
+            <li><a href="#summary">Summary</a></li>
+        
+    
+        <li class="main "><a href="#details">Details</a></li>
+        
+            <li><a href="#functional-annotation">Functional Annotation</a></li>
+        
+            <li><a href="#region-annotation">Region Annotation</a></li>
+        
+            <li><a href="#sift-prediction">Sift Prediction</a></li>
+        
+            <li><a href="#polyphen-prediction">Polyphen Prediction</a></li>
+        
+            <li><a href="#gt-call">GT Call</a></li>
+        
+            <li><a href="#compounds">Compounds</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="getting-started-with-scout">Getting started with Scout</h1>
-<p>Scout is a web-based visualizer for VCF-files. It helps you manage multiple patient cases in a unified and intuative interface. You can collaborate with other clinicians and share comments and findings across your team.</p>
-<h2 id="institutes-cases-variants">Institutes, Cases, Variants</h2>
-<p>Scout has a few levels of abstraction to deal with the data it tries to present. Institutes contain multiple cases and group users into teams. Cases are usually the same as families or a group of related VCF-files - they all share a subset of called variants. Variants are individual genotype calls across a single case.</p>
-<blockquote>
-<p>[insert screenshot here]</p>
-</blockquote>
-<p>A case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.</p>
-<p>As such there are some added features that try to support this process:</p>
+<h2 id="variants">Variants</h2>
+<p>The big list of variants. This page serves as an overview of all data and annotations for a single case. It's meant to allow you to skim through many variants ordered by the ranking.</p>
+<p>The first couple of columns are meant to give you a sense of place in the overall ranked list. The "Rank" column is especially useful after applying various filters.</p>
+<p>Hovering over both "1000 Genomes" (frequency) and "CADD score" (severity) columns will reveal additional metrics in a popup.</p>
+<p>Hovering over "Inheritance models" will pop up a list of all possible compounds if the variants follows this pattern.</p>
+<p>At the bottom of the list you will find a button to load the next batch of variants in the list. To return to the previous batch of variants, just press the browser back button.</p>
+<p>It's also possible to filter the variants using a number of different criteria. Open the filters panel by clicking the "filter" icon in the top right. Here you can fill in form and click "Filter variants" to update the list. This is also the place where you switch gene lists.</p>
+<hr />
+<h2 id="variant">Variant</h2>
+<p>This is the most complex view with a lot of related data presented to the user in a compact way. A lot of thought went into the design of the layout so here it the imagined workflow.</p>
+<h3 id="toolbar">Toolbar</h3>
+<p>Two options are added to the right side of the menu:</p>
 <ul>
-<li>a case can be assigned to a user to delegate responsibility</li>
-<li>various variants can be pinned as worth looking at for the whole team</li>
-<li>a feed keeps track of any case related activity in one single place</li>
+<li>Send Sanger email to an institute related email address.</li>
+<li>Pin the current variant as interesting so that it shows up in the case view.</li>
+<li>Mark variant as causative. This is only to be used when a variant is confirmed to be causative - it will set the case to "solved" automatically.</li>
 </ul>
-<p>A lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.</p></div>
+<h3 id="fixed-header">Fixed header</h3>
+<p>Introduces the basic facts of the variant that the user is often referring back to. As an example you need to refer back to the chromosome when assessing possible inheritance models.</p>
+<h3 id="summary">Summary</h3>
+<p>This is the first a user looks at when assesing the variant.</p>
+<ul>
+<li>Rank score/CADD score</li>
+<li>Disease gene model, possible inheritance models, OMIM model</li>
+<li>Frequencies</li>
+<li>CLINSIG number</li>
+</ul>
+<h2 id="details">Details</h2>
+<p>Depending on the first assessment, this section represents what a user digs deeper into.</p>
+<h3 id="functional-annotation">Functional Annotation</h3>
+<p>This is the worst functional impact of all transcripts</p>
+<h3 id="region-annotation">Region Annotation</h3>
+<p>This is the region of the most severe functional impact</p>
+<h3 id="sift-prediction">Sift Prediction</h3>
+<p>This is most severe sift prediction of all transcripts</p>
+<h3 id="polyphen-prediction">Polyphen Prediction</h3>
+<p>This is most severe polyphen prediction of all transcripts</p>
+<ul>
+<li>Predicted protein changes</li>
+<li>Severities</li>
+<li>Conservation</li>
+</ul>
+<p>=&gt; "Matrix" with highlighted cells (significant numbers)</p>
+<h3 id="gt-call">GT Call</h3>
+<h3 id="compounds">Compounds</h3>
+<p>Only interesting when the compound inheritance pattern is required, the list can be very long - best to put it far down the page.</p></div>
         </div>
 
 	<footer class="col-md-12">

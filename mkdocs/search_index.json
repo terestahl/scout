@@ -1,0 +1,359 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Scout\n\n\nAnalyze VCFs quicker and easier.\n\n\n\n\nOverview\n\n\nScout is a \nvisualizer for VCF files\n intended for a clinical audience. As such it will enable advanced features like variant filters in an intutative web interface. Scout enables team collaboration by URL sharing and user comments tied to families and variants.\n\n\n\n\nN.B. Portable version of Scout.\n\nA more easily installable version of Scout is under early development and we will make further announcements when it's ready for testing.\n\n\n\n\nMotivation\n\n\nDNA sequencing is quickly entering clinical settings. As such doctors and genetcists need tools that cater to non-bioinformatians. Scout is an attempt to provide a simple interface for bioinformaticians and clinicians alike to collaborate on the interpretation of variant calling results.\n\n\n\n\nInstallation\n\n\nFor now, install as:\n\n\n$ pip install git+https://github.com/Clinical-Genomics/scout.git\n\n\n\n\nExtended installation instructions, including how to setup MongoDB, will be added in the future. We also plan to define a Vagrantfile to setting up a demo/development environment for testing.\n\n\n\n\nRoadmap\n\n\nWe are trying to build Scout piece-by-piece. This is the prioritized order we are planning on implementing those pieces.\n\n\n\n\nRelease a MVP of the working interface (core functionality)\n\n\nTake in a first round of feedback from close collaborators\n\n\n\n\nMake sure that the package is installable with pip and/or Vagrant\n\n\n\n\nInclude logging and error reports\n\n\nSetup testing suite\n\n\n\n\n\n\n\n\n\n\nContributing\n\n\nSee \nDevelopment\n.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#scout", 
+            "text": "Analyze VCFs quicker and easier.", 
+            "title": "Scout"
+        }, 
+        {
+            "location": "/#overview", 
+            "text": "Scout is a  visualizer for VCF files  intended for a clinical audience. As such it will enable advanced features like variant filters in an intutative web interface. Scout enables team collaboration by URL sharing and user comments tied to families and variants.   N.B. Portable version of Scout. \nA more easily installable version of Scout is under early development and we will make further announcements when it's ready for testing.", 
+            "title": "Overview"
+        }, 
+        {
+            "location": "/#motivation", 
+            "text": "DNA sequencing is quickly entering clinical settings. As such doctors and genetcists need tools that cater to non-bioinformatians. Scout is an attempt to provide a simple interface for bioinformaticians and clinicians alike to collaborate on the interpretation of variant calling results.", 
+            "title": "Motivation"
+        }, 
+        {
+            "location": "/#installation", 
+            "text": "For now, install as:  $ pip install git+https://github.com/Clinical-Genomics/scout.git  Extended installation instructions, including how to setup MongoDB, will be added in the future. We also plan to define a Vagrantfile to setting up a demo/development environment for testing.", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/#roadmap", 
+            "text": "We are trying to build Scout piece-by-piece. This is the prioritized order we are planning on implementing those pieces.   Release a MVP of the working interface (core functionality)  Take in a first round of feedback from close collaborators   Make sure that the package is installable with pip and/or Vagrant   Include logging and error reports  Setup testing suite", 
+            "title": "Roadmap"
+        }, 
+        {
+            "location": "/#contributing", 
+            "text": "See  Development .", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/development/", 
+            "text": "Development\n\n\nCore developers\n\n\n\n\nRobin Andeer (RA)\n\n\nM\u00e5ns Magnusson (MM)\n\n\nHenrik Stranneheim (HS)\n\n\nMats Dahlberg (MD)\n\n\n\n\nFlask structure\n\n\nBlueprints separate as much logic as possible from the central Flask server. This includes views, templates, and static assets but not yet Flask extensions.\n\n\nFrontend\n\n\nNode.js compiles frontend assets such as \nSCSS\n modules and \nVue.js\n components. It's also responsible for auto-reloading the browser when updates are made to the files. All this functionality is centralized to \ngulp.js\n. An overview of how all components of this system are connected is visualized below:\n\n\n\n\nTo start watching files and compile and reload automatically run:\n\n\n$ gulp\n\n\n\n\nAll assets are already bundled but before deployment one should compile the files for production (Uglify + minify). This is accomplished as such:\n\n\n$ gulp build --production\n\n\n\n\nFAQ\n\n\nUnable to install PyOpenSSL/Cryptography\n\n\nQuite a few people seem to have problems installing later versions on PyOpenSSL. This in mainly because of the Cryptography dependency that was introduces post 0.13 so it's possible you will find more luck installing it as:\n\n\n$ pip install PyOpenSSL==0.13", 
+            "title": "Development"
+        }, 
+        {
+            "location": "/development/#development", 
+            "text": "", 
+            "title": "Development"
+        }, 
+        {
+            "location": "/development/#core-developers", 
+            "text": "Robin Andeer (RA)  M\u00e5ns Magnusson (MM)  Henrik Stranneheim (HS)  Mats Dahlberg (MD)", 
+            "title": "Core developers"
+        }, 
+        {
+            "location": "/development/#flask-structure", 
+            "text": "Blueprints separate as much logic as possible from the central Flask server. This includes views, templates, and static assets but not yet Flask extensions.", 
+            "title": "Flask structure"
+        }, 
+        {
+            "location": "/development/#frontend", 
+            "text": "Node.js compiles frontend assets such as  SCSS  modules and  Vue.js  components. It's also responsible for auto-reloading the browser when updates are made to the files. All this functionality is centralized to  gulp.js . An overview of how all components of this system are connected is visualized below:   To start watching files and compile and reload automatically run:  $ gulp  All assets are already bundled but before deployment one should compile the files for production (Uglify + minify). This is accomplished as such:  $ gulp build --production", 
+            "title": "Frontend"
+        }, 
+        {
+            "location": "/development/#faq", 
+            "text": "", 
+            "title": "FAQ"
+        }, 
+        {
+            "location": "/development/#unable-to-install-pyopensslcryptography", 
+            "text": "Quite a few people seem to have problems installing later versions on PyOpenSSL. This in mainly because of the Cryptography dependency that was introduces post 0.13 so it's possible you will find more luck installing it as:  $ pip install PyOpenSSL==0.13", 
+            "title": "Unable to install PyOpenSSL/Cryptography"
+        }, 
+        {
+            "location": "/install/", 
+            "text": "Install Scout\n\n\nThis guide will walk you through bootstrapping a development environment.\nThe instructions are divided into multiple sections.\n\n\n0. Intro\n\n\nScout mainly consists of 3 moving parts that each must be installed\nseparately. Runtime requirements include Python and MongoDB. Development\nand asset compilation requires Node.js.\n\n\n1. Install\n\n\nLet's start by pulling down the GitHub repository with the source code.\n\n\n$ git clone https://github.com/Clinical-Genomics/scout\n$ cd scout\n\n\n\n\nThe Scout repo contains a Bash script with full installation instructions\nfor Ubuntu. I will from this point on assume that you have \nVagrant\n\ninstalled on you local development machine. If you plan to setup the\nproject in any other way you should take a closer look at the \nVagrantfile\n\nand the \nprovision.sh\n script.\n\n\n$ vagrant up\n$ vagrant ssh\n$ cd /vagrant\n\n\n\n\n2. Configure\n\n\nYou need to sign up for access to a few web APIs like Google OAuth and\nOMIM to make full use of Scout. The keys and secrets should be added to\nthe Flask instance config. To learn more about possible settings, take a\nlook in the \nscout/settings.py\n module.\n\n\nGoogle OAuth\n\n\nCreate a new project in your \nGoogle Developer console\n.\nUnder your project, click \"APIs \n auth\" \n \"Credentials\". Here you will\nfind your \"CLIENT ID\" and \"CLIENT SECRET\". You also need to add some\n\"REDIRECT URLS\" and \"JAVASCRIPT ORIGINS\".\n\n\nREDIRECT URLS\n:\n\n\n\n\nhttp://localhost:5023/authorized\n\n\nhttps://localhost:5023/authorized\n\n\n\n\nJAVASCRIPT ORIGINS\n:\n\n\n\n\nhttp://localhost:5023\n\n\nhttps://localhost:5023\n\n\n\n\nRemember that it might take a while for the tokens to start working.\n\n\nOMIM API\n\n\nYou can \nregister\n for free OMIM API access. You will be\nsent the authentication token eventually :)\n\n\nGmail\n\n\nThe Sanger email feature requires credentials for a Gmail account. Any\naccount should work so you don't need to sign up for any special access.\n\n\nMongoDB\n\n\nIf you are using a password protected Mongo database you also need to add\nthe authentication details to the instance config.\n\n\n3. Boostrap\n\n\nWe use gulp.js to compile the statis assets (CSS, JS, etc.)\n\n\n$ gulp build --production\n\n\n\n\n4. Develop\n\n\nYou are now ready to start the development server and complete the setup\nin the admin interface.\n\n\n$ python manage.py -c \n$(pwd)/configs/boilerplate.cfg\n vagrant\n\n\n\n\nThat's it! Go and explore Scout.", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/install/#install-scout", 
+            "text": "This guide will walk you through bootstrapping a development environment.\nThe instructions are divided into multiple sections.", 
+            "title": "Install Scout"
+        }, 
+        {
+            "location": "/install/#0-intro", 
+            "text": "Scout mainly consists of 3 moving parts that each must be installed\nseparately. Runtime requirements include Python and MongoDB. Development\nand asset compilation requires Node.js.", 
+            "title": "0. Intro"
+        }, 
+        {
+            "location": "/install/#1-install", 
+            "text": "Let's start by pulling down the GitHub repository with the source code.  $ git clone https://github.com/Clinical-Genomics/scout\n$ cd scout  The Scout repo contains a Bash script with full installation instructions\nfor Ubuntu. I will from this point on assume that you have  Vagrant \ninstalled on you local development machine. If you plan to setup the\nproject in any other way you should take a closer look at the  Vagrantfile \nand the  provision.sh  script.  $ vagrant up\n$ vagrant ssh\n$ cd /vagrant", 
+            "title": "1. Install"
+        }, 
+        {
+            "location": "/install/#2-configure", 
+            "text": "You need to sign up for access to a few web APIs like Google OAuth and\nOMIM to make full use of Scout. The keys and secrets should be added to\nthe Flask instance config. To learn more about possible settings, take a\nlook in the  scout/settings.py  module.", 
+            "title": "2. Configure"
+        }, 
+        {
+            "location": "/install/#google-oauth", 
+            "text": "Create a new project in your  Google Developer console .\nUnder your project, click \"APIs   auth\"   \"Credentials\". Here you will\nfind your \"CLIENT ID\" and \"CLIENT SECRET\". You also need to add some\n\"REDIRECT URLS\" and \"JAVASCRIPT ORIGINS\".  REDIRECT URLS :   http://localhost:5023/authorized  https://localhost:5023/authorized   JAVASCRIPT ORIGINS :   http://localhost:5023  https://localhost:5023   Remember that it might take a while for the tokens to start working.", 
+            "title": "Google OAuth"
+        }, 
+        {
+            "location": "/install/#omim-api", 
+            "text": "You can  register  for free OMIM API access. You will be\nsent the authentication token eventually :)", 
+            "title": "OMIM API"
+        }, 
+        {
+            "location": "/install/#gmail", 
+            "text": "The Sanger email feature requires credentials for a Gmail account. Any\naccount should work so you don't need to sign up for any special access.", 
+            "title": "Gmail"
+        }, 
+        {
+            "location": "/install/#mongodb", 
+            "text": "If you are using a password protected Mongo database you also need to add\nthe authentication details to the instance config.", 
+            "title": "MongoDB"
+        }, 
+        {
+            "location": "/install/#3-boostrap", 
+            "text": "We use gulp.js to compile the statis assets (CSS, JS, etc.)  $ gulp build --production", 
+            "title": "3. Boostrap"
+        }, 
+        {
+            "location": "/install/#4-develop", 
+            "text": "You are now ready to start the development server and complete the setup\nin the admin interface.  $ python manage.py -c  $(pwd)/configs/boilerplate.cfg  vagrant  That's it! Go and explore Scout.", 
+            "title": "4. Develop"
+        }, 
+        {
+            "location": "/technology/", 
+            "text": "Technology\n\n\nScout sits on a technology stack that is built on and around Python. When Python isn't enough, we have made calculated descisions to integrate with additional tools.\n\n\nServer\n\n\nA choice of Python servers comes down to Django, Tornado, and Flask. They are all capable options and we probably could've have gone either way.\n\n\nInternally, we had more experience using \nFlask\n in the past and this was also the choice we settled for. It feature a very Pythonic API, has a large and growing user base, lots of actively developed extensions, and uses Jinja2 which is the best templating engine around. Flask covers all necessary requirements but the nail in the coffin was reading \nthese comments\n.\n\n\nDatabase\n\n\nWe use \nMongoDB\n. It's a popular NoSQL database, meaning no migrations and simple development. MongoDB simplifies filter queries and database loading through \"upserts\".\n\n\nDatabase interface/ODM\n\n\nMongoEngine\n is used for some of the documents in the data store. Using an ODM has the benefit of dealing with a cleaner interface to the database which increases code readability. It also supports Flask-Admin and Flask-WTForms plugins.\n\n\nTo optimize query execution, parts of the database will require extensive customization. For working with these collections, we will use drop into the raw \npymongo\n API.\n\n\nFrontend\n\n\nMost data will be rendered server side. However, everyone needs a JavaScript abstraction layer these days and jQuery often isn't enough. To componentalize and avoid binding data into the DOM we use a simple MVVM framework called \nVue.js\n.\n\n\nStylesheets\n\n\nSCSS\n preprocessing is the closest thing to a standard (besided CSS) and allows fast libsass compilation. Compared to raw CSS it will increse readability and enable simple modularization of the code base.\n\n\nScripts\n\n\nThe scripts will be written in either \nJavaScript\n or \nCoffeeScript\n (CS). CS is more readable, requires less boilerplate, and makes it easier to write quality JavaScript code. We do enforce that authors first learn the basics of JavaScript before picking up CoffeeScript.\n\n\nBuild pipeline\n\n\nGulp\n is the build tool. It brings readable config files and fast rebuilds. It handles compilation of all frontend code, both during development and in preparation of deployment (minify etc.). This means we will also use \nNode.js\n which, besides Rails, is standard in the industry. It simply offers too many benefits during development to give up for any Python native solution.\n\n\nGulp is reposible for:\n\n\n\n\ncompiling CoffeeScript and SCSS files\n\n\nminifing and optimizing the assets for production\n\n\nenabling live reload and style injection using \nBrowserSync\n\n\n\n\nThe build system will be tightly integrated with the Flask server setup to avoid adding more complexity than necessary (one extra process).", 
+            "title": "Technology"
+        }, 
+        {
+            "location": "/technology/#technology", 
+            "text": "Scout sits on a technology stack that is built on and around Python. When Python isn't enough, we have made calculated descisions to integrate with additional tools.", 
+            "title": "Technology"
+        }, 
+        {
+            "location": "/technology/#server", 
+            "text": "A choice of Python servers comes down to Django, Tornado, and Flask. They are all capable options and we probably could've have gone either way.  Internally, we had more experience using  Flask  in the past and this was also the choice we settled for. It feature a very Pythonic API, has a large and growing user base, lots of actively developed extensions, and uses Jinja2 which is the best templating engine around. Flask covers all necessary requirements but the nail in the coffin was reading  these comments .", 
+            "title": "Server"
+        }, 
+        {
+            "location": "/technology/#database", 
+            "text": "We use  MongoDB . It's a popular NoSQL database, meaning no migrations and simple development. MongoDB simplifies filter queries and database loading through \"upserts\".", 
+            "title": "Database"
+        }, 
+        {
+            "location": "/technology/#database-interfaceodm", 
+            "text": "MongoEngine  is used for some of the documents in the data store. Using an ODM has the benefit of dealing with a cleaner interface to the database which increases code readability. It also supports Flask-Admin and Flask-WTForms plugins.  To optimize query execution, parts of the database will require extensive customization. For working with these collections, we will use drop into the raw  pymongo  API.", 
+            "title": "Database interface/ODM"
+        }, 
+        {
+            "location": "/technology/#frontend", 
+            "text": "Most data will be rendered server side. However, everyone needs a JavaScript abstraction layer these days and jQuery often isn't enough. To componentalize and avoid binding data into the DOM we use a simple MVVM framework called  Vue.js .", 
+            "title": "Frontend"
+        }, 
+        {
+            "location": "/technology/#stylesheets", 
+            "text": "SCSS  preprocessing is the closest thing to a standard (besided CSS) and allows fast libsass compilation. Compared to raw CSS it will increse readability and enable simple modularization of the code base.", 
+            "title": "Stylesheets"
+        }, 
+        {
+            "location": "/technology/#scripts", 
+            "text": "The scripts will be written in either  JavaScript  or  CoffeeScript  (CS). CS is more readable, requires less boilerplate, and makes it easier to write quality JavaScript code. We do enforce that authors first learn the basics of JavaScript before picking up CoffeeScript.", 
+            "title": "Scripts"
+        }, 
+        {
+            "location": "/technology/#build-pipeline", 
+            "text": "Gulp  is the build tool. It brings readable config files and fast rebuilds. It handles compilation of all frontend code, both during development and in preparation of deployment (minify etc.). This means we will also use  Node.js  which, besides Rails, is standard in the industry. It simply offers too many benefits during development to give up for any Python native solution.  Gulp is reposible for:   compiling CoffeeScript and SCSS files  minifing and optimizing the assets for production  enabling live reload and style injection using  BrowserSync   The build system will be tightly integrated with the Flask server setup to avoid adding more complexity than necessary (one extra process).", 
+            "title": "Build pipeline"
+        }, 
+        {
+            "location": "/user-guide/cases/", 
+            "text": "Cases\n\n\nThis page displays the list of active cases for a particular institute. Each item links to the detailed view for that case. You can filter the list by typing into the search box above the list.\n\n\nA quick link to get straight to the list of all clinical variants is also displayed. To indicate what cases have recently been added/updated, a \"last updated\" date is also displayed.\n\n\nSometimes you will also see a cyan colored dot to the left of the case ID. This is an indicator that there's been some recent activity in the case such as a new comment.\n\n\nYour name will be tagged for each case that is assigned to you. For cases that are assigned to other people you will see a tag \"ASSIGNED\".\n\n\n\n\nCase\n\n\nThis is the detailed view of one individual case. The intended use is to give a consise overview of the family under investigation and show recent activity related to the case.\n\n\nPinned variants\n\n\nThere's a list of \"Strong candidates\" on the page. This list is curated by the collaborators and consists of \"pinned\" variants from the variants list. This feature can be used to mark variants of particular interest that you might want to highlight to other users (See more under \"Variant\".)\n\n\nMisc.\n\n\nThe case page also displays a simple wiki-style synopsis on the current case that can be used to communicate information on the case to collaborators.\n\n\nThe \"Activity\" feed is a reverse chronological list of events and comments related to the case. Examples of events include comments, status updates, assignments, Sanger sequencing orders etc.\n\n\nActions\n\n\nThere are a few actions you can take on this page.\n\n\nAdopt case\n: By clicking the button next to \"Adopt\" you can assign yourself to a case unless someone else has already done so. If you have assigned yourself to a case you can click your name to \"unassign\".\n\n\nThe case can be moved to \"Research\" which means all variants will be made visible for the entire exome. Clicking \"Open research\" will notify the administrators of the site. The user agrees that she is reponsible to have acquired an informed consent relevant for this action. This will also be logged as a new event in the case log.\n\n\nEdit case synopsis\n: The case sysnopsis can be edited in a format known as [Markdown][markdown]. Just click \"EDIT\" to open the editor view. When you are finished click \"SAVE\" to save changes or \"CANCEL\" to abort.\n\n\nComment\n: You can leave comments in the activity log by writing a message in the input box next to the feed. Click \"COMMENT\" to submit the comment.", 
+            "title": "Cases"
+        }, 
+        {
+            "location": "/user-guide/cases/#cases", 
+            "text": "This page displays the list of active cases for a particular institute. Each item links to the detailed view for that case. You can filter the list by typing into the search box above the list.  A quick link to get straight to the list of all clinical variants is also displayed. To indicate what cases have recently been added/updated, a \"last updated\" date is also displayed.  Sometimes you will also see a cyan colored dot to the left of the case ID. This is an indicator that there's been some recent activity in the case such as a new comment.  Your name will be tagged for each case that is assigned to you. For cases that are assigned to other people you will see a tag \"ASSIGNED\".", 
+            "title": "Cases"
+        }, 
+        {
+            "location": "/user-guide/cases/#case", 
+            "text": "This is the detailed view of one individual case. The intended use is to give a consise overview of the family under investigation and show recent activity related to the case.", 
+            "title": "Case"
+        }, 
+        {
+            "location": "/user-guide/cases/#pinned-variants", 
+            "text": "There's a list of \"Strong candidates\" on the page. This list is curated by the collaborators and consists of \"pinned\" variants from the variants list. This feature can be used to mark variants of particular interest that you might want to highlight to other users (See more under \"Variant\".)", 
+            "title": "Pinned variants"
+        }, 
+        {
+            "location": "/user-guide/cases/#misc", 
+            "text": "The case page also displays a simple wiki-style synopsis on the current case that can be used to communicate information on the case to collaborators.  The \"Activity\" feed is a reverse chronological list of events and comments related to the case. Examples of events include comments, status updates, assignments, Sanger sequencing orders etc.", 
+            "title": "Misc."
+        }, 
+        {
+            "location": "/user-guide/cases/#actions", 
+            "text": "There are a few actions you can take on this page.  Adopt case : By clicking the button next to \"Adopt\" you can assign yourself to a case unless someone else has already done so. If you have assigned yourself to a case you can click your name to \"unassign\".  The case can be moved to \"Research\" which means all variants will be made visible for the entire exome. Clicking \"Open research\" will notify the administrators of the site. The user agrees that she is reponsible to have acquired an informed consent relevant for this action. This will also be logged as a new event in the case log.  Edit case synopsis : The case sysnopsis can be edited in a format known as [Markdown][markdown]. Just click \"EDIT\" to open the editor view. When you are finished click \"SAVE\" to save changes or \"CANCEL\" to abort.  Comment : You can leave comments in the activity log by writing a message in the input box next to the feed. Click \"COMMENT\" to submit the comment.", 
+            "title": "Actions"
+        }, 
+        {
+            "location": "/user-guide/getting-started/", 
+            "text": "Getting started with Scout\n\n\nScout is a web-based visualizer for VCF-files. It helps you manage multiple patient cases in a unified and intuative interface. You can collaborate with other clinicians and share comments and findings across your team.\n\n\nInstitutes, Cases, Variants\n\n\nScout has a few levels of abstraction to deal with the data it tries to present. Institutes contain multiple cases and group users into teams. Cases are usually the same as families or a group of related VCF-files - they all share a subset of called variants. Variants are individual genotype calls across a single case.\n\n\n\n\n[insert screenshot here]\n\n\n\n\nA case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.\n\n\nAs such there are some added features that try to support this process:\n\n\n\n\na case can be assigned to a user to delegate responsibility\n\n\nvarious variants can be pinned as worth looking at for the whole team\n\n\na feed keeps track of any case related activity in one single place\n\n\n\n\nA lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.", 
+            "title": "Getting started"
+        }, 
+        {
+            "location": "/user-guide/getting-started/#getting-started-with-scout", 
+            "text": "Scout is a web-based visualizer for VCF-files. It helps you manage multiple patient cases in a unified and intuative interface. You can collaborate with other clinicians and share comments and findings across your team.", 
+            "title": "Getting started with Scout"
+        }, 
+        {
+            "location": "/user-guide/getting-started/#institutes-cases-variants", 
+            "text": "Scout has a few levels of abstraction to deal with the data it tries to present. Institutes contain multiple cases and group users into teams. Cases are usually the same as families or a group of related VCF-files - they all share a subset of called variants. Variants are individual genotype calls across a single case.   [insert screenshot here]   A case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.  As such there are some added features that try to support this process:   a case can be assigned to a user to delegate responsibility  various variants can be pinned as worth looking at for the whole team  a feed keeps track of any case related activity in one single place   A lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.", 
+            "title": "Institutes, Cases, Variants"
+        }, 
+        {
+            "location": "/user-guide/pages/", 
+            "text": "Pages\n\n\nScout can be logically separated into a number of pages with different responsibility and purpose. The core pages include institues, cases, case, variants, and variant.\n\n\nThis document describes each page, it's purpose, function, and intended use.\n\n\n\n\nIndex\n\n\nThe \"landing page\". This is your default view where all users who aren't logged in will arrive at. It's main purpose is to introduce potentially new users to the website. It also allows you to sign in.\n\n\nSign up\n\n\nNew users have to apply for access prior to logging in the first time. The team leaders for each institute are required to sign off on new users.\n\n\nSign in\n\n\nWe have chosen to use Google OAuth for the signup process. This means that you click on a button on the first page which launches the OAuth process. When the user is returned, you will see your customized welcome page.\n\n\nWe also use separate \n@clinicalgenomics.se\n accounts to be able to enforce 2-factor authentication.\n\n\n\n\nWelcome page\n\n\nThis is the first page a you see after logging in. Notice your first name in the upper right corner. You can also access the list of institutes you belong to.\n\n\nInstitute selection\n\n\nUsers can belong to multiple institutes. Each institutes defines what cases can be viewed by the user. If you only belong to a single institute you will be redirected automatically to \"Cases\".\n\n\n% Refer to cases.md here\n% Refer to variants.md", 
+            "title": "Pages"
+        }, 
+        {
+            "location": "/user-guide/pages/#pages", 
+            "text": "Scout can be logically separated into a number of pages with different responsibility and purpose. The core pages include institues, cases, case, variants, and variant.  This document describes each page, it's purpose, function, and intended use.", 
+            "title": "Pages"
+        }, 
+        {
+            "location": "/user-guide/pages/#index", 
+            "text": "The \"landing page\". This is your default view where all users who aren't logged in will arrive at. It's main purpose is to introduce potentially new users to the website. It also allows you to sign in.", 
+            "title": "Index"
+        }, 
+        {
+            "location": "/user-guide/pages/#sign-up", 
+            "text": "New users have to apply for access prior to logging in the first time. The team leaders for each institute are required to sign off on new users.", 
+            "title": "Sign up"
+        }, 
+        {
+            "location": "/user-guide/pages/#sign-in", 
+            "text": "We have chosen to use Google OAuth for the signup process. This means that you click on a button on the first page which launches the OAuth process. When the user is returned, you will see your customized welcome page.  We also use separate  @clinicalgenomics.se  accounts to be able to enforce 2-factor authentication.", 
+            "title": "Sign in"
+        }, 
+        {
+            "location": "/user-guide/pages/#welcome-page", 
+            "text": "This is the first page a you see after logging in. Notice your first name in the upper right corner. You can also access the list of institutes you belong to.", 
+            "title": "Welcome page"
+        }, 
+        {
+            "location": "/user-guide/pages/#institute-selection", 
+            "text": "Users can belong to multiple institutes. Each institutes defines what cases can be viewed by the user. If you only belong to a single institute you will be redirected automatically to \"Cases\".  % Refer to cases.md here\n% Refer to variants.md", 
+            "title": "Institute selection"
+        }, 
+        {
+            "location": "/user-guide/using-scout/", 
+            "text": "Pinning a variant\n\n\nIf you find a variant that seems interesting enough that you believe someone should follow it up, you could consider \"pinning it\" to the case. This means that it will show up for all users to see in the case view along other pinned variants.\n\n\nA variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.\n\n\n\n\nIn the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.\n\n\n\n\nSending Sanger email\n\n\nIt's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.\n\n\nLocal Frequency Database\n\n\nThis is not really a local \nfrequency\n database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.\nVariants are added to the database in the following way:\n\n\n\n\nFor each case we pick one affected individual\n\n\nVariants are filtered out based on if they are common or have a very low call quality\n\n\nThe remaining variants are stored in loqusdb\n\n\n\n\nEach time the user looks at a variant scout will ask locusdb how many times it has been seen across \nall\n cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).", 
+            "title": "Using scout"
+        }, 
+        {
+            "location": "/user-guide/using-scout/#pinning-a-variant", 
+            "text": "If you find a variant that seems interesting enough that you believe someone should follow it up, you could consider \"pinning it\" to the case. This means that it will show up for all users to see in the case view along other pinned variants.  A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.   In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.", 
+            "title": "Pinning a variant"
+        }, 
+        {
+            "location": "/user-guide/using-scout/#sending-sanger-email", 
+            "text": "It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.", 
+            "title": "Sending Sanger email"
+        }, 
+        {
+            "location": "/user-guide/using-scout/#local-frequency-database", 
+            "text": "This is not really a local  frequency  database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.\nVariants are added to the database in the following way:   For each case we pick one affected individual  Variants are filtered out based on if they are common or have a very low call quality  The remaining variants are stored in loqusdb   Each time the user looks at a variant scout will ask locusdb how many times it has been seen across  all  cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).", 
+            "title": "Local Frequency Database"
+        }, 
+        {
+            "location": "/user-guide/variants/", 
+            "text": "Variants\n\n\nThe big list of variants. This page serves as an overview of all data and annotations for a single case. It's meant to allow you to skim through many variants ordered by the ranking.\n\n\nThe first couple of columns are meant to give you a sense of place in the overall ranked list. The \"Rank\" column is especially useful after applying various filters.\n\n\nHovering over both \"1000 Genomes\" (frequency) and \"CADD score\" (severity) columns will reveal additional metrics in a popup.\n\n\nHovering over \"Inheritance models\" will pop up a list of all possible compounds if the variants follows this pattern.\n\n\nAt the bottom of the list you will find a button to load the next batch of variants in the list. To return to the previous batch of variants, just press the browser back button.\n\n\nIt's also possible to filter the variants using a number of different criteria. Open the filters panel by clicking the \"filter\" icon in the top right. Here you can fill in form and click \"Filter variants\" to update the list. This is also the place where you switch gene lists.\n\n\n\n\nVariant\n\n\nThis is the most complex view with a lot of related data presented to the user in a compact way. A lot of thought went into the design of the layout so here it the imagined workflow.\n\n\nToolbar\n\n\nTwo options are added to the right side of the menu:\n\n\n\n\nSend Sanger email to an institute related email address.\n\n\nPin the current variant as interesting so that it shows up in the case view.\n\n\nMark variant as causative. This is only to be used when a variant is confirmed to be causative - it will set the case to \"solved\" automatically.\n\n\n\n\nFixed header\n\n\nIntroduces the basic facts of the variant that the user is often referring back to. As an example you need to refer back to the chromosome when assessing possible inheritance models.\n\n\nSummary\n\n\nThis is the first a user looks at when assesing the variant.\n\n\n\n\nRank score/CADD score\n\n\nDisease gene model, possible inheritance models, OMIM model\n\n\nFrequencies\n\n\nCLINSIG number\n\n\n\n\nDetails\n\n\nDepending on the first assessment, this section represents what a user digs deeper into.\n\n\nFunctional Annotation\n\n\nThis is the worst functional impact of all transcripts\n\n\nRegion Annotation\n\n\nThis is the region of the most severe functional impact\n\n\nSift Prediction\n\n\nThis is most severe sift prediction of all transcripts\n\n\nPolyphen Prediction\n\n\nThis is most severe polyphen prediction of all transcripts\n\n\n\n\nPredicted protein changes\n\n\nSeverities\n\n\nConservation\n\n\n\n\n=\n \"Matrix\" with highlighted cells (significant numbers)\n\n\nGT Call\n\n\nCompounds\n\n\nOnly interesting when the compound inheritance pattern is required, the list can be very long - best to put it far down the page.", 
+            "title": "Variants"
+        }, 
+        {
+            "location": "/user-guide/variants/#variants", 
+            "text": "The big list of variants. This page serves as an overview of all data and annotations for a single case. It's meant to allow you to skim through many variants ordered by the ranking.  The first couple of columns are meant to give you a sense of place in the overall ranked list. The \"Rank\" column is especially useful after applying various filters.  Hovering over both \"1000 Genomes\" (frequency) and \"CADD score\" (severity) columns will reveal additional metrics in a popup.  Hovering over \"Inheritance models\" will pop up a list of all possible compounds if the variants follows this pattern.  At the bottom of the list you will find a button to load the next batch of variants in the list. To return to the previous batch of variants, just press the browser back button.  It's also possible to filter the variants using a number of different criteria. Open the filters panel by clicking the \"filter\" icon in the top right. Here you can fill in form and click \"Filter variants\" to update the list. This is also the place where you switch gene lists.", 
+            "title": "Variants"
+        }, 
+        {
+            "location": "/user-guide/variants/#variant", 
+            "text": "This is the most complex view with a lot of related data presented to the user in a compact way. A lot of thought went into the design of the layout so here it the imagined workflow.", 
+            "title": "Variant"
+        }, 
+        {
+            "location": "/user-guide/variants/#toolbar", 
+            "text": "Two options are added to the right side of the menu:   Send Sanger email to an institute related email address.  Pin the current variant as interesting so that it shows up in the case view.  Mark variant as causative. This is only to be used when a variant is confirmed to be causative - it will set the case to \"solved\" automatically.", 
+            "title": "Toolbar"
+        }, 
+        {
+            "location": "/user-guide/variants/#fixed-header", 
+            "text": "Introduces the basic facts of the variant that the user is often referring back to. As an example you need to refer back to the chromosome when assessing possible inheritance models.", 
+            "title": "Fixed header"
+        }, 
+        {
+            "location": "/user-guide/variants/#summary", 
+            "text": "This is the first a user looks at when assesing the variant.   Rank score/CADD score  Disease gene model, possible inheritance models, OMIM model  Frequencies  CLINSIG number", 
+            "title": "Summary"
+        }, 
+        {
+            "location": "/user-guide/variants/#details", 
+            "text": "Depending on the first assessment, this section represents what a user digs deeper into.", 
+            "title": "Details"
+        }, 
+        {
+            "location": "/user-guide/variants/#functional-annotation", 
+            "text": "This is the worst functional impact of all transcripts", 
+            "title": "Functional Annotation"
+        }, 
+        {
+            "location": "/user-guide/variants/#region-annotation", 
+            "text": "This is the region of the most severe functional impact", 
+            "title": "Region Annotation"
+        }, 
+        {
+            "location": "/user-guide/variants/#sift-prediction", 
+            "text": "This is most severe sift prediction of all transcripts", 
+            "title": "Sift Prediction"
+        }, 
+        {
+            "location": "/user-guide/variants/#polyphen-prediction", 
+            "text": "This is most severe polyphen prediction of all transcripts   Predicted protein changes  Severities  Conservation   =  \"Matrix\" with highlighted cells (significant numbers)", 
+            "title": "Polyphen Prediction"
+        }, 
+        {
+            "location": "/user-guide/variants/#gt-call", 
+            "text": "", 
+            "title": "GT Call"
+        }, 
+        {
+            "location": "/user-guide/variants/#compounds", 
+            "text": "Only interesting when the compound inheritance pattern is required, the list can be very long - best to put it far down the page.", 
+            "title": "Compounds"
+        }, 
+        {
+            "location": "/user-guide/using-scout/pinning-a-variant/", 
+            "text": "Pinning a variant\n\n\nIf you find a variant that seems interesting enough that you believe someone should follow it up, you could consider \"pinning it\" to the case. This means that it will show up for all users to see in the case view along other pinned variants.\n\n\nA variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.\n\n\n\n\nIn the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.", 
+            "title": "Pinning a variant"
+        }, 
+        {
+            "location": "/user-guide/using-scout/pinning-a-variant/#pinning-a-variant", 
+            "text": "If you find a variant that seems interesting enough that you believe someone should follow it up, you could consider \"pinning it\" to the case. This means that it will show up for all users to see in the case view along other pinned variants.  A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.   In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.", 
+            "title": "Pinning a variant"
+        }, 
+        {
+            "location": "/user-guide/using-scout/sending-sanger-email/", 
+            "text": "Sending Sanger email\n\n\nIt's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.", 
+            "title": "Sending sanger email"
+        }, 
+        {
+            "location": "/user-guide/using-scout/sending-sanger-email/#sending-sanger-email", 
+            "text": "It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.", 
+            "title": "Sending Sanger email"
+        }
+    ]
+}

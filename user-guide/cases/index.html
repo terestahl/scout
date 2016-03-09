@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Getting started - Scout Docs</title>
+	<title>Cases - Scout Docs</title>
 
         <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -78,12 +78,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
-                        <li >
-                            <a href="../cases/">Cases</a>
+                        <li class="active">
+                            <a href="./">Cases</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Getting started</a>
+                        <li >
+                            <a href="../getting-started/">Getting started</a>
                         </li>
                     
                         <li >
@@ -111,12 +111,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../cases/">
+                    <a rel="next" href="../../technology/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../pages/">
+                    <a rel="prev" href="../getting-started/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -139,30 +139,42 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#getting-started-with-scout">Getting started with Scout</a></li>
+        <li class="main active"><a href="#cases">Cases</a></li>
         
-            <li><a href="#institutes-cases-variants">Institutes, Cases, Variants</a></li>
+    
+        <li class="main "><a href="#case">Case</a></li>
+        
+            <li><a href="#pinned-variants">Pinned variants</a></li>
+        
+            <li><a href="#misc">Misc.</a></li>
+        
+            <li><a href="#actions">Actions</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="getting-started-with-scout">Getting started with Scout</h1>
-<p>Scout is a web-based visualizer for VCF-files. It helps you manage multiple patient cases in a unified and intuative interface. You can collaborate with other clinicians and share comments and findings across your team.</p>
-<h2 id="institutes-cases-variants">Institutes, Cases, Variants</h2>
-<p>Scout has a few levels of abstraction to deal with the data it tries to present. Institutes contain multiple cases and group users into teams. Cases are usually the same as families or a group of related VCF-files - they all share a subset of called variants. Variants are individual genotype calls across a single case.</p>
-<blockquote>
-<p>[insert screenshot here]</p>
-</blockquote>
-<p>A case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.</p>
-<p>As such there are some added features that try to support this process:</p>
-<ul>
-<li>a case can be assigned to a user to delegate responsibility</li>
-<li>various variants can be pinned as worth looking at for the whole team</li>
-<li>a feed keeps track of any case related activity in one single place</li>
-</ul>
-<p>A lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.</p></div>
+<h2 id="cases">Cases</h2>
+<p>This page displays the list of active cases for a particular institute. Each item links to the detailed view for that case. You can filter the list by typing into the search box above the list.</p>
+<p>A quick link to get straight to the list of all clinical variants is also displayed. To indicate what cases have recently been added/updated, a "last updated" date is also displayed.</p>
+<p>Sometimes you will also see a cyan colored dot to the left of the case ID. This is an indicator that there's been some recent activity in the case such as a new comment.</p>
+<p>Your name will be tagged for each case that is assigned to you. For cases that are assigned to other people you will see a tag "ASSIGNED".</p>
+<hr />
+<h2 id="case">Case</h2>
+<p>This is the detailed view of one individual case. The intended use is to give a consise overview of the family under investigation and show recent activity related to the case.</p>
+<h3 id="pinned-variants">Pinned variants</h3>
+<p>There's a list of "Strong candidates" on the page. This list is curated by the collaborators and consists of "pinned" variants from the variants list. This feature can be used to mark variants of particular interest that you might want to highlight to other users (See more under "Variant".)</p>
+<h3 id="misc">Misc.</h3>
+<p>The case page also displays a simple wiki-style synopsis on the current case that can be used to communicate information on the case to collaborators.</p>
+<p>The "Activity" feed is a reverse chronological list of events and comments related to the case. Examples of events include comments, status updates, assignments, Sanger sequencing orders etc.</p>
+<h3 id="actions">Actions</h3>
+<p>There are a few actions you can take on this page.</p>
+<p><strong>Adopt case</strong>: By clicking the button next to "Adopt" you can assign yourself to a case unless someone else has already done so. If you have assigned yourself to a case you can click your name to "unassign".</p>
+<p>The case can be moved to "Research" which means all variants will be made visible for the entire exome. Clicking "Open research" will notify the administrators of the site. The user agrees that she is reponsible to have acquired an informed consent relevant for this action. This will also be logged as a new event in the case log.</p>
+<p><strong>Edit case synopsis</strong>: The case sysnopsis can be edited in a format known as [Markdown][markdown]. Just click "EDIT" to open the editor view. When you are finished click "SAVE" to save changes or "CANCEL" to abort.</p>
+<p><strong>Comment</strong>: You can leave comments in the activity log by writing a message in the input box next to the feed. Click "COMMENT" to submit the comment.</p>
+<hr /></div>
         </div>
 
 	<footer class="col-md-12">
