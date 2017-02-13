@@ -3,32 +3,16 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/development/</loc>
-     <lastmod>2016-03-09</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>None/install/</loc>
-     <lastmod>2016-03-09</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>None/technology/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/install/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,32 +20,66 @@
     
         
     <url>
-     <loc>None/user-guide/cases/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/topics/hpo/</loc>
+     <lastmod>2017-02-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/user-guide/annotations/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/user-guide/getting-started/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/user-guide/cases/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/user-guide/pages/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/user-guide/defining-scorescheme/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/user-guide/using-scout/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/user-guide/getting-started/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/user-guide/variants/</loc>
-     <lastmod>2016-03-09</lastmod>
+     <loc>/user-guide/loading/</loc>
+     <lastmod>2017-02-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/user-guide/pages/</loc>
+     <lastmod>2017-02-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/user-guide/panels/</loc>
+     <lastmod>2017-02-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/user-guide/using-scout/</loc>
+     <lastmod>2017-02-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/user-guide/variants/</loc>
+     <lastmod>2017-02-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

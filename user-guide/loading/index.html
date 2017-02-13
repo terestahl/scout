@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Using scout - Scout Docs</title>
+        <title>Loading - Scout Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -80,8 +80,8 @@
     <a href="../getting-started/">Getting started</a>
 </li>
                             
-<li >
-    <a href="../loading/">Loading</a>
+<li class="active">
+    <a href="./">Loading</a>
 </li>
                             
 <li >
@@ -92,8 +92,8 @@
     <a href="../panels/">Panels</a>
 </li>
                             
-<li class="active">
-    <a href="./">Using scout</a>
+<li >
+    <a href="../using-scout/">Using scout</a>
 </li>
                             
 <li >
@@ -110,12 +110,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../panels/">
+                        <a rel="next" href="../getting-started/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../variants/">
+                        <a rel="prev" href="../pages/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -132,30 +132,98 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#pinning-a-variant">Pinning a variant</a></li>
-        <li class="main "><a href="#sending-sanger-email">Sending Sanger email</a></li>
-        <li class="main "><a href="#local-frequency-database">Local Frequency Database</a></li>
+        <li class="main active"><a href="#loading-scout">Loading Scout</a></li>
+            <li><a href="#scout-load-config">Scout Load Config</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="pinning-a-variant">Pinning a variant</h1>
-<p>If you find a variant that seems interesting enough that you believe someone should follow it up, you could consider "pinning it" to the case. This means that it will show up for all users to see in the case view along other pinned variants.</p>
-<p>A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.</p>
-<blockquote>
-<p>In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.</p>
-</blockquote>
-<h1 id="sending-sanger-email">Sending Sanger email</h1>
-<p>It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.</p>
-<h1 id="local-frequency-database">Local Frequency Database</h1>
-<p>This is not really a local <em>frequency</em> database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.
-Variants are added to the database in the following way:</p>
-<ul>
-<li>For each case we pick one affected individual</li>
-<li>Variants are filtered out based on if they are common or have a very low call quality</li>
-<li>The remaining variants are stored in loqusdb</li>
-</ul>
-<p>Each time the user looks at a variant scout will ask locusdb how many times it has been seen across <em>all</em> cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).</p></div>
+<h1 id="loading-scout">Loading Scout</h1>
+<p>When loading a case into scout it is possible to use either a config file or to specify parameters on the command line.</p>
+<h2 id="scout-load-config">Scout Load Config</h2>
+<p>The loading config is a <code>.yaml</code> file and can include all the necessary information to scout. Command line options will overload information in the config file.</p>
+<p>The config file has the following specification:</p>
+<pre><code class="yaml">owner: str(mandatory)
+
+family: str(mandatory)
+samples:
+  - analysis_type: str(optional), [wgs,wes]
+    sample_id: str(mandatory)
+    capture_kit: str(optional)
+    father: str(mandatory)
+    mother: str(mandatory)
+    sample_name: str(mandatory)
+    phenotype: str(mandatory), [affected, unaffected, unknown]
+    sex: str(mandatory), [male, female, unknown]
+    expected_coverage: int(mandatory)
+
+vcf_snv: str(optional)
+vcf_sv: str(optional)
+vcf_snv_research: str(optional)
+vcf_sv_research: str(optional)
+
+madeline: str(optional)
+default_gene_panels: list[str](optional)
+gene_panels: list[str](optional)
+
+# meta data
+rank_model_version: float(optional)
+rank_score_threshold: float(optional)
+analysis_date: datetime(optional)
+human_genome_build: str(optional)
+</code></pre>
+
+<p>An example file:</p>
+<pre><code class="yaml">---
+
+owner: cust000
+
+family: '643594'
+samples:
+  - analysis_type: wes
+    sample_id: ADM1059A2
+    capture_kit: Agilent_SureSelectCRE.V1
+    father: ADM1059A1
+    mother: ADM1059A3
+    sample_name: NA12882
+    phenotype: affected
+    sex: male
+    expected_coverage: 30
+  - analysis_type: wes
+    sample_id: ADM1059A1
+    capture_kit: Agilent_SureSelectCRE.V1
+    father: '0'
+    mother: '0'
+    sample_name: NA12877
+    phenotype: unaffected
+    sex: male
+    expected_coverage: 30
+  - analysis_type: wes
+    sample_id: ADM1059A3
+    capture_kit: Agilent_SureSelectCRE.V1
+    father: '0'
+    mother: '0'
+    sample_name: NA12878
+    phenotype: unaffected
+    sex: female
+    expected_coverage: 30
+
+vcf_snv: tests/fixtures/643594.clinical.vcf
+vcf_sv: tests/fixtures/643594.clinical.SV.vcf
+vcf_snv_research: tests/fixtures/643594.research.vcf
+vcf_sv_research: tests/fixtures/643594.research.SV.vcf
+
+madeline: tests/fixtures/madeline.xml
+default_gene_panels: [panel1]
+gene_panels: [panel1]
+
+# meta data
+rank_model_version: 1.12
+rank_score_threshold: -100
+analysis_date: 2016-10-12 14:00:46
+human_genome_build: GRCh.37
+
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

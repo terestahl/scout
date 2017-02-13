@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Using scout - Scout Docs</title>
+        <title>Hpo - Scout Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -51,53 +51,53 @@
                     <li >
                         <a href="../../install/">Install</a>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
-<li >
-    <a href="../../topics/hpo/">Hpo</a>
+<li class="active">
+    <a href="./">Hpo</a>
 </li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../annotations/">Annotations</a>
+    <a href="../../user-guide/annotations/">Annotations</a>
 </li>
                             
 <li >
-    <a href="../cases/">Cases</a>
+    <a href="../../user-guide/cases/">Cases</a>
 </li>
                             
 <li >
-    <a href="../defining-scorescheme/">Defining scorescheme</a>
+    <a href="../../user-guide/defining-scorescheme/">Defining scorescheme</a>
 </li>
                             
 <li >
-    <a href="../getting-started/">Getting started</a>
+    <a href="../../user-guide/getting-started/">Getting started</a>
 </li>
                             
 <li >
-    <a href="../loading/">Loading</a>
+    <a href="../../user-guide/loading/">Loading</a>
 </li>
                             
 <li >
-    <a href="../pages/">Pages</a>
+    <a href="../../user-guide/pages/">Pages</a>
 </li>
                             
 <li >
-    <a href="../panels/">Panels</a>
-</li>
-                            
-<li class="active">
-    <a href="./">Using scout</a>
+    <a href="../../user-guide/panels/">Panels</a>
 </li>
                             
 <li >
-    <a href="../variants/">Variants</a>
+    <a href="../../user-guide/using-scout/">Using scout</a>
+</li>
+                            
+<li >
+    <a href="../../user-guide/variants/">Variants</a>
 </li>
                         </ul>
                     </li>
@@ -110,12 +110,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../panels/">
+                        <a rel="next" href="../../install/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../variants/">
+                        <a rel="prev" href="../../user-guide/annotations/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -132,30 +132,26 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#pinning-a-variant">Pinning a variant</a></li>
-        <li class="main "><a href="#sending-sanger-email">Sending Sanger email</a></li>
-        <li class="main "><a href="#local-frequency-database">Local Frequency Database</a></li>
+        <li class="main active"><a href="#hpo-phenotypes">HPO phenotypes</a></li>
+            <li><a href="#hpo-gene-panel">HPO gene panel</a></li>
+            <li><a href="#phenomizer-diseases">Phenomizer diseases</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="pinning-a-variant">Pinning a variant</h1>
-<p>If you find a variant that seems interesting enough that you believe someone should follow it up, you could consider "pinning it" to the case. This means that it will show up for all users to see in the case view along other pinned variants.</p>
-<p>A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.</p>
+<h1 id="hpo-phenotypes">HPO phenotypes</h1>
+<p>For every case you have the opportunity to add related HPO phenotype terms to describe the phenotype of the patient(s). This structured data can then be used in some interesting ways. You access all these features from the case page.</p>
+<h2 id="hpo-gene-panel">HPO gene panel</h2>
+<p>Every HPO term is linked to a set of genes. It it interesting to see which genes that overlap with your phenotype terms. To generate such a list, locate the "HPO panel" button. You can optionally select which terms to include by using the checkboxes next to the HPO terms.</p>
+<p>By default only genes matching <em>every</em> selected HPO term is returned. This setting can be customized by entering the minimum number of HPO terms a gene is required to overlap.</p>
 <blockquote>
-<p>In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.</p>
+<p>The panel is only stored until a user regenerates the panel!</p>
 </blockquote>
-<h1 id="sending-sanger-email">Sending Sanger email</h1>
-<p>It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.</p>
-<h1 id="local-frequency-database">Local Frequency Database</h1>
-<p>This is not really a local <em>frequency</em> database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.
-Variants are added to the database in the following way:</p>
-<ul>
-<li>For each case we pick one affected individual</li>
-<li>Variants are filtered out based on if they are common or have a very low call quality</li>
-<li>The remaining variants are stored in loqusdb</li>
-</ul>
-<p>Each time the user looks at a variant scout will ask locusdb how many times it has been seen across <em>all</em> cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).</p></div>
+<p>The generated panel will show up just below under "HPO gene panel". To filter the list of variants using the generated panel, locate the "HPO panels" dropdown in the top bar on the "variants" page.</p>
+<h2 id="phenomizer-diseases">Phenomizer diseases</h2>
+<p>The second option is to use the same HPO terms as input to the <a href="http://compbio.charite.de/phenomizer/">Phenomizer</a> service. This will use you selected phenotypes to look up possible OMIM diseases. You will be presented with all hits on a new page where you can select which diseases to proceed with.</p>
+<p>Phenomizer associates a P-value with each disease which tells you something about the likelihood of each disease match. You can also see which genes are associated with every disease in the last column.</p>
+<p>When you've made your selection, click "Select" at the bottom of the table. Scout will then store all the associated genes and list them in the "HPO gene panel" list on the "case" page.</p></div>
         </div>
 
         <footer class="col-md-12">

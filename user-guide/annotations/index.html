@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Using scout - Scout Docs</title>
+        <title>Annotations - Scout Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -64,8 +64,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
-<li >
-    <a href="../annotations/">Annotations</a>
+<li class="active">
+    <a href="./">Annotations</a>
 </li>
                             
 <li >
@@ -92,8 +92,8 @@
     <a href="../panels/">Panels</a>
 </li>
                             
-<li class="active">
-    <a href="./">Using scout</a>
+<li >
+    <a href="../using-scout/">Using scout</a>
 </li>
                             
 <li >
@@ -110,12 +110,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../panels/">
+                        <a rel="next" href="../../topics/hpo/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../variants/">
+                        <a rel="prev" href="../cases/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -132,30 +132,35 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#pinning-a-variant">Pinning a variant</a></li>
-        <li class="main "><a href="#sending-sanger-email">Sending Sanger email</a></li>
-        <li class="main "><a href="#local-frequency-database">Local Frequency Database</a></li>
+        <li class="main active"><a href="#annotations">Annotations</a></li>
+            <li><a href="#frequencies">Frequencies</a></li>
+            <li><a href="#severity">Severity</a></li>
+            <li><a href="#conservation">Conservation</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="pinning-a-variant">Pinning a variant</h1>
-<p>If you find a variant that seems interesting enough that you believe someone should follow it up, you could consider "pinning it" to the case. This means that it will show up for all users to see in the case view along other pinned variants.</p>
-<p>A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.</p>
-<blockquote>
-<p>In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.</p>
-</blockquote>
-<h1 id="sending-sanger-email">Sending Sanger email</h1>
-<p>It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.</p>
-<h1 id="local-frequency-database">Local Frequency Database</h1>
-<p>This is not really a local <em>frequency</em> database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.
-Variants are added to the database in the following way:</p>
-<ul>
-<li>For each case we pick one affected individual</li>
-<li>Variants are filtered out based on if they are common or have a very low call quality</li>
-<li>The remaining variants are stored in loqusdb</li>
-</ul>
-<p>Each time the user looks at a variant scout will ask locusdb how many times it has been seen across <em>all</em> cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).</p></div>
+<h1 id="annotations">Annotations</h1>
+<p>This page will describe what is displayed in scout, what the different annotations mean and how they are parsed from the vcf file.</p>
+<h2 id="frequencies">Frequencies</h2>
+<h3 id="1000g">1000G</h3>
+<p>The frequency from the <a href="http://www.1000genomes.org/">1000G</a> population database. This is collected from the key <strong>1000GAF</strong> from the info field of the vcf record and expects a single float.</p>
+<h3 id="1000g_max_af">1000G_MAX_AF</h3>
+<p>The maximum allele frequency of all populations in the 1000G population database. This is collected from the key <strong>1000G_MAX_AF</strong> from the info field of the vcf record and expects a single float.</p>
+<h3 id="exac">ExAC</h3>
+<p>The frequency from the ExAC population database. This is collected from the key <strong>EXACAF</strong> from the info field of the vcf record and expects a single float.</p>
+<h3 id="exac_max_af">ExAC_MAX_AF</h3>
+<p>The maximum allele frequency of all populations ExAC population database. This is collected from the key <strong>ExAC_MAX_AF</strong> from the info field of the vcf record and expects a single float.</p>
+<h2 id="severity">Severity</h2>
+<h3 id="cadd-score">CADD score</h3>
+<p>The predicted deleteriousness for a variants. This is collected from the key <strong>CADD</strong> from the info field of the vcf record and expects a single float.</p>
+<h2 id="conservation">Conservation</h2>
+<h3 id="gerp">Gerp</h3>
+<p>The gerp conservation string. This is collected from the key <strong>GERP++_RS_prediction_term</strong> from the info field of the vcf record and expects a string.</p>
+<h3 id="phastcons">phastCons</h3>
+<p>The gerp conservation string. This is collected from the key <strong>GERP++_RS_prediction_term</strong> from the info field of the vcf record and expects a string.</p>
+<h3 id="phylop">phylop</h3>
+<p>The phylop 100 way predicted conservation string. This is collected from the key <strong>phyloP100way_vertebrate_prediction_term</strong> from the info field of the vcf record and expects a string.</p></div>
         </div>
 
         <footer class="col-md-12">

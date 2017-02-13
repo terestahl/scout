@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Using scout - Scout Docs</title>
+        <title>Panels - Scout Docs</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -88,12 +88,12 @@
     <a href="../pages/">Pages</a>
 </li>
                             
-<li >
-    <a href="../panels/">Panels</a>
+<li class="active">
+    <a href="./">Panels</a>
 </li>
                             
-<li class="active">
-    <a href="./">Using scout</a>
+<li >
+    <a href="../using-scout/">Using scout</a>
 </li>
                             
 <li >
@@ -110,12 +110,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../panels/">
+                        <a rel="next" href="../pages/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../variants/">
+                        <a rel="prev" href="../using-scout/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -132,30 +132,36 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#pinning-a-variant">Pinning a variant</a></li>
-        <li class="main "><a href="#sending-sanger-email">Sending Sanger email</a></li>
-        <li class="main "><a href="#local-frequency-database">Local Frequency Database</a></li>
+        <li class="main active"><a href="#gene-panels">Gene Panels</a></li>
+            <li><a href="#general">General</a></li>
+            <li><a href="#structure">Structure</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="pinning-a-variant">Pinning a variant</h1>
-<p>If you find a variant that seems interesting enough that you believe someone should follow it up, you could consider "pinning it" to the case. This means that it will show up for all users to see in the case view along other pinned variants.</p>
-<p>A variant can be pinned by anyone and likewise unpinned by anyone (not just the person who originally pinned it). The activity log will store records of who did what for future reference, however.</p>
-<blockquote>
-<p>In the future, we would also like to add the possibility of linking a confirmed disease causing mutation to a specific case. One could imagine that process to start of by suspecting a variant, pinning it, confirming the mutation, and lastly tagging it as disease causing. This would also allow us to build up a local database of conclusive findings which would be valuable on it's own.</p>
-</blockquote>
-<h1 id="sending-sanger-email">Sending Sanger email</h1>
-<p>It's possible to send an email to a user defined email address with information regarding a variant for Sanger validation. You can access this functionality through the variant detail view in the upper right ahnd corner.</p>
-<h1 id="local-frequency-database">Local Frequency Database</h1>
-<p>This is not really a local <em>frequency</em> database but rather an indication if we have seen a variant before and in what form. It should work as a guide to exclude variants that exists due to artifacts in the sequencing process or if it as been observed in any of the earlier cases.
-Variants are added to the database in the following way:</p>
-<ul>
-<li>For each case we pick one affected individual</li>
-<li>Variants are filtered out based on if they are common or have a very low call quality</li>
-<li>The remaining variants are stored in loqusdb</li>
-</ul>
-<p>Each time the user looks at a variant scout will ask locusdb how many times it has been seen across <em>all</em> cases from all institutes (obs.), how many times it has been seen in a homozygous state (homo.) and how many cases these numbers are based on (tot.).</p></div>
+<h1 id="gene-panels">Gene Panels</h1>
+<p>This page describes gene panels, how they are annotated and how they are used in scout.</p>
+<h2 id="general">General</h2>
+<p>Scout is developed to be used in a clinical setting and therefor gene panels is a central concept. The gene panels describes a set of genes with additional information that is often associated with a disease or a disease group.
+A case can then be associated with one or several gene panels.</p>
+<h2 id="structure">Structure</h2>
+<p>The gene panel is a tab separated text file with a header that describes the columns and one line for each gene entry.</p>
+<p>The columns that will be used by scout is the following:</p>
+<pre><code>- **hgnc_id(int)** This identifies the gene. *Mandatory*
+- **hgnc_symbol(str)** This is used for sanity check when humans look at the file. *Optional*
+- **disease_associated_transcripts(str)** ','-separated list of manually curated transcripts. *Optional*
+- **genetic_disease_models(str)** ','-separated list of manually curated inheritance patterns that are followed for a gene. *Optional*
+- **mosaicism(str)** If a gene is known to be associated with mosaicism this is annotated. *Optional*
+- **reduced_penetrance(str)** If a gene is known to have reduced penetrance this is annotated. *Optional*
+- **database_entry_version(str)** The database entry version is a way to track when a a gene was added or modified. *Optional*
+</code></pre>
+<p>Each gene in a gene panel have to be identified with a hgnc id</p>
+<h3 id="notes-on-entries">Notes on entries</h3>
+<p><strong>hgnc_id</strong>: This one have to be a valid hgnc id that exists in scout
+<strong>genetic_disease_models</strong> can be anyone in [AR,AD,XR,XD,MT,X,Y]
+<strong>mosaicism</strong> Any entry here will be interpreted as true
+<strong>reduced_penetrance</strong> Any entry here will be interpreted as true
+<strong>database_entry_version</strong> This should refer to a earlier version of the panel</p></div>
         </div>
 
         <footer class="col-md-12">

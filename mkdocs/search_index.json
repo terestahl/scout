@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Scout\n\n\nAnalyze VCFs quicker and easier.\n\n\n\n\nOverview\n\n\nScout is a \nvisualizer for VCF files\n intended for a clinical audience. As such it will enable advanced features like variant filters in an intutative web interface. Scout enables team collaboration by URL sharing and user comments tied to families and variants.\n\n\n\n\nN.B. Portable version of Scout.\n\nA more easily installable version of Scout is under early development and we will make further announcements when it's ready for testing.\n\n\n\n\nMotivation\n\n\nDNA sequencing is quickly entering clinical settings. As such doctors and genetcists need tools that cater to non-bioinformatians. Scout is an attempt to provide a simple interface for bioinformaticians and clinicians alike to collaborate on the interpretation of variant calling results.\n\n\n\n\nInstallation\n\n\nFor now, install as:\n\n\n$ pip install git+https://github.com/Clinical-Genomics/scout.git\n\n\n\n\nExtended installation instructions, including how to setup MongoDB, will be added in the future. We also plan to define a Vagrantfile to setting up a demo/development environment for testing.\n\n\n\n\nRoadmap\n\n\nWe are trying to build Scout piece-by-piece. This is the prioritized order we are planning on implementing those pieces.\n\n\n\n\nRelease a MVP of the working interface (core functionality)\n\n\nTake in a first round of feedback from close collaborators\n\n\n\n\nMake sure that the package is installable with pip and/or Vagrant\n\n\n\n\nInclude logging and error reports\n\n\nSetup testing suite\n\n\n\n\n\n\n\n\n\n\nContributing\n\n\nSee \nDevelopment\n.", 
+            "text": "Scout\n\n\nAnalyze VCFs quicker and easier.\n\n\n\n\nIntroduction\n\n\nScout is a web-based \nvisualizer for VCF files\n intended for a clinical audience. Analysis of genomics data generates massive amounts of information. Our tool bridges the gap between the raw output and something that anyone with genetic background can use to analyze and filter out interesting variants involved in rare inherited diseases. Scout also leverages it's centralized database to enable team collaboration through user comments, prioritization and customizable sharing of cases.\n\n\nGetting Started\n\n\nThe general work flow when you work in Scout look something like this:\n\n\nLog in to access your institute's data\n\n\nEach user can belong to one or more \"institutes\" which is used to determine what data you are allowed to see. We rely on \nGoogle OAuth\n to facilitate the authentication by using Google accounts.\n\n\nReview the status of ongoing cases\n\n\nThis view provides a high level overview of all your institutes cases. You can see who is assigned a case, whether new data has recently been uploaded, the type of sequencing etc.\n\n\nMore to come...\n\n\nContributing\n\n\nSee \nDevelopment\n.", 
             "title": "Home"
         }, 
         {
@@ -11,64 +11,34 @@
             "title": "Scout"
         }, 
         {
-            "location": "/#overview", 
-            "text": "Scout is a  visualizer for VCF files  intended for a clinical audience. As such it will enable advanced features like variant filters in an intutative web interface. Scout enables team collaboration by URL sharing and user comments tied to families and variants.   N.B. Portable version of Scout. \nA more easily installable version of Scout is under early development and we will make further announcements when it's ready for testing.", 
-            "title": "Overview"
+            "location": "/#introduction", 
+            "text": "Scout is a web-based  visualizer for VCF files  intended for a clinical audience. Analysis of genomics data generates massive amounts of information. Our tool bridges the gap between the raw output and something that anyone with genetic background can use to analyze and filter out interesting variants involved in rare inherited diseases. Scout also leverages it's centralized database to enable team collaboration through user comments, prioritization and customizable sharing of cases.", 
+            "title": "Introduction"
         }, 
         {
-            "location": "/#motivation", 
-            "text": "DNA sequencing is quickly entering clinical settings. As such doctors and genetcists need tools that cater to non-bioinformatians. Scout is an attempt to provide a simple interface for bioinformaticians and clinicians alike to collaborate on the interpretation of variant calling results.", 
-            "title": "Motivation"
+            "location": "/#getting-started", 
+            "text": "The general work flow when you work in Scout look something like this:", 
+            "title": "Getting Started"
         }, 
         {
-            "location": "/#installation", 
-            "text": "For now, install as:  $ pip install git+https://github.com/Clinical-Genomics/scout.git  Extended installation instructions, including how to setup MongoDB, will be added in the future. We also plan to define a Vagrantfile to setting up a demo/development environment for testing.", 
-            "title": "Installation"
+            "location": "/#log-in-to-access-your-institutes-data", 
+            "text": "Each user can belong to one or more \"institutes\" which is used to determine what data you are allowed to see. We rely on  Google OAuth  to facilitate the authentication by using Google accounts.", 
+            "title": "Log in to access your institute's data"
         }, 
         {
-            "location": "/#roadmap", 
-            "text": "We are trying to build Scout piece-by-piece. This is the prioritized order we are planning on implementing those pieces.   Release a MVP of the working interface (core functionality)  Take in a first round of feedback from close collaborators   Make sure that the package is installable with pip and/or Vagrant   Include logging and error reports  Setup testing suite", 
-            "title": "Roadmap"
+            "location": "/#review-the-status-of-ongoing-cases", 
+            "text": "This view provides a high level overview of all your institutes cases. You can see who is assigned a case, whether new data has recently been uploaded, the type of sequencing etc.", 
+            "title": "Review the status of ongoing cases"
+        }, 
+        {
+            "location": "/#more-to-come", 
+            "text": "", 
+            "title": "More to come..."
         }, 
         {
             "location": "/#contributing", 
             "text": "See  Development .", 
             "title": "Contributing"
-        }, 
-        {
-            "location": "/development/", 
-            "text": "Development\n\n\nCore developers\n\n\n\n\nRobin Andeer (RA)\n\n\nM\u00e5ns Magnusson (MM)\n\n\nHenrik Stranneheim (HS)\n\n\nMats Dahlberg (MD)\n\n\n\n\nFlask structure\n\n\nBlueprints separate as much logic as possible from the central Flask server. This includes views, templates, and static assets but not yet Flask extensions.\n\n\nFrontend\n\n\nNode.js compiles frontend assets such as \nSCSS\n modules and \nVue.js\n components. It's also responsible for auto-reloading the browser when updates are made to the files. All this functionality is centralized to \ngulp.js\n. An overview of how all components of this system are connected is visualized below:\n\n\n\n\nTo start watching files and compile and reload automatically run:\n\n\n$ gulp\n\n\n\n\nAll assets are already bundled but before deployment one should compile the files for production (Uglify + minify). This is accomplished as such:\n\n\n$ gulp build --production\n\n\n\n\nFAQ\n\n\nUnable to install PyOpenSSL/Cryptography\n\n\nQuite a few people seem to have problems installing later versions on PyOpenSSL. This in mainly because of the Cryptography dependency that was introduces post 0.13 so it's possible you will find more luck installing it as:\n\n\n$ pip install PyOpenSSL==0.13", 
-            "title": "Development"
-        }, 
-        {
-            "location": "/development/#development", 
-            "text": "", 
-            "title": "Development"
-        }, 
-        {
-            "location": "/development/#core-developers", 
-            "text": "Robin Andeer (RA)  M\u00e5ns Magnusson (MM)  Henrik Stranneheim (HS)  Mats Dahlberg (MD)", 
-            "title": "Core developers"
-        }, 
-        {
-            "location": "/development/#flask-structure", 
-            "text": "Blueprints separate as much logic as possible from the central Flask server. This includes views, templates, and static assets but not yet Flask extensions.", 
-            "title": "Flask structure"
-        }, 
-        {
-            "location": "/development/#frontend", 
-            "text": "Node.js compiles frontend assets such as  SCSS  modules and  Vue.js  components. It's also responsible for auto-reloading the browser when updates are made to the files. All this functionality is centralized to  gulp.js . An overview of how all components of this system are connected is visualized below:   To start watching files and compile and reload automatically run:  $ gulp  All assets are already bundled but before deployment one should compile the files for production (Uglify + minify). This is accomplished as such:  $ gulp build --production", 
-            "title": "Frontend"
-        }, 
-        {
-            "location": "/development/#faq", 
-            "text": "", 
-            "title": "FAQ"
-        }, 
-        {
-            "location": "/development/#unable-to-install-pyopensslcryptography", 
-            "text": "Quite a few people seem to have problems installing later versions on PyOpenSSL. This in mainly because of the Cryptography dependency that was introduces post 0.13 so it's possible you will find more luck installing it as:  $ pip install PyOpenSSL==0.13", 
-            "title": "Unable to install PyOpenSSL/Cryptography"
         }, 
         {
             "location": "/install/", 
@@ -126,49 +96,89 @@
             "title": "4. Develop"
         }, 
         {
-            "location": "/technology/", 
-            "text": "Technology\n\n\nScout sits on a technology stack that is built on and around Python. When Python isn't enough, we have made calculated descisions to integrate with additional tools.\n\n\nServer\n\n\nA choice of Python servers comes down to Django, Tornado, and Flask. They are all capable options and we probably could've have gone either way.\n\n\nInternally, we had more experience using \nFlask\n in the past and this was also the choice we settled for. It feature a very Pythonic API, has a large and growing user base, lots of actively developed extensions, and uses Jinja2 which is the best templating engine around. Flask covers all necessary requirements but the nail in the coffin was reading \nthese comments\n.\n\n\nDatabase\n\n\nWe use \nMongoDB\n. It's a popular NoSQL database, meaning no migrations and simple development. MongoDB simplifies filter queries and database loading through \"upserts\".\n\n\nDatabase interface/ODM\n\n\nMongoEngine\n is used for some of the documents in the data store. Using an ODM has the benefit of dealing with a cleaner interface to the database which increases code readability. It also supports Flask-Admin and Flask-WTForms plugins.\n\n\nTo optimize query execution, parts of the database will require extensive customization. For working with these collections, we will use drop into the raw \npymongo\n API.\n\n\nFrontend\n\n\nMost data will be rendered server side. However, everyone needs a JavaScript abstraction layer these days and jQuery often isn't enough. To componentalize and avoid binding data into the DOM we use a simple MVVM framework called \nVue.js\n.\n\n\nStylesheets\n\n\nSCSS\n preprocessing is the closest thing to a standard (besided CSS) and allows fast libsass compilation. Compared to raw CSS it will increse readability and enable simple modularization of the code base.\n\n\nScripts\n\n\nThe scripts will be written in either \nJavaScript\n or \nCoffeeScript\n (CS). CS is more readable, requires less boilerplate, and makes it easier to write quality JavaScript code. We do enforce that authors first learn the basics of JavaScript before picking up CoffeeScript.\n\n\nBuild pipeline\n\n\nGulp\n is the build tool. It brings readable config files and fast rebuilds. It handles compilation of all frontend code, both during development and in preparation of deployment (minify etc.). This means we will also use \nNode.js\n which, besides Rails, is standard in the industry. It simply offers too many benefits during development to give up for any Python native solution.\n\n\nGulp is reposible for:\n\n\n\n\ncompiling CoffeeScript and SCSS files\n\n\nminifing and optimizing the assets for production\n\n\nenabling live reload and style injection using \nBrowserSync\n\n\n\n\nThe build system will be tightly integrated with the Flask server setup to avoid adding more complexity than necessary (one extra process).", 
-            "title": "Technology"
+            "location": "/topics/hpo/", 
+            "text": "HPO phenotypes\n\n\nFor every case you have the opportunity to add related HPO phenotype terms to describe the phenotype of the patient(s). This structured data can then be used in some interesting ways. You access all these features from the case page.\n\n\nHPO gene panel\n\n\nEvery HPO term is linked to a set of genes. It it interesting to see which genes that overlap with your phenotype terms. To generate such a list, locate the \"HPO panel\" button. You can optionally select which terms to include by using the checkboxes next to the HPO terms.\n\n\nBy default only genes matching \nevery\n selected HPO term is returned. This setting can be customized by entering the minimum number of HPO terms a gene is required to overlap.\n\n\n\n\nThe panel is only stored until a user regenerates the panel!\n\n\n\n\nThe generated panel will show up just below under \"HPO gene panel\". To filter the list of variants using the generated panel, locate the \"HPO panels\" dropdown in the top bar on the \"variants\" page.\n\n\nPhenomizer diseases\n\n\nThe second option is to use the same HPO terms as input to the \nPhenomizer\n service. This will use you selected phenotypes to look up possible OMIM diseases. You will be presented with all hits on a new page where you can select which diseases to proceed with.\n\n\nPhenomizer associates a P-value with each disease which tells you something about the likelihood of each disease match. You can also see which genes are associated with every disease in the last column.\n\n\nWhen you've made your selection, click \"Select\" at the bottom of the table. Scout will then store all the associated genes and list them in the \"HPO gene panel\" list on the \"case\" page.", 
+            "title": "Hpo"
         }, 
         {
-            "location": "/technology/#technology", 
-            "text": "Scout sits on a technology stack that is built on and around Python. When Python isn't enough, we have made calculated descisions to integrate with additional tools.", 
-            "title": "Technology"
+            "location": "/topics/hpo/#hpo-phenotypes", 
+            "text": "For every case you have the opportunity to add related HPO phenotype terms to describe the phenotype of the patient(s). This structured data can then be used in some interesting ways. You access all these features from the case page.", 
+            "title": "HPO phenotypes"
         }, 
         {
-            "location": "/technology/#server", 
-            "text": "A choice of Python servers comes down to Django, Tornado, and Flask. They are all capable options and we probably could've have gone either way.  Internally, we had more experience using  Flask  in the past and this was also the choice we settled for. It feature a very Pythonic API, has a large and growing user base, lots of actively developed extensions, and uses Jinja2 which is the best templating engine around. Flask covers all necessary requirements but the nail in the coffin was reading  these comments .", 
-            "title": "Server"
+            "location": "/topics/hpo/#hpo-gene-panel", 
+            "text": "Every HPO term is linked to a set of genes. It it interesting to see which genes that overlap with your phenotype terms. To generate such a list, locate the \"HPO panel\" button. You can optionally select which terms to include by using the checkboxes next to the HPO terms.  By default only genes matching  every  selected HPO term is returned. This setting can be customized by entering the minimum number of HPO terms a gene is required to overlap.   The panel is only stored until a user regenerates the panel!   The generated panel will show up just below under \"HPO gene panel\". To filter the list of variants using the generated panel, locate the \"HPO panels\" dropdown in the top bar on the \"variants\" page.", 
+            "title": "HPO gene panel"
         }, 
         {
-            "location": "/technology/#database", 
-            "text": "We use  MongoDB . It's a popular NoSQL database, meaning no migrations and simple development. MongoDB simplifies filter queries and database loading through \"upserts\".", 
-            "title": "Database"
+            "location": "/topics/hpo/#phenomizer-diseases", 
+            "text": "The second option is to use the same HPO terms as input to the  Phenomizer  service. This will use you selected phenotypes to look up possible OMIM diseases. You will be presented with all hits on a new page where you can select which diseases to proceed with.  Phenomizer associates a P-value with each disease which tells you something about the likelihood of each disease match. You can also see which genes are associated with every disease in the last column.  When you've made your selection, click \"Select\" at the bottom of the table. Scout will then store all the associated genes and list them in the \"HPO gene panel\" list on the \"case\" page.", 
+            "title": "Phenomizer diseases"
         }, 
         {
-            "location": "/technology/#database-interfaceodm", 
-            "text": "MongoEngine  is used for some of the documents in the data store. Using an ODM has the benefit of dealing with a cleaner interface to the database which increases code readability. It also supports Flask-Admin and Flask-WTForms plugins.  To optimize query execution, parts of the database will require extensive customization. For working with these collections, we will use drop into the raw  pymongo  API.", 
-            "title": "Database interface/ODM"
+            "location": "/user-guide/annotations/", 
+            "text": "Annotations\n\n\nThis page will describe what is displayed in scout, what the different annotations mean and how they are parsed from the vcf file.\n\n\nFrequencies\n\n\n1000G\n\n\nThe frequency from the \n1000G\n population database. This is collected from the key \n1000GAF\n from the info field of the vcf record and expects a single float.\n\n\n1000G_MAX_AF\n\n\nThe maximum allele frequency of all populations in the 1000G population database. This is collected from the key \n1000G_MAX_AF\n from the info field of the vcf record and expects a single float.\n\n\nExAC\n\n\nThe frequency from the ExAC population database. This is collected from the key \nEXACAF\n from the info field of the vcf record and expects a single float.\n\n\nExAC_MAX_AF\n\n\nThe maximum allele frequency of all populations ExAC population database. This is collected from the key \nExAC_MAX_AF\n from the info field of the vcf record and expects a single float.\n\n\nSeverity\n\n\nCADD score\n\n\nThe predicted deleteriousness for a variants. This is collected from the key \nCADD\n from the info field of the vcf record and expects a single float.\n\n\nConservation\n\n\nGerp\n\n\nThe gerp conservation string. This is collected from the key \nGERP++_RS_prediction_term\n from the info field of the vcf record and expects a string.\n\n\nphastCons\n\n\nThe gerp conservation string. This is collected from the key \nGERP++_RS_prediction_term\n from the info field of the vcf record and expects a string.\n\n\nphylop\n\n\nThe phylop 100 way predicted conservation string. This is collected from the key \nphyloP100way_vertebrate_prediction_term\n from the info field of the vcf record and expects a string.", 
+            "title": "Annotations"
         }, 
         {
-            "location": "/technology/#frontend", 
-            "text": "Most data will be rendered server side. However, everyone needs a JavaScript abstraction layer these days and jQuery often isn't enough. To componentalize and avoid binding data into the DOM we use a simple MVVM framework called  Vue.js .", 
-            "title": "Frontend"
+            "location": "/user-guide/annotations/#annotations", 
+            "text": "This page will describe what is displayed in scout, what the different annotations mean and how they are parsed from the vcf file.", 
+            "title": "Annotations"
         }, 
         {
-            "location": "/technology/#stylesheets", 
-            "text": "SCSS  preprocessing is the closest thing to a standard (besided CSS) and allows fast libsass compilation. Compared to raw CSS it will increse readability and enable simple modularization of the code base.", 
-            "title": "Stylesheets"
+            "location": "/user-guide/annotations/#frequencies", 
+            "text": "", 
+            "title": "Frequencies"
         }, 
         {
-            "location": "/technology/#scripts", 
-            "text": "The scripts will be written in either  JavaScript  or  CoffeeScript  (CS). CS is more readable, requires less boilerplate, and makes it easier to write quality JavaScript code. We do enforce that authors first learn the basics of JavaScript before picking up CoffeeScript.", 
-            "title": "Scripts"
+            "location": "/user-guide/annotations/#1000g", 
+            "text": "The frequency from the  1000G  population database. This is collected from the key  1000GAF  from the info field of the vcf record and expects a single float.", 
+            "title": "1000G"
         }, 
         {
-            "location": "/technology/#build-pipeline", 
-            "text": "Gulp  is the build tool. It brings readable config files and fast rebuilds. It handles compilation of all frontend code, both during development and in preparation of deployment (minify etc.). This means we will also use  Node.js  which, besides Rails, is standard in the industry. It simply offers too many benefits during development to give up for any Python native solution.  Gulp is reposible for:   compiling CoffeeScript and SCSS files  minifing and optimizing the assets for production  enabling live reload and style injection using  BrowserSync   The build system will be tightly integrated with the Flask server setup to avoid adding more complexity than necessary (one extra process).", 
-            "title": "Build pipeline"
+            "location": "/user-guide/annotations/#1000g_max_af", 
+            "text": "The maximum allele frequency of all populations in the 1000G population database. This is collected from the key  1000G_MAX_AF  from the info field of the vcf record and expects a single float.", 
+            "title": "1000G_MAX_AF"
+        }, 
+        {
+            "location": "/user-guide/annotations/#exac", 
+            "text": "The frequency from the ExAC population database. This is collected from the key  EXACAF  from the info field of the vcf record and expects a single float.", 
+            "title": "ExAC"
+        }, 
+        {
+            "location": "/user-guide/annotations/#exac_max_af", 
+            "text": "The maximum allele frequency of all populations ExAC population database. This is collected from the key  ExAC_MAX_AF  from the info field of the vcf record and expects a single float.", 
+            "title": "ExAC_MAX_AF"
+        }, 
+        {
+            "location": "/user-guide/annotations/#severity", 
+            "text": "", 
+            "title": "Severity"
+        }, 
+        {
+            "location": "/user-guide/annotations/#cadd-score", 
+            "text": "The predicted deleteriousness for a variants. This is collected from the key  CADD  from the info field of the vcf record and expects a single float.", 
+            "title": "CADD score"
+        }, 
+        {
+            "location": "/user-guide/annotations/#conservation", 
+            "text": "", 
+            "title": "Conservation"
+        }, 
+        {
+            "location": "/user-guide/annotations/#gerp", 
+            "text": "The gerp conservation string. This is collected from the key  GERP++_RS_prediction_term  from the info field of the vcf record and expects a string.", 
+            "title": "Gerp"
+        }, 
+        {
+            "location": "/user-guide/annotations/#phastcons", 
+            "text": "The gerp conservation string. This is collected from the key  GERP++_RS_prediction_term  from the info field of the vcf record and expects a string.", 
+            "title": "phastCons"
+        }, 
+        {
+            "location": "/user-guide/annotations/#phylop", 
+            "text": "The phylop 100 way predicted conservation string. This is collected from the key  phyloP100way_vertebrate_prediction_term  from the info field of the vcf record and expects a string.", 
+            "title": "phylop"
         }, 
         {
             "location": "/user-guide/cases/", 
@@ -201,6 +211,31 @@
             "title": "Actions"
         }, 
         {
+            "location": "/user-guide/defining-scorescheme/", 
+            "text": "Score scheme\n\n\nHow to score a variant is defined in a .ini file wich is written in a specific way.\nThe file is divided in sections, the first section is mandatory and is named \nVersion\n\n\nVersion\n\n\nThe file has to start with some meta data that looks like:\n\n\n[Version]\n        version = 0.1\n        name = rank_model_test\n\n\n\n\nThis is important so the user can backtrack which file that was used for a specific analysis.\n\n\nCategories\n\n\nThe Score is built by adding scores from different functions where each function has to belong to a category.\nThe idea with this is that one might not always want to score each function individually, for example if we look at allele frequencies we are most interested in that any of the frequencies are above a certain threshold.\nIf one frequency is low and another high we just want to use the score for the high frequency.\n\n\nA category has a name and a category rule, the different rules are \nmin, max, sum\n.\n\n\nso this section could look like:\n\n\n[Categories]\n    [[allele_frequency]]\n        category_aggregation = min\n\n [[Protein_prediction]]\n     category_aggregation = sum\n\n\n\n\nScore functions\n\n\nThe following sections in the file will represent score functions. Each function has variables\nto describe what field in the vcf file that is used, which category it belongs to, what data type we could expect, how the annotation is separated and what the rule is if there are multiple annotations.\n\n\nExample:\n\n\n[FILTER]\n    field = FILTER\n    data_type = string\n    category = Variant_call_quality_filter\n    record_rule = min\n    separators = ';',\n    description = The filters for the variant\n\n\n\n\nso the mandatory sections are:\n\n\nfield = #Any of the vcf fields\ndata_type = # 'integer','float','flag','character','string'\ncategory = # Any of the categories described above\nrecord_rule = # min, max\nseparators = # A list of separators\n\n\n\n\nIf field is \nINFO\n we also have to describe what \nINFO\n-key to use with\n\n\ninfo_key = # Any of the info keys", 
+            "title": "Defining scorescheme"
+        }, 
+        {
+            "location": "/user-guide/defining-scorescheme/#score-scheme", 
+            "text": "How to score a variant is defined in a .ini file wich is written in a specific way.\nThe file is divided in sections, the first section is mandatory and is named  Version", 
+            "title": "Score scheme"
+        }, 
+        {
+            "location": "/user-guide/defining-scorescheme/#version", 
+            "text": "The file has to start with some meta data that looks like:  [Version]\n        version = 0.1\n        name = rank_model_test  This is important so the user can backtrack which file that was used for a specific analysis.", 
+            "title": "Version"
+        }, 
+        {
+            "location": "/user-guide/defining-scorescheme/#categories", 
+            "text": "The Score is built by adding scores from different functions where each function has to belong to a category.\nThe idea with this is that one might not always want to score each function individually, for example if we look at allele frequencies we are most interested in that any of the frequencies are above a certain threshold.\nIf one frequency is low and another high we just want to use the score for the high frequency.  A category has a name and a category rule, the different rules are  min, max, sum .  so this section could look like:  [Categories]\n    [[allele_frequency]]\n        category_aggregation = min\n\n [[Protein_prediction]]\n     category_aggregation = sum", 
+            "title": "Categories"
+        }, 
+        {
+            "location": "/user-guide/defining-scorescheme/#score-functions", 
+            "text": "The following sections in the file will represent score functions. Each function has variables\nto describe what field in the vcf file that is used, which category it belongs to, what data type we could expect, how the annotation is separated and what the rule is if there are multiple annotations.  Example:  [FILTER]\n    field = FILTER\n    data_type = string\n    category = Variant_call_quality_filter\n    record_rule = min\n    separators = ';',\n    description = The filters for the variant  so the mandatory sections are:  field = #Any of the vcf fields\ndata_type = # 'integer','float','flag','character','string'\ncategory = # Any of the categories described above\nrecord_rule = # min, max\nseparators = # A list of separators  If field is  INFO  we also have to describe what  INFO -key to use with  info_key = # Any of the info keys", 
+            "title": "Score functions"
+        }, 
+        {
             "location": "/user-guide/getting-started/", 
             "text": "Getting started with Scout\n\n\nScout is a web-based visualizer for VCF-files. It helps you manage multiple patient cases in a unified and intuative interface. You can collaborate with other clinicians and share comments and findings across your team.\n\n\nInstitutes, Cases, Variants\n\n\nScout has a few levels of abstraction to deal with the data it tries to present. Institutes contain multiple cases and group users into teams. Cases are usually the same as families or a group of related VCF-files - they all share a subset of called variants. Variants are individual genotype calls across a single case.\n\n\n\n\n[insert screenshot here]\n\n\n\n\nA case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.\n\n\nAs such there are some added features that try to support this process:\n\n\n\n\na case can be assigned to a user to delegate responsibility\n\n\nvarious variants can be pinned as worth looking at for the whole team\n\n\na feed keeps track of any case related activity in one single place\n\n\n\n\nA lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.", 
             "title": "Getting started"
@@ -214,6 +249,21 @@
             "location": "/user-guide/getting-started/#institutes-cases-variants", 
             "text": "Scout has a few levels of abstraction to deal with the data it tries to present. Institutes contain multiple cases and group users into teams. Cases are usually the same as families or a group of related VCF-files - they all share a subset of called variants. Variants are individual genotype calls across a single case.   [insert screenshot here]   A case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.  As such there are some added features that try to support this process:   a case can be assigned to a user to delegate responsibility  various variants can be pinned as worth looking at for the whole team  a feed keeps track of any case related activity in one single place   A lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.", 
             "title": "Institutes, Cases, Variants"
+        }, 
+        {
+            "location": "/user-guide/loading/", 
+            "text": "Loading Scout\n\n\nWhen loading a case into scout it is possible to use either a config file or to specify parameters on the command line.\n\n\nScout Load Config\n\n\nThe loading config is a \n.yaml\n file and can include all the necessary information to scout. Command line options will overload information in the config file.\n\n\nThe config file has the following specification:\n\n\nowner: str(mandatory)\n\nfamily: str(mandatory)\nsamples:\n  - analysis_type: str(optional), [wgs,wes]\n    sample_id: str(mandatory)\n    capture_kit: str(optional)\n    father: str(mandatory)\n    mother: str(mandatory)\n    sample_name: str(mandatory)\n    phenotype: str(mandatory), [affected, unaffected, unknown]\n    sex: str(mandatory), [male, female, unknown]\n    expected_coverage: int(mandatory)\n\nvcf_snv: str(optional)\nvcf_sv: str(optional)\nvcf_snv_research: str(optional)\nvcf_sv_research: str(optional)\n\nmadeline: str(optional)\ndefault_gene_panels: list[str](optional)\ngene_panels: list[str](optional)\n\n# meta data\nrank_model_version: float(optional)\nrank_score_threshold: float(optional)\nanalysis_date: datetime(optional)\nhuman_genome_build: str(optional)\n\n\n\n\nAn example file:\n\n\n---\n\nowner: cust000\n\nfamily: '643594'\nsamples:\n  - analysis_type: wes\n    sample_id: ADM1059A2\n    capture_kit: Agilent_SureSelectCRE.V1\n    father: ADM1059A1\n    mother: ADM1059A3\n    sample_name: NA12882\n    phenotype: affected\n    sex: male\n    expected_coverage: 30\n  - analysis_type: wes\n    sample_id: ADM1059A1\n    capture_kit: Agilent_SureSelectCRE.V1\n    father: '0'\n    mother: '0'\n    sample_name: NA12877\n    phenotype: unaffected\n    sex: male\n    expected_coverage: 30\n  - analysis_type: wes\n    sample_id: ADM1059A3\n    capture_kit: Agilent_SureSelectCRE.V1\n    father: '0'\n    mother: '0'\n    sample_name: NA12878\n    phenotype: unaffected\n    sex: female\n    expected_coverage: 30\n\nvcf_snv: tests/fixtures/643594.clinical.vcf\nvcf_sv: tests/fixtures/643594.clinical.SV.vcf\nvcf_snv_research: tests/fixtures/643594.research.vcf\nvcf_sv_research: tests/fixtures/643594.research.SV.vcf\n\nmadeline: tests/fixtures/madeline.xml\ndefault_gene_panels: [panel1]\ngene_panels: [panel1]\n\n# meta data\nrank_model_version: 1.12\nrank_score_threshold: -100\nanalysis_date: 2016-10-12 14:00:46\nhuman_genome_build: GRCh.37", 
+            "title": "Loading"
+        }, 
+        {
+            "location": "/user-guide/loading/#loading-scout", 
+            "text": "When loading a case into scout it is possible to use either a config file or to specify parameters on the command line.", 
+            "title": "Loading Scout"
+        }, 
+        {
+            "location": "/user-guide/loading/#scout-load-config", 
+            "text": "The loading config is a  .yaml  file and can include all the necessary information to scout. Command line options will overload information in the config file.  The config file has the following specification:  owner: str(mandatory)\n\nfamily: str(mandatory)\nsamples:\n  - analysis_type: str(optional), [wgs,wes]\n    sample_id: str(mandatory)\n    capture_kit: str(optional)\n    father: str(mandatory)\n    mother: str(mandatory)\n    sample_name: str(mandatory)\n    phenotype: str(mandatory), [affected, unaffected, unknown]\n    sex: str(mandatory), [male, female, unknown]\n    expected_coverage: int(mandatory)\n\nvcf_snv: str(optional)\nvcf_sv: str(optional)\nvcf_snv_research: str(optional)\nvcf_sv_research: str(optional)\n\nmadeline: str(optional)\ndefault_gene_panels: list[str](optional)\ngene_panels: list[str](optional)\n\n# meta data\nrank_model_version: float(optional)\nrank_score_threshold: float(optional)\nanalysis_date: datetime(optional)\nhuman_genome_build: str(optional)  An example file:  ---\n\nowner: cust000\n\nfamily: '643594'\nsamples:\n  - analysis_type: wes\n    sample_id: ADM1059A2\n    capture_kit: Agilent_SureSelectCRE.V1\n    father: ADM1059A1\n    mother: ADM1059A3\n    sample_name: NA12882\n    phenotype: affected\n    sex: male\n    expected_coverage: 30\n  - analysis_type: wes\n    sample_id: ADM1059A1\n    capture_kit: Agilent_SureSelectCRE.V1\n    father: '0'\n    mother: '0'\n    sample_name: NA12877\n    phenotype: unaffected\n    sex: male\n    expected_coverage: 30\n  - analysis_type: wes\n    sample_id: ADM1059A3\n    capture_kit: Agilent_SureSelectCRE.V1\n    father: '0'\n    mother: '0'\n    sample_name: NA12878\n    phenotype: unaffected\n    sex: female\n    expected_coverage: 30\n\nvcf_snv: tests/fixtures/643594.clinical.vcf\nvcf_sv: tests/fixtures/643594.clinical.SV.vcf\nvcf_snv_research: tests/fixtures/643594.research.vcf\nvcf_sv_research: tests/fixtures/643594.research.SV.vcf\n\nmadeline: tests/fixtures/madeline.xml\ndefault_gene_panels: [panel1]\ngene_panels: [panel1]\n\n# meta data\nrank_model_version: 1.12\nrank_score_threshold: -100\nanalysis_date: 2016-10-12 14:00:46\nhuman_genome_build: GRCh.37", 
+            "title": "Scout Load Config"
         }, 
         {
             "location": "/user-guide/pages/", 
@@ -249,6 +299,31 @@
             "location": "/user-guide/pages/#institute-selection", 
             "text": "Users can belong to multiple institutes. Each institutes defines what cases can be viewed by the user. If you only belong to a single institute you will be redirected automatically to \"Cases\".  % Refer to cases.md here\n% Refer to variants.md", 
             "title": "Institute selection"
+        }, 
+        {
+            "location": "/user-guide/panels/", 
+            "text": "Gene Panels\n\n\nThis page describes gene panels, how they are annotated and how they are used in scout.\n\n\nGeneral\n\n\nScout is developed to be used in a clinical setting and therefor gene panels is a central concept. The gene panels describes a set of genes with additional information that is often associated with a disease or a disease group.\nA case can then be associated with one or several gene panels.\n\n\nStructure\n\n\nThe gene panel is a tab separated text file with a header that describes the columns and one line for each gene entry.\n\n\nThe columns that will be used by scout is the following:\n\n\n- **hgnc_id(int)** This identifies the gene. *Mandatory*\n- **hgnc_symbol(str)** This is used for sanity check when humans look at the file. *Optional*\n- **disease_associated_transcripts(str)** ','-separated list of manually curated transcripts. *Optional*\n- **genetic_disease_models(str)** ','-separated list of manually curated inheritance patterns that are followed for a gene. *Optional*\n- **mosaicism(str)** If a gene is known to be associated with mosaicism this is annotated. *Optional*\n- **reduced_penetrance(str)** If a gene is known to have reduced penetrance this is annotated. *Optional*\n- **database_entry_version(str)** The database entry version is a way to track when a a gene was added or modified. *Optional*\n\n\n\nEach gene in a gene panel have to be identified with a hgnc id\n\n\nNotes on entries\n\n\nhgnc_id\n: This one have to be a valid hgnc id that exists in scout\n\ngenetic_disease_models\n can be anyone in [AR,AD,XR,XD,MT,X,Y]\n\nmosaicism\n Any entry here will be interpreted as true\n\nreduced_penetrance\n Any entry here will be interpreted as true\n\ndatabase_entry_version\n This should refer to a earlier version of the panel", 
+            "title": "Panels"
+        }, 
+        {
+            "location": "/user-guide/panels/#gene-panels", 
+            "text": "This page describes gene panels, how they are annotated and how they are used in scout.", 
+            "title": "Gene Panels"
+        }, 
+        {
+            "location": "/user-guide/panels/#general", 
+            "text": "Scout is developed to be used in a clinical setting and therefor gene panels is a central concept. The gene panels describes a set of genes with additional information that is often associated with a disease or a disease group.\nA case can then be associated with one or several gene panels.", 
+            "title": "General"
+        }, 
+        {
+            "location": "/user-guide/panels/#structure", 
+            "text": "The gene panel is a tab separated text file with a header that describes the columns and one line for each gene entry.  The columns that will be used by scout is the following:  - **hgnc_id(int)** This identifies the gene. *Mandatory*\n- **hgnc_symbol(str)** This is used for sanity check when humans look at the file. *Optional*\n- **disease_associated_transcripts(str)** ','-separated list of manually curated transcripts. *Optional*\n- **genetic_disease_models(str)** ','-separated list of manually curated inheritance patterns that are followed for a gene. *Optional*\n- **mosaicism(str)** If a gene is known to be associated with mosaicism this is annotated. *Optional*\n- **reduced_penetrance(str)** If a gene is known to have reduced penetrance this is annotated. *Optional*\n- **database_entry_version(str)** The database entry version is a way to track when a a gene was added or modified. *Optional*  Each gene in a gene panel have to be identified with a hgnc id", 
+            "title": "Structure"
+        }, 
+        {
+            "location": "/user-guide/panels/#notes-on-entries", 
+            "text": "hgnc_id : This one have to be a valid hgnc id that exists in scout genetic_disease_models  can be anyone in [AR,AD,XR,XD,MT,X,Y] mosaicism  Any entry here will be interpreted as true reduced_penetrance  Any entry here will be interpreted as true database_entry_version  This should refer to a earlier version of the panel", 
+            "title": "Notes on entries"
         }, 
         {
             "location": "/user-guide/using-scout/", 
