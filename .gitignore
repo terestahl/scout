@@ -1,0 +1,15 @@
+.coverage
+.env
+*.sublime-workspace
+*.pyc
+.cache/
+.vagrant/
+*.ipynb
+.vscode/
+build/
+dist/
+_book/
+htmlcov/
+instance/
+node_modules/
+*.egg-info/
