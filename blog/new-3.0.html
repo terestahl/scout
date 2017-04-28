@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Features · GitBook</title>
+        <title>What's new in 3.0? · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="hpo.html" />
+    <link rel="next" href="new-3.1.html" />
     
     
-    <link rel="prev" href="../faq.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -115,9 +115,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="../features/">
             
-                <a href="./">
+                <a href="../features/">
             
                     
                     Features
@@ -129,9 +129,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="hpo.html">
+        <li class="chapter " data-level="1.3.1" data-path="../features/hpo.html">
             
-                <a href="hpo.html">
+                <a href="../features/hpo.html">
             
                     
                     HPO phenotypes
@@ -147,9 +147,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="../blog/">
+        <li class="chapter " data-level="1.4" data-path="./">
             
-                <a href="../blog/">
+                <a href="./">
             
                     
                     Blog
@@ -161,9 +161,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../blog/new-3.0.html">
+        <li class="chapter active" data-level="1.4.1" data-path="new-3.0.html">
             
-                <a href="../blog/new-3.0.html">
+                <a href="new-3.0.html">
             
                     
                     What's new in 3.0?
@@ -174,9 +174,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../blog/new-3.1.html">
+        <li class="chapter " data-level="1.4.2" data-path="new-3.1.html">
             
-                <a href="../blog/new-3.1.html">
+                <a href="new-3.1.html">
             
                     
                     What's new in 3.1?
@@ -222,7 +222,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Features</a>
+        <a href=".." >What's new in 3.0?</a>
     </h1>
 </div>
 
@@ -237,25 +237,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="features">Features</h1>
-<h2 id="user-management-and-security">User management and security</h2>
-<p>Scout organizes cases into institutes. A user can belong to one or many institutes.
-You access Scout by signing into your Google account. We recommend you enable <a href="https://www.google.com/landing/2step/" target="_blank">2-step verification</a> to your account for an added layer of security!</p>
-<p>A user can be granted a specific &quot;admin&quot; role. Such users will be able to access all institutes, case, and gene panels by default.</p>
-<h3 id="sharing-cases">Sharing cases</h3>
-<p>A case has one owner institute, however, individual cases can be shared between multiple
-institutes. Any user with access to a case can decide to share it with any other institute.
-Case related functions can be used by both institutes, however, the Sanger email will go to
-the owner institute.</p>
-<h2 id="annotating-cases">Annotating cases</h2>
-<p>Scout allows users to add a lot of information around uploaded cases. You can:</p>
-<ul>
-<li>add HPO phenotype groups and more specific terms</li>
-<li>maintain a free-text synopsis of the case in question</li>
-<li>add comments about the case and progress of interpretation</li>
-<li>pin interesting variants that you want other colleagues to have a look at</li>
-<li>finally you can mark one or more causative variants when a case is closed</li>
-</ul>
+                                <h2 id="whats-new-in-30">What&apos;s new in 3.0?</h2>
+<p align="center"><img height="400" width="800" src="../img/v3.jpg"></p>
+
+<p>This updates includes a lot of optimizations to improve performance. We&apos;ve made significant efforts to make sure the way we store information in the database will scale up with additional features in the future. Here are the highlights:</p>
+<h3 id="more-responsive-interface">More responsive interface</h3>
+<p>Loading pages in the web interface is now much faster. You will notice the case view and variants list show up almost instantly!</p>
+<h3 id="easy-access-to-coverage-report-pdf">Easy access to coverage report PDF</h3>
+<p>You can now download the coverage report as a PDF directly form the case page with one click!</p>
+<h3 id="revamped-gene-panel-view">Revamped gene panel view</h3>
+<p>When accessing a gene panel you will now see the information regarding disease causing transcripts, reduced penetrance etc. related to each gene. You can also handle updated to the panels directly from this interface. Just add, remove, edit existing genes and commit your changes to automatically update the panel.</p>
+<h3 id="updated-variant-page">Updated variant page</h3>
+<p>We&apos;ve made some tweaks to the variant page like moving the OMIM inheritance model to the OMIM panel, linked to each phenotype.</p>
+<h3 id="multiple-refseq-transcripts">Multiple RefSeq transcripts</h3>
+<p>The HGNC based gene definitions have been updated. One key difference is that there we can now have multiple RefSeq transcripts per Ensembl transcript ID.</p>
 
                                 
                                 </section>
@@ -283,12 +278,12 @@ the owner institute.</p>
 
             
                 
-                <a href="../faq.html" class="navigation navigation-prev " aria-label="Previous page: FAQ">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Blog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="hpo.html" class="navigation navigation-next " aria-label="Next page: HPO phenotypes">
+                <a href="new-3.1.html" class="navigation navigation-next " aria-label="Next page: What's new in 3.1?">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -299,7 +294,7 @@ the owner institute.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Features","level":"1.3","depth":1,"next":{"title":"HPO phenotypes","level":"1.3.1","depth":2,"path":"features/hpo.md","ref":"features/hpo.md","articles":[]},"previous":{"title":"FAQ","level":"1.2","depth":1,"path":"faq.md","ref":"faq.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"features/README.md","mtime":"2017-04-18T13:21:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-28T08:31:16.740Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What's new in 3.0?","level":"1.4.1","depth":2,"next":{"title":"What's new in 3.1?","level":"1.4.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},"previous":{"title":"Blog","level":"1.4","depth":1,"path":"blog/README.md","ref":"blog/README.md","articles":[{"title":"What's new in 3.0?","level":"1.4.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},{"title":"What's new in 3.1?","level":"1.4.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/new-3.0.md","mtime":"2017-04-28T08:29:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-28T08:31:16.740Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
