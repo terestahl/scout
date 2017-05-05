@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>What's new in 3.1? · GitBook</title>
+        <title>What's new in 3.2? · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="new-3.2.html" />
     
-    
-    <link rel="prev" href="new-3.0.html" />
+    <link rel="prev" href="new-3.1.html" />
     
 
     </head>
@@ -174,7 +172,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="new-3.1.html">
+        <li class="chapter " data-level="1.4.2" data-path="new-3.1.html">
             
                 <a href="new-3.1.html">
             
@@ -187,7 +185,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="new-3.2.html">
+        <li class="chapter active" data-level="1.4.3" data-path="new-3.2.html">
             
                 <a href="new-3.2.html">
             
@@ -235,7 +233,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >What's new in 3.1?</a>
+        <a href=".." >What's new in 3.2?</a>
     </h1>
 </div>
 
@@ -250,29 +248,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="whats-new-in-31">What&apos;s new in 3.1?</h2>
-<p>This updates contains many bug fixes and a few new features.</p>
-<h3 id="new-feature-cohort-tag">New feature: cohort tag</h3>
-<p>We have introduced &quot;cohort tags&quot;, where you can tag each case as belonging to one or several cohorts.</p>
-<p>Future release of Scout will include functionality to get statistics on selected cohorts or all cases. For instance, you will be able to get statistics on the number of samples within a cohort, how many are cases solved and which genes there were causative variants in. Or perhaps you want to know which phenotype terms are associated with a particular cohort.</p>
-<p>For now, the cohort tags are <em>specific</em> to CMMS, but we urge all user to supply to us their own set of tags to be used within the corresponding Scout instance. This applies to <strong>phenotype groups</strong> as well as we think this will be very useful in future to describe your cohorts clinically.</p>
-<h3 id="new-feature-pip-distribution">New feature: pip distribution</h3>
-<p>Scout is now installable via <code>pip</code>! This means installing the server and CLI is as simple as running:</p>
-<pre><code class="lang-bash">pip install scout-browser
-</code></pre>
-<p>Everything to setup the server; genes, HPO terms, OMIM information, etc. is included in the distribution.</p>
-<h3 id="bug-fixes">Bug fixes</h3>
+                                <h2 id="whats-new-in-32">What&apos;s new in 3.2?</h2>
+<h3 id="new-feature-frequency-links">New feature: Frequency links</h3>
+<p>We have added several frequency resources links to the variant frequency table on the variants page.</p>
 <ul>
-<li>Compounds are now sorted on combined score</li>
-<li>The delivery report opens in a new tab</li>
-<li>A link from the variant page to the gene panel exists</li>
-<li>Cases are properly activated when variants are first viewed</li>
-<li>Fixed display of HGVS description</li>
-<li>Fixed issues with Sanger email</li>
-<li>Support for a new analysis type: TGA, Targeted Genome Analysis</li>
-<li>Fixed issue with filtering on 1000G frequency</li>
+<li><p>Beacon: enabled searches in the global beacon network</p>
+<blockquote>
+<p><strong>Note</strong>: this is only outgoing queries and does not expose any variants in Scout.</p>
+</blockquote>
+</li>
+<li><p>GnomeAD: the new version of EXAC, which includes approximately 120,000 exomes and 15,000 genomes. We will include gnomeAD in the MIP analysis and the rank model in a future update, but the gnomeAD browser is available from Scout now.</p>
+</li>
+<li><p>SweGen: frequencies from 1000 Swedish genomes sampled from the twin registry. Created by SciLifeLab.</p>
+</li>
+<li><p>LocusDB family link: It is now possible to see in, which other families a variant in LocusDB were detected.</p>
+</li>
 </ul>
-
+<h3 id="new-feature-upload-new-gene-panel">New feature: Upload new gene panel</h3>
+<p>You can now upload a new gene panel directly in Scout. You will need a semi-colon (<code>;</code>) separated file following the format:</p>
+<pre><code>HGNC_symbol;HGNC_IDnumber;Disease_associated_transcript;Genetic_disease_model;Reduced_penetrance;Mosaicism;Clinical_db_gene_annotation
+ANKS6;26724;NM_173551.3;AR;;;PEDHEP
+XPNPEP3;28052;NM_022098.3;AR;;;PEDHEP
+DCDC2;18141;NM_016356.4;AR;;;PEDHEP
+CLDN1;2032;NM_021101.4;AR;;;PEDHEP
+...
+</code></pre>
                                 
                                 </section>
                             
@@ -299,14 +299,10 @@
 
             
                 
-                <a href="new-3.0.html" class="navigation navigation-prev " aria-label="Previous page: What's new in 3.0?">
+                <a href="new-3.1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: What's new in 3.1?">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="new-3.2.html" class="navigation navigation-next " aria-label="Next page: What's new in 3.2?">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -315,7 +311,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What's new in 3.1?","level":"1.4.2","depth":2,"next":{"title":"What's new in 3.2?","level":"1.4.3","depth":2,"path":"blog/new-3.2.md","ref":"blog/new-3.2.md","articles":[]},"previous":{"title":"What's new in 3.0?","level":"1.4.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/new-3.1.md","mtime":"2017-04-28T08:31:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-05T11:35:11.117Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What's new in 3.2?","level":"1.4.3","depth":2,"previous":{"title":"What's new in 3.1?","level":"1.4.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/new-3.2.md","mtime":"2017-05-05T11:33:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-05T11:35:11.117Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
