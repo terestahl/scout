@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>FAQ · GitBook</title>
+        <title>Installation · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="features/" />
+    <link rel="next" href="faq.html" />
     
     
-    <link rel="prev" href="install.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="install.html">
+        <li class="chapter active" data-level="1.2" data-path="install.html">
             
                 <a href="install.html">
             
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="faq.html">
+        <li class="chapter " data-level="1.3" data-path="faq.html">
             
                 <a href="faq.html">
             
@@ -390,7 +390,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >FAQ</a>
+        <a href="." >Installation</a>
     </h1>
 </div>
 
@@ -405,12 +405,96 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="faq">FAQ</h1>
-<h2 id="my-email-is-white-listed-but-i-cant-log-into-scout">My email is white listed but I can&apos;t log into Scout</h2>
-<p>You can be logged into multiple Google accounts at the same time. If you are only logged into
-one account, it will automatically be used when you click &quot;Login with Google&quot;.</p>
-<p>Visit <a href="https://www.google.com" target="_blank">Google</a> and click your avatar in the top right corner and &quot;Add account&quot; and log with your Scout connected account. Next time you access Scout you will be presented with an option of which Google account to use.</p>
+                                <h1 id="install-scout">Install Scout</h1>
+<p>This guide will walk you through how to setup a working instance of scout.
+The instructions are divided into multiple sections.
+One section describes how to set up a demo version with some cases just to see how it could look like.</p>
+<h2 id="0-intro">0. Intro</h2>
+<p>Make sure you have a <code>mongod</code> process running. First install <a href="https://docs.mongodb.com/manual/installation/" target="_blank">mongodb</a> and follow the instructions.</p>
+<h2 id="1-install">1. Install</h2>
+<p>Installation of Scout is possible via pip or GitHub.
+Let&apos;s start by pulling down the GitHub repository with the source code.</p>
+<h3 id="github">GitHub</h3>
+<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/Clinical-Genomics/scout
+<span class="hljs-built_in">cd</span> scout
+pip install --requirement requirements.txt --editable .
+</code></pre>
+<h3 id="pip">Pip</h3>
+<p>To get the latest version, use the above. When using pip the latest stable release will be installed.</p>
+<pre><code class="lang-bash">pip install scout-browser
+</code></pre>
+<!-- ## 2. Configure
+You need to sign up for access to a few web APIs like Google OAuth and
+OMIM to make full use of Scout. The keys and secrets should be added to
+the Flask instance config. To learn more about possible settings, take a
+look in the ``scout/settings.py`` module.
 
+### Google OAuth
+Create a new project in your [Google Developer console][google-console].
+Under your project, click "APIs & auth" > "Credentials". Here you will
+find your "CLIENT ID" and "CLIENT SECRET". You also need to add some
+"REDIRECT URLS" and "JAVASCRIPT ORIGINS".
+
+**REDIRECT URLS**:
+
+  - http://localhost:5023/authorized
+  - https://localhost:5023/authorized
+
+**JAVASCRIPT ORIGINS**:
+
+  - http://localhost:5023
+  - https://localhost:5023
+
+Remember that it might take a while for the tokens to start working.
+
+### OMIM API
+You can [register][omim-register] for free OMIM API access. You will be
+sent the authentication token eventually :)
+
+### Gmail
+The Sanger email feature requires credentials for a Gmail account. Any
+account should work so you don't need to sign up for any special access.
+
+### MongoDB
+If you are using a password protected Mongo database you also need to add
+the authentication details to the instance config.
+
+
+## 3. Boostrap
+We use gulp.js to compile the statis assets (CSS, JS, etc.)
+
+```bash
+$ gulp build --production
+```
+
+
+## 4. Develop
+You are now ready to start the development server and complete the setup
+in the admin interface.
+
+```bash
+$ python manage.py -c "$(pwd)/configs/boilerplate.cfg" vagrant
+```
+
+That's it! Go and explore Scout. -->
+<h2 id="2-setup">2. Setup</h2>
+<h3 id="full-setup">Full setup</h3>
+<p>To initialize a working instance with all genes, diseases etc run</p>
+<pre><code class="lang-bash">scout setup database
+</code></pre>
+<p>for more info, run <code>scout --help</code></p>
+<blockquote>
+<p>If you intent to use authentication, make sure you are using a Google email!</p>
+</blockquote>
+<p>The previous command setup the database with a curated collection of gene definitions with links to OMIM along with HPO phenotype terms. Now we will load some example data. Scout expects the analysis to be accomplished using various gene panels so let&apos;s load one and then our first analysis case:</p>
+<pre><code>scout load panel scout/demo/panel_1.txt
+scout load case scout/demo/643594.config.yaml
+</code></pre><p>For more information about populating the database, please see <a href="admin-guide/">admin-guide</a>.</p>
+<h3 id="demo">Demo</h3>
+<p>This option is used to quickly get a operating instance with some example data</p>
+<pre><code>scout setup demo
+scout --demo serve
+</code></pre>
                                 
                                 </section>
                             
@@ -437,12 +521,12 @@ one account, it will automatically be used when you click &quot;Login with Googl
 
             
                 
-                <a href="install.html" class="navigation navigation-prev " aria-label="Previous page: Installation">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="features/" class="navigation navigation-next " aria-label="Next page: Features">
+                <a href="faq.html" class="navigation navigation-next " aria-label="Next page: FAQ">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -453,7 +537,7 @@ one account, it will automatically be used when you click &quot;Login with Googl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FAQ","level":"1.3","depth":1,"next":{"title":"Features","level":"1.4","depth":1,"path":"features/README.md","ref":"features/README.md","articles":[{"title":"HPO phenotypes","level":"1.4.1","depth":2,"path":"features/hpo.md","ref":"features/hpo.md","articles":[]}]},"previous":{"title":"Installation","level":"1.2","depth":1,"path":"install.md","ref":"install.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq.md","mtime":"2017-05-15T09:31:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-22T13:02:00.179Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Installation","level":"1.2","depth":1,"next":{"title":"FAQ","level":"1.3","depth":1,"path":"faq.md","ref":"faq.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"install.md","mtime":"2017-05-22T13:01:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-22T13:02:00.179Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

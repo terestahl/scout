@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>What's new in 3.0? · GitBook</title>
+        <title>Loading · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="new-3.1.html" />
+    <link rel="next" href="../blog/" />
     
     
     <link rel="prev" href="./" />
@@ -270,9 +270,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../admin-guide/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../admin-guide/">
+                <a href="./">
             
                     
                     Admin Guide
@@ -284,9 +284,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../admin-guide/loading.html">
+        <li class="chapter active" data-level="1.6.1" data-path="loading.html">
             
-                <a href="../admin-guide/loading.html">
+                <a href="loading.html">
             
                     
                     Loading
@@ -302,9 +302,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="./">
+        <li class="chapter " data-level="1.7" data-path="../blog/">
             
-                <a href="./">
+                <a href="../blog/">
             
                     
                     Blog
@@ -316,9 +316,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.7.1" data-path="new-3.0.html">
+        <li class="chapter " data-level="1.7.1" data-path="../blog/new-3.0.html">
             
-                <a href="new-3.0.html">
+                <a href="../blog/new-3.0.html">
             
                     
                     What's new in 3.0?
@@ -329,9 +329,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="new-3.1.html">
+        <li class="chapter " data-level="1.7.2" data-path="../blog/new-3.1.html">
             
-                <a href="new-3.1.html">
+                <a href="../blog/new-3.1.html">
             
                     
                     What's new in 3.1?
@@ -342,9 +342,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="new-3.2.html">
+        <li class="chapter " data-level="1.7.3" data-path="../blog/new-3.2.html">
             
-                <a href="new-3.2.html">
+                <a href="../blog/new-3.2.html">
             
                     
                     What's new in 3.2?
@@ -390,7 +390,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >What's new in 3.0?</a>
+        <a href=".." >Loading</a>
     </h1>
 </div>
 
@@ -405,21 +405,98 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="whats-new-in-30">What&apos;s new in 3.0?</h2>
-<p><em>Posted: 11 April 2017</em></p>
-<p align="center"><img height="400" width="800" src="../img/v3.jpg"></p>
+                                <h1 id="loading-scout">Loading Scout</h1>
+<p>When loading a case into scout it is possible to use either a config file or to specify parameters on the command line.</p>
+<h2 id="scout-load-config">Scout Load Config</h2>
+<p>The loading config is a <code>.yaml</code> file and can include all the necessary information to scout. Command line options will overload information in the config file.</p>
+<p>The config file has the following specification:</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">owner:</span> str(mandatory)
 
-<p>This updates includes a lot of optimizations to improve performance. We&apos;ve made significant efforts to make sure the way we store information in the database will scale up with additional features in the future. Here are the highlights:</p>
-<h3 id="more-responsive-interface">More responsive interface</h3>
-<p>Loading pages in the web interface is now much faster. You will notice the case view and variants list show up almost instantly!</p>
-<h3 id="easy-access-to-coverage-report-pdf">Easy access to coverage report PDF</h3>
-<p>You can now download the coverage report as a PDF directly form the case page with one click!</p>
-<h3 id="revamped-gene-panel-view">Revamped gene panel view</h3>
-<p>When accessing a gene panel you will now see the information regarding disease causing transcripts, reduced penetrance etc. related to each gene. You can also handle updated to the panels directly from this interface. Just add, remove, edit existing genes and commit your changes to automatically update the panel.</p>
-<h3 id="updated-variant-page">Updated variant page</h3>
-<p>We&apos;ve made some tweaks to the variant page like moving the OMIM inheritance model to the OMIM panel, linked to each phenotype.</p>
-<h3 id="multiple-refseq-transcripts">Multiple RefSeq transcripts</h3>
-<p>The HGNC based gene definitions have been updated. One key difference is that there we can now have multiple RefSeq transcripts per Ensembl transcript ID.</p>
+<span class="hljs-attr">family:</span> str(mandatory)
+<span class="hljs-attr">samples:</span>
+<span class="hljs-attr">  - analysis_type:</span> str(optional), [wgs,wes]
+<span class="hljs-attr">    sample_id:</span> str(mandatory)
+<span class="hljs-attr">    capture_kit:</span> str(optional)
+<span class="hljs-attr">    father:</span> str(mandatory)
+<span class="hljs-attr">    mother:</span> str(mandatory)
+<span class="hljs-attr">    sample_name:</span> str(mandatory)
+<span class="hljs-attr">    phenotype:</span> str(mandatory), [affected, unaffected, unknown]
+<span class="hljs-attr">    sex:</span> str(mandatory), [male, female, unknown]
+<span class="hljs-attr">    expected_coverage:</span> int(mandatory)
+
+<span class="hljs-attr">vcf_snv:</span> str(optional)
+<span class="hljs-attr">vcf_sv:</span> str(optional)
+<span class="hljs-attr">vcf_cancer:</span> str(optional)
+<span class="hljs-attr">vcf_snv_research:</span> str(optional)
+<span class="hljs-attr">vcf_sv_research:</span> str(optional)
+<span class="hljs-attr">vcf_cancer_research:</span> str(optional)
+
+<span class="hljs-attr">madeline:</span> str(optional)
+<span class="hljs-attr">default_gene_panels:</span> list[str](optional)
+<span class="hljs-attr">gene_panels:</span> list[str](optional)
+
+<span class="hljs-comment"># meta data</span>
+<span class="hljs-attr">rank_model_version:</span> float(optional)
+<span class="hljs-attr">rank_score_threshold:</span> float(optional)
+<span class="hljs-attr">analysis_date:</span> datetime(optional)
+<span class="hljs-attr">human_genome_build:</span> str(optional)
+</code></pre>
+<p>An example file, (this file is located in <code>scout/demo/643594.config.yaml</code>):</p>
+<pre><code class="lang-yaml"><span class="hljs-meta">---</span>
+
+<span class="hljs-attr">owner:</span> cust000
+
+<span class="hljs-attr">family:</span> <span class="hljs-string">&apos;643594&apos;</span>
+<span class="hljs-attr">samples:</span>
+<span class="hljs-attr">  - analysis_type:</span> wes
+<span class="hljs-attr">    sample_id:</span> ADM1059A2
+<span class="hljs-attr">    capture_kit:</span> Agilent_SureSelectCRE.V1
+<span class="hljs-attr">    father:</span> ADM1059A1
+<span class="hljs-attr">    mother:</span> ADM1059A3
+<span class="hljs-attr">    sample_name:</span> NA12882
+<span class="hljs-attr">    phenotype:</span> affected
+<span class="hljs-attr">    sex:</span> male
+<span class="hljs-attr">    expected_coverage:</span> <span class="hljs-number">30</span>
+<span class="hljs-attr">  - analysis_type:</span> wes
+<span class="hljs-attr">    sample_id:</span> ADM1059A1
+<span class="hljs-attr">    capture_kit:</span> Agilent_SureSelectCRE.V1
+<span class="hljs-attr">    father:</span> <span class="hljs-string">&apos;0&apos;</span>
+<span class="hljs-attr">    mother:</span> <span class="hljs-string">&apos;0&apos;</span>
+<span class="hljs-attr">    sample_name:</span> NA12877
+<span class="hljs-attr">    phenotype:</span> unaffected
+<span class="hljs-attr">    sex:</span> male
+<span class="hljs-attr">    expected_coverage:</span> <span class="hljs-number">30</span>
+<span class="hljs-attr">  - analysis_type:</span> wes
+<span class="hljs-attr">    sample_id:</span> ADM1059A3
+<span class="hljs-attr">    capture_kit:</span> Agilent_SureSelectCRE.V1
+<span class="hljs-attr">    father:</span> <span class="hljs-string">&apos;0&apos;</span>
+<span class="hljs-attr">    mother:</span> <span class="hljs-string">&apos;0&apos;</span>
+<span class="hljs-attr">    sample_name:</span> NA12878
+<span class="hljs-attr">    phenotype:</span> unaffected
+<span class="hljs-attr">    sex:</span> female
+<span class="hljs-attr">    expected_coverage:</span> <span class="hljs-number">30</span>
+
+<span class="hljs-attr">vcf_snv:</span> scout/demo/<span class="hljs-number">643594.</span>clinical.vcf.gz
+<span class="hljs-attr">vcf_sv:</span> scout/demo/<span class="hljs-number">643594.</span>clinical.SV.vcf.gz
+<span class="hljs-attr">vcf_snv_research:</span> scout/demo/<span class="hljs-number">643594.</span>research.vcf.gz
+<span class="hljs-attr">vcf_sv_research:</span> scout/demo/<span class="hljs-number">643594.</span>research.SV.vcf.gz
+
+<span class="hljs-attr">madeline:</span> scout/demo/madeline.xml
+<span class="hljs-attr">default_gene_panels:</span> [panel1]
+<span class="hljs-attr">gene_panels:</span> [panel1]
+
+<span class="hljs-comment"># meta data</span>
+<span class="hljs-attr">rank_model_version:</span> <span class="hljs-number">1.12</span>
+<span class="hljs-attr">rank_score_threshold:</span> <span class="hljs-bullet">-100</span>
+<span class="hljs-attr">analysis_date:</span> <span class="hljs-number">2016</span><span class="hljs-bullet">-10</span><span class="hljs-bullet">-12</span> <span class="hljs-number">14</span>:<span class="hljs-number">00</span>:<span class="hljs-number">46</span>
+<span class="hljs-attr">human_genome_build:</span> <span class="hljs-number">37</span>
+</code></pre>
+<h2 id="load-case-from-cli-without-config">Load case from CLI without config</h2>
+<p>Cases can be loaded without config file, in that case the user needs to specify a ped file and optionally one or several VCF files. An example could look like</p>
+<pre><code>scout load case --ped path/to/file.ped --vcf-snv path/to/file.vcf
+</code></pre><p>Please use </p>
+<pre><code>scout load case --help
+</code></pre><p>for more instructions</p>
 
                                 
                                 </section>
@@ -447,12 +524,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Blog">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Admin Guide">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="new-3.1.html" class="navigation navigation-next " aria-label="Next page: What's new in 3.1?">
+                <a href="../blog/" class="navigation navigation-next " aria-label="Next page: Blog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -463,7 +540,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What's new in 3.0?","level":"1.7.1","depth":2,"next":{"title":"What's new in 3.1?","level":"1.7.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},"previous":{"title":"Blog","level":"1.7","depth":1,"path":"blog/README.md","ref":"blog/README.md","articles":[{"title":"What's new in 3.0?","level":"1.7.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},{"title":"What's new in 3.1?","level":"1.7.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},{"title":"What's new in 3.2?","level":"1.7.3","depth":2,"path":"blog/new-3.2.md","ref":"blog/new-3.2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/new-3.0.md","mtime":"2017-05-15T09:31:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-22T13:02:00.179Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Loading","level":"1.6.1","depth":2,"next":{"title":"Blog","level":"1.7","depth":1,"path":"blog/README.md","ref":"blog/README.md","articles":[{"title":"What's new in 3.0?","level":"1.7.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},{"title":"What's new in 3.1?","level":"1.7.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},{"title":"What's new in 3.2?","level":"1.7.3","depth":2,"path":"blog/new-3.2.md","ref":"blog/new-3.2.md","articles":[]}]},"previous":{"title":"Admin Guide","level":"1.6","depth":1,"path":"admin-guide/README.md","ref":"admin-guide/README.md","articles":[{"title":"Loading","level":"1.6.1","depth":2,"path":"admin-guide/loading.md","ref":"admin-guide/loading.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"admin-guide/loading.md","mtime":"2017-05-22T13:01:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-22T13:02:00.179Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
