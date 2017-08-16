@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · GitBook</title>
+        <title>ACMG criterias · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="using-scout.html" />
+    <link rel="next" href="../admin-guide/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="annotations.html" />
     
 
     </head>
@@ -174,7 +174,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="getting-started.html">
+        <li class="chapter " data-level="1.5.1" data-path="getting-started.html">
             
                 <a href="getting-started.html">
             
@@ -265,7 +265,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.8" data-path="acmg-criterias.html">
+        <li class="chapter active" data-level="1.5.8" data-path="acmg-criterias.html">
             
                 <a href="acmg-criterias.html">
             
@@ -416,7 +416,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Getting Started</a>
+        <a href=".." >ACMG criterias</a>
     </h1>
 </div>
 
@@ -431,21 +431,134 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="getting-started-with-scout">Getting started with Scout</h1>
-<p>Scout is a web-based visualizer for VCF-files. It helps to manage multiple patient cases in a unified and intuitive interface. Users can collaborate with other clinicians sharing comments and findings across your team.</p>
-<h2 id="institutes-cases-variants">Institutes, Cases, Variants</h2>
-<p>Scout has a few levels of abstraction to deal with the data it presents. <em>Institutes</em> contain multiple cases and group users into teams. Cases are a unit that is analysed together, usually the same as a family or a tumor/normal sample - they all share a subset of called variants. Variants are individual genotype calls across a single case.</p>
-<blockquote>
-<p>[insert screenshot here]</p>
-</blockquote>
-<p>A case is an interesting concept worth expanding on. Given the context of diagnosing a Mendelian disorder, a case represents the investigation of typically a single family and the quest to find a single disease causing mutation.</p>
-<p>As such there are some added features that try to support this process:</p>
+                                <h1 id="evidence-of-pathogenecity">Evidence of pathogenecity</h1>
+<h2 id="very-strong">Very Strong</h2>
+<h3 id="pvs1">PVS1</h3>
+<p>Null variant (nonsense, frameshift, canonical &#xB1;1 or 2 splice sites, initiation
+ codon, single or multiexon deletion) in a gene where LOF is a known mechanism of disease</p>
+<p><strong>Caveats:</strong></p>
 <ul>
-<li>a case can be assigned to a user to delegate responsibility</li>
-<li>various variants can be pinned as worth looking at for the whole team</li>
-<li>a feed keeps track of any case related activity in one single place</li>
+<li>Beware of genes where LOF is not a known disease mechanism (e.g., GFAP, MYH7)</li>
+<li>Use caution interpreting LOF variants at the extreme 3&#x2032; end of a gene</li>
+<li>Use caution with splice variants that are predicted to lead to exon skipping but leave the remainder of the  protein intact</li>
+<li>Use caution in the presence of multiple transcripts</li>
 </ul>
-<p>A lot of time has been spent on the layout for the big list of variants as well as the single variant detail view. They are meant to give a quick overview to enable efficient scanning of the information. It is also in this direction they will evolve in the future.</p>
+<h2 id="strong">Strong</h2>
+<h3 id="ps1">PS1</h3>
+<p>Same amino acid change as a previously established pathogenic variant regardless of nucleotide change
+<em>Example:</em> Val&#x2192;Leu caused by either G&gt;C or G&gt;T in the same codon</p>
+<p><strong>Caveat:</strong> 
+Beware of changes that impact splicing rather than at the amino acid/protein level</p>
+<h3 id="ps2">PS2</h3>
+<p>De novo (both maternity and paternity confirmed) in a patient with the 
+disease and no family history.</p>
+<p><strong>Note:</strong> Confirmation of paternity only is insufficient. Egg donation, 
+surrogate motherhood, errors in embryo transfer, and so on, can contribute 
+to nonmaternity.</p>
+<h3 id="ps3">PS3</h3>
+<p>Well-established in vitro or in vivo functional studies supportive of a 
+damaging effect on the gene or gene product.</p>
+<p><strong>Note:</strong> Functional studies that have been validated and shown to be 
+reproducible and robust in a clinical diagnostic laboratory setting are 
+considered the most well established.</p>
+<h3 id="ps4">PS4</h3>
+<p>The prevalence of the variant in affected individuals is significantly 
+increased compared with the prevalence in controls.</p>
+<p><strong>Note 1:</strong> Relative risk or OR, as obtained from case&#x2013;control studies, 
+is &gt;5.0, and the confidence interval around the estimate of relative risk 
+or OR does not include 1.0. See the article for detailed guidance.</p>
+<p><strong>Note 2:</strong> In instances of very rare variants where case&#x2013;control studies 
+may not reach statistical significance, the prior observation of the variant 
+in multiple unrelated patients with the same phenotype, and its absence in 
+controls, may be used as moderate level of evidence.</p>
+<h2 id="moderate">Moderate</h2>
+<h3 id="pm1">PM1</h3>
+<p>Located in a mutational hot spot and/or critical and well-established 
+functional domain (e.g., active site of an enzyme) without benign variation.</p>
+<h3 id="pm2">PM2</h3>
+<p>Absent from controls (or at extremely low frequency if recessive) (Table 6) 
+in Exome Sequencing Project, 1000 Genomes Project, or Exome Aggregation 
+Consortium</p>
+<p><strong>Caveat:</strong> Population data for insertions/deletions may be poorly called 
+by next-generation sequencing.</p>
+<h3 id="pm3">PM3</h3>
+<p>For recessive disorders, detected in trans with a pathogenic variant</p>
+<p><strong>Note:</strong> This requires testing of parents (or offspring) to determine phase.</p>
+<h3 id="pm4">PM4</h3>
+<p>Protein length changes as a result of in-frame deletions/insertions in a 
+nonrepeat region or stop-loss variants.</p>
+<h3 id="pm5">PM5</h3>
+<p>Novel missense change at an amino acid residue where a different missense 
+change determined to be pathogenic has been seen before.</p>
+<p><strong>Example:</strong> Arg156His is pathogenic; now you observe Arg156Cys
+<strong>Caveat:</strong> Beware of changes that impact splicing rather than at the amino acid/protein level.
+PM6 Assumed de novo, but without confirmation of paternity and maternity</p>
+<h2 id="supporting">Supporting</h2>
+<h3 id="pp1">PP1</h3>
+<p>Cosegregation with disease in multiple affected family members in a gene 
+definitively known to cause the disease.</p>
+<p><strong>Note:</strong> May be used as stronger evidence with increasing segregation data</p>
+<h3 id="pp2">PP2</h3>
+<p>Missense variant in a gene that has a low rate of benign missense variation 
+and in which missense variants are a common mechanism of disease.</p>
+<h3 id="pp3">PP3</h3>
+<p>Multiple lines of computational evidence support a deleterious effect on the 
+gene or gene product  (conservation, evolutionary, splicing impact, etc.).</p>
+<p><strong>Caveat:</strong> Because many in silico algorithms use the same or very similar 
+input for their predictions, each algorithm should not be counted as an 
+independent criterion. PP3 can be used only once in any evaluation of a variant.</p>
+<h2 id="pp4">PP4</h2>
+<p>Patient&#x2019;s phenotype or family history is highly specific for a disease with 
+a single genetic etiology.</p>
+<h2 id="pp5">PP5</h2>
+<p>Reputable source recently reports variant as pathogenic, but the evidence is 
+not available to the laboratory to perform an independent evaluation.</p>
+<h1 id="evidence-of-benign-impact">Evidence of benign impact</h1>
+<h2 id="stand-alone">Stand-alone</h2>
+<h3 id="ba1">BA1</h3>
+<p>Allele frequency is &gt;5% in Exome Sequencing Project, 1000 Genomes Project, 
+or Exome Aggregation Consortium.</p>
+<h2 id="strong">Strong</h2>
+<h3 id="bs1">BS1</h3>
+<p>Allele frequency is greater than expected for disorder (see Table 6)</p>
+<h3 id="bs2">BS2</h3>
+<p>Observed in a healthy adult individual for a recessive (homozygous), 
+dominant (heterozygous), or X-linked (hemizygous) disorder, with full 
+penetrance expected at an early age.</p>
+<h3 id="bs3">BS3</h3>
+<p>Well-established in vitro or in vivo functional studies show no damaging 
+effect on protein function or splicing.</p>
+<h3 id="bs4">BS4</h3>
+<p>Lack of segregation in affected members of a family</p>
+<p><strong>Caveat:</strong> The presence of phenocopies for common phenotypes (i.e., cancer, 
+epilepsy) can mimic lack of segregation among affected individuals. Also, 
+families may have more than one pathogenic variant contributing to an 
+autosomal dominant disorder, further confounding an apparent lack of segregation.</p>
+<h2 id="supporting">Supporting</h2>
+<h3 id="bp1">BP1</h3>
+<p>Missense variant in a gene for which primarily truncating variants are known 
+to cause disease.</p>
+<h3 id="bp2">BP2</h3>
+<p>Observed in trans with a pathogenic variant for a fully penetrant dominant 
+gene/disorder or observed in cis with a pathogenic variant in any inheritance 
+pattern.</p>
+<h3 id="bp3">BP3</h3>
+<p>In-frame deletions/insertions in a repetitive region without a known function.</p>
+<h3 id="bp4">BP4</h3>
+<p>Multiple lines of computational evidence suggest no impact on gene or gene 
+product (conservation, evolutionary, splicing impact, etc.).</p>
+<p><strong>Caveat:</strong> Because many in silico algorithms use the same or very similar 
+input for their predictions, each algorithm cannot be counted as an 
+independent criterion. BP4 can be used only once in any evaluation of a variant.</p>
+<h3 id="bp5">BP5</h3>
+<p>Variant found in a case with an alternate molecular basis for disease.</p>
+<h3 id="bp6">BP6</h3>
+<p>Reputable source recently reports variant as benign, but the evidence is not 
+available to the laboratory to perform an independent evaluation.</p>
+<h3 id="bp7">BP7</h3>
+<p>A synonymous (silent) variant for which splicing prediction algorithms predict 
+no impact to the splice consensus sequence nor the creation of a new splice 
+site AND the nucleotide is not highly conserved.</p>
 
                                 
                                 </section>
@@ -473,12 +586,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: User Guide">
+                <a href="annotations.html" class="navigation navigation-prev " aria-label="Previous page: Annotations">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="using-scout.html" class="navigation navigation-next " aria-label="Next page: General Usage">
+                <a href="../admin-guide/" class="navigation navigation-next " aria-label="Next page: Admin Guide">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -489,7 +602,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.5.1","depth":2,"next":{"title":"General Usage","level":"1.5.2","depth":2,"path":"user-guide/using-scout.md","ref":"user-guide/using-scout.md","articles":[]},"previous":{"title":"User Guide","level":"1.5","depth":1,"path":"user-guide/README.md","ref":"user-guide/README.md","articles":[{"title":"Getting Started","level":"1.5.1","depth":2,"path":"user-guide/getting-started.md","ref":"user-guide/getting-started.md","articles":[]},{"title":"General Usage","level":"1.5.2","depth":2,"path":"user-guide/using-scout.md","ref":"user-guide/using-scout.md","articles":[]},{"title":"Pages","level":"1.5.3","depth":2,"path":"user-guide/pages.md","ref":"user-guide/pages.md","articles":[]},{"title":"Cases","level":"1.5.4","depth":2,"path":"user-guide/cases.md","ref":"user-guide/cases.md","articles":[]},{"title":"Variants","level":"1.5.5","depth":2,"path":"user-guide/variants.md","ref":"user-guide/variants.md","articles":[]},{"title":"Gene Panels","level":"1.5.6","depth":2,"path":"user-guide/panels.md","ref":"user-guide/panels.md","articles":[]},{"title":"Annotations","level":"1.5.7","depth":2,"path":"user-guide/annotations.md","ref":"user-guide/annotations.md","articles":[]},{"title":"ACMG criterias","level":"1.5.8","depth":2,"path":"user-guide/acmg-criterias.md","ref":"user-guide/acmg-criterias.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"user-guide/getting-started.md","mtime":"2017-06-01T08:54:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-16T09:49:50.881Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ACMG criterias","level":"1.5.8","depth":2,"next":{"title":"Admin Guide","level":"1.6","depth":1,"path":"admin-guide/README.md","ref":"admin-guide/README.md","articles":[{"title":"Loading","level":"1.6.1","depth":2,"path":"admin-guide/loading.md","ref":"admin-guide/loading.md","articles":[]}]},"previous":{"title":"Annotations","level":"1.5.7","depth":2,"path":"user-guide/annotations.md","ref":"user-guide/annotations.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"user-guide/acmg-criterias.md","mtime":"2017-08-16T09:47:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-16T09:49:50.881Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
