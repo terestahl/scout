@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>HPO phenotypes · GitBook</title>
+        <title>Annotations · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../user-guide/" />
+    <link rel="next" href="../blog/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="load-config.html" />
     
 
     </head>
@@ -128,9 +128,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="../features/">
             
-                <a href="./">
+                <a href="../features/">
             
                     
                     Features
@@ -142,9 +142,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="hpo.html">
+        <li class="chapter " data-level="1.4.1" data-path="../features/hpo.html">
             
-                <a href="hpo.html">
+                <a href="../features/hpo.html">
             
                     
                     HPO phenotypes
@@ -309,9 +309,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../admin-guide/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../admin-guide/">
+                <a href="./">
             
                     
                     Admin Guide
@@ -323,9 +323,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../admin-guide/loading.html">
+        <li class="chapter " data-level="1.6.1" data-path="loading.html">
             
-                <a href="../admin-guide/loading.html">
+                <a href="loading.html">
             
                     
                     Loading
@@ -336,9 +336,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../admin-guide/load-config.html">
+        <li class="chapter " data-level="1.6.2" data-path="load-config.html">
             
-                <a href="../admin-guide/load-config.html">
+                <a href="load-config.html">
             
                     
                     Load config
@@ -349,9 +349,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../admin-guide/annotations.html">
+        <li class="chapter active" data-level="1.6.3" data-path="annotations.html">
             
-                <a href="../admin-guide/annotations.html">
+                <a href="annotations.html">
             
                     
                     Annotations
@@ -468,7 +468,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >HPO phenotypes</a>
+        <a href=".." >Annotations</a>
     </h1>
 </div>
 
@@ -483,19 +483,107 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="hpo-phenotypes">HPO phenotypes</h1>
-<p>For every case you have the opportunity to add related HPO phenotype terms to describe the phenotype of the patient(s). This structured data can then be used in some interesting ways. You access all these features from the case page.</p>
-<h2 id="hpo-gene-panel">HPO gene panel</h2>
-<p>Every HPO term is linked to a set of genes. It it interesting to see which genes that overlap with your phenotype terms. To generate such a list, locate the &quot;HPO panel&quot; button. You can optionally select which terms to include by using the check boxes next to the HPO terms.</p>
-<p>By default only genes matching <em>every</em> selected HPO term is returned. This setting can be customized by entering the minimum number of HPO terms a gene is required to overlap.</p>
-<blockquote>
-<p>The panel is only stored until a user regenerates the panel!</p>
-</blockquote>
-<p>The generated panel will show up just below under &quot;HPO gene panel&quot;.</p>
-<h2 id="phenomizer-diseases">Phenomizer diseases</h2>
-<p>The second option is to use the same HPO terms as input to the <a href="http://compbio.charite.de/phenomizer/" target="_blank">Phenomizer</a> service. This will use you selected phenotypes to look up possible OMIM diseases. You will be presented with all hits on a new page where you can select which diseases to proceed with.</p>
-<p>Phenomizer associates a P-value with each disease which tells you something about the likelihood of each disease match. You can also see which genes are associated with every disease in the last column.</p>
-<p>When you&apos;ve made your selection, click &quot;Select&quot; at the bottom of the table. Scout will then store all the associated genes and list them in the &quot;HPO gene panel&quot; list on the &quot;case&quot; page.</p>
+                                <h1 id="annotations">Annotations</h1>
+<p>Scout is a primarily a visualisation tool with some other functionality. One could imagine that in the future, some or all annotations could be performed by Scout. For now scout will look for some known keys when uploading a VCF and extract information for those. <a href="http://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">VEP</a> is the tool supported for functional and regional annotations at the moment, <a href="http://snpeff.sourceforge.net/about.html" target="_blank">SnpEff</a> will be added in the near future. For the other types of annotations Scout will look for certain keys in the INFO field of the vcf and expect the value to be of a specific type. This means that there is not a dependency on any other specific annotation tool besides VEP, just make sure that the key and values are correct according to the specification below.</p>
+<h3 id="rank-score">Rank score</h3>
+<p>One of the hard problem when dealing with whole genome data is the huge amount variants that are generated in every analysis. Scout was developed to be used in rare variant analysis, this means that there is ony a small number of variants that are actually interesting to look at. We do not want to store all variants from each case in a database that should be able to controll thousands of cases. To solve this problem we are working with rank scores, each variant is scored according to a scoring schema then we only upload and sort the variants based on their rank score. In this way the users can start by looking at the variants that looks potentially most dangerous from a bioinformatic perspective. We use the tool <a href="https://github.com/moonso/genmod" target="_blank">genmod</a> to (among other things) score the variant, but as long as there is a <code>RankScore</code>-field in the <code>INFO</code> field of the VCF with a float as value it is handeled by Scout.</p>
+<h2 id="annotation-keys-and-tool-suggestions">Annotation keys and tool suggestions</h2>
+<p>In this section all the different annotation keys and suggestions of tools that can be used to annotate them are listed.</p>
+<h3 id="frequencies">Frequencies</h3>
+<h4 id="1000g">1000G</h4>
+<p>The frequency from the <a href="http://www.1000genomes.org/" target="_blank">1000G</a> population database.</p>
+<ul>
+<li>Key: <code>1000G</code></li>
+<li>Value: <code>Float</code></li>
+<li>Tools: <a href="http://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">VEP</a>, <a href="http://snpeff.sourceforge.net/about.html" target="_blank">SnpEff</a>, <a href="https://github.com/moonso/genmod" target="_blank">genmod</a>, <a href="https://github.com/brentp/vcfanno" target="_blank">vcfanno</a></li>
+</ul>
+<h4 id="1000gmaxaf">1000G_MAX_AF</h4>
+<p>The maximum allele frequency of all populations in the <a href="http://www.1000genomes.org/" target="_blank">1000G</a> population database.</p>
+<ul>
+<li>Key: <code>1000G_MAX_AF</code></li>
+<li>Value: <code>Float</code></li>
+<li>Tools: custom made, we have modified the 1000G file and use <a href="https://github.com/moonso/genmod" target="_blank">genmod</a></li>
+</ul>
+<h4 id="exac">ExAC</h4>
+<p>The frequency from the <a href="http://exac.broadinstitute.org" target="_blank">ExAC</a> population database.</p>
+<ul>
+<li>Key: <code>EXACAF</code></li>
+<li>Value: <code>Float</code></li>
+<li>Tools: <a href="http://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">VEP</a>, <a href="http://snpeff.sourceforge.net/about.html" target="_blank">SnpEff</a>, <a href="https://github.com/moonso/genmod" target="_blank">genmod</a>, <a href="https://github.com/brentp/vcfanno" target="_blank">vcfanno</a> </li>
+</ul>
+<h4 id="exacmaxaf">ExAC_MAX_AF</h4>
+<p>The maximum allele frequency of all populations <a href="http://exac.broadinstitute.org" target="_blank">ExAC</a> population database. </p>
+<ul>
+<li>Key: <code>EXAC_MAX_AF</code></li>
+<li>Value: <code>Float</code></li>
+<li>Tools: custom made, we have modified the exac file and use <a href="https://github.com/moonso/genmod" target="_blank">genmod</a></li>
+</ul>
+<h3 id="severity">Severity</h3>
+<h4 id="cadd-score">CADD score</h4>
+<p>The Combined Annotation Dependent Depletion(<a href="http://cadd.gs.washington.edu" target="_blank">CADD</a>) score. A prediction of the deleterioussness for a variant.</p>
+<ul>
+<li>Key: <code>CADD</code> or <code>cadd</code> in VEP <code>CSQ</code> field</li>
+<li>Value: <code>Float</code></li>
+<li>Tools: <a href="http://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">VEP</a>, <a href="http://snpeff.sourceforge.net/about.html" target="_blank">SnpEff</a>, <a href="https://github.com/moonso/genmod" target="_blank">genmod</a>, <a href="https://github.com/brentp/vcfanno" target="_blank">vcfanno</a> </li>
+</ul>
+<h4 id="sift">SIFT</h4>
+<p>The <a href="http://sift.jcvi.org" target="_blank">SIFT</a>) prediction for how a variation affects the protein.</p>
+<ul>
+<li>Key: <code>CSQ</code>-<code>SIFT</code></li>
+<li>Value: <code>String</code></li>
+<li>Tools: <a href="http://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">VEP</a></li>
+</ul>
+<h4 id="polyphen">PolyPhen</h4>
+<p>The <a href="http://genetics.bwh.harvard.edu/pph2/dokuwiki/" target="_blank">PolyPhen</a>) prediction for how a variation affects the protein.</p>
+<ul>
+<li>Key: <code>CSQ</code>-<code>PolyPhen</code></li>
+<li>Value: <code>String</code></li>
+<li>Tools: <a href="http://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">VEP</a></li>
+</ul>
+<h4 id="rank-score">Rank score</h4>
+<p>The combined rank score for a variant</p>
+<ul>
+<li>Key: <code>RankScore</code></li>
+<li>Value: <code>Float</code></li>
+<li>Tools: <a href="https://github.com/moonso/genmod" target="_blank">genmod</a></li>
+</ul>
+<h3 id="conservation">Conservation</h3>
+<h4 id="gerp">Gerp</h4>
+<p>The Genomic Evolutionary Rate Profiling(<a href="http://mendel.stanford.edu/SidowLab/downloads/gerp/index.html" target="_blank">GERP</a>) conservation string. An estimation of how conserved this position is.</p>
+<ul>
+<li>Key: <code>GERP++_RS_prediction_term</code></li>
+<li>Value: <code>String</code></li>
+<li>Tools: <a href="http://snpeff.sourceforge.net/SnpSift.html" target="_blank">SnpSift</a></li>
+</ul>
+<h4 id="phastcons">phastCons</h4>
+<p>The <a href="http://compgen.cshl.edu/phast/" target="_blank">PHASTcons</a> conservation string.</p>
+<ul>
+<li>Key: <code>phastCons100way_vertebrate_prediction_term</code></li>
+<li>Value: <code>String</code></li>
+<li>Tools: <a href="http://snpeff.sourceforge.net/SnpSift.html" target="_blank">SnpSift</a></li>
+</ul>
+<h4 id="phylop">phylop</h4>
+<p>The <a href="http://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg19&amp;g=cons100way" target="_blank">phylop</a> 100 way predicted conservation string.</p>
+<ul>
+<li>Key: <code>phyloP100way_vertebrate_prediction_term</code></li>
+<li>Value: <code>String</code></li>
+<li>Tools: <a href="http://snpeff.sourceforge.net/SnpSift.html" target="_blank">SnpSift</a></li>
+</ul>
+<h3 id="inheritance">Inheritance</h3>
+<h4 id="genetic-models">Genetic models</h4>
+<p>What genetics models are followed for the variant in the particular family</p>
+<ul>
+<li>Key: <code>GeneticModels</code></li>
+<li>Value: list of <code>String</code></li>
+<li>Tools: <a href="https://github.com/moonso/genmod" target="_blank">genmod</a></li>
+</ul>
+<h4 id="autosomal-recessive-compounds">Autosomal Recessive Compounds</h4>
+<p>What variants is this variant in Autosomal Recessive Compound with?</p>
+<ul>
+<li>Key: <code>Compounds</code></li>
+<li>Value: list of <code>String</code></li>
+<li>Tools: <a href="https://github.com/moonso/genmod" target="_blank">genmod</a></li>
+</ul>
 
                                 
                                 </section>
@@ -523,12 +611,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Features">
+                <a href="load-config.html" class="navigation navigation-prev " aria-label="Previous page: Load config">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../user-guide/" class="navigation navigation-next " aria-label="Next page: User Guide">
+                <a href="../blog/" class="navigation navigation-next " aria-label="Next page: Blog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -539,7 +627,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"HPO phenotypes","level":"1.4.1","depth":2,"next":{"title":"User Guide","level":"1.5","depth":1,"path":"user-guide/README.md","ref":"user-guide/README.md","articles":[{"title":"Getting Started","level":"1.5.1","depth":2,"path":"user-guide/getting-started.md","ref":"user-guide/getting-started.md","articles":[]},{"title":"General Usage","level":"1.5.2","depth":2,"path":"user-guide/using-scout.md","ref":"user-guide/using-scout.md","articles":[]},{"title":"Pages","level":"1.5.3","depth":2,"path":"user-guide/pages.md","ref":"user-guide/pages.md","articles":[]},{"title":"Institutes","level":"1.5.4","depth":2,"path":"user-guide/institutes.md","ref":"user-guide/institutes.md","articles":[]},{"title":"Users","level":"1.5.5","depth":2,"path":"user-guide/users.md","ref":"user-guide/users.md","articles":[]},{"title":"Cases","level":"1.5.6","depth":2,"path":"user-guide/cases.md","ref":"user-guide/cases.md","articles":[]},{"title":"Variants","level":"1.5.7","depth":2,"path":"user-guide/variants.md","ref":"user-guide/variants.md","articles":[]},{"title":"Gene Panels","level":"1.5.8","depth":2,"path":"user-guide/panels.md","ref":"user-guide/panels.md","articles":[]},{"title":"Annotations","level":"1.5.9","depth":2,"path":"user-guide/annotations.md","ref":"user-guide/annotations.md","articles":[]},{"title":"ACMG criterias","level":"1.5.10","depth":2,"path":"user-guide/acmg-criterias.md","ref":"user-guide/acmg-criterias.md","articles":[]}]},"previous":{"title":"Features","level":"1.4","depth":1,"path":"features/README.md","ref":"features/README.md","articles":[{"title":"HPO phenotypes","level":"1.4.1","depth":2,"path":"features/hpo.md","ref":"features/hpo.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"features/hpo.md","mtime":"2017-08-18T13:37:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T13:47:39.168Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Annotations","level":"1.6.3","depth":2,"next":{"title":"Blog","level":"1.7","depth":1,"path":"blog/README.md","ref":"blog/README.md","articles":[{"title":"What's new in 3.0?","level":"1.7.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},{"title":"What's new in 3.1?","level":"1.7.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},{"title":"What's new in 3.2?","level":"1.7.3","depth":2,"path":"blog/new-3.2.md","ref":"blog/new-3.2.md","articles":[]},{"title":"What's new in 3.3?","level":"1.7.4","depth":2,"path":"blog/new-3.3.md","ref":"blog/new-3.3.md","articles":[]}]},"previous":{"title":"Load config","level":"1.6.2","depth":2,"path":"admin-guide/load-config.md","ref":"admin-guide/load-config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"admin-guide/annotations.md","mtime":"2017-08-21T13:45:53.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T13:47:39.168Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
