@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="load-config.html" />
+    <link rel="next" href="../blog/" />
     
     
     <link rel="prev" href="./" />
@@ -213,33 +213,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="../user-guide/institutes.html">
-            
-                <a href="../user-guide/institutes.html">
-            
-                    
-                    Institutes
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="../user-guide/users.html">
-            
-                <a href="../user-guide/users.html">
-            
-                    
-                    Users
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.6" data-path="../user-guide/cases.html">
+        <li class="chapter " data-level="1.5.4" data-path="../user-guide/cases.html">
             
                 <a href="../user-guide/cases.html">
             
@@ -252,7 +226,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.7" data-path="../user-guide/variants.html">
+        <li class="chapter " data-level="1.5.5" data-path="../user-guide/variants.html">
             
                 <a href="../user-guide/variants.html">
             
@@ -265,7 +239,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.8" data-path="../user-guide/panels.html">
+        <li class="chapter " data-level="1.5.6" data-path="../user-guide/panels.html">
             
                 <a href="../user-guide/panels.html">
             
@@ -278,7 +252,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.9" data-path="../user-guide/annotations.html">
+        <li class="chapter " data-level="1.5.7" data-path="../user-guide/annotations.html">
             
                 <a href="../user-guide/annotations.html">
             
@@ -291,7 +265,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.10" data-path="../user-guide/acmg-criterias.html">
+        <li class="chapter " data-level="1.5.8" data-path="../user-guide/acmg-criterias.html">
             
                 <a href="../user-guide/acmg-criterias.html">
             
@@ -329,32 +303,6 @@
             
                     
                     Loading
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="load-config.html">
-            
-                <a href="load-config.html">
-            
-                    
-                    Load config
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="annotations.html">
-            
-                <a href="annotations.html">
-            
-                    
-                    Annotations
             
                 </a>
             
@@ -484,20 +432,41 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="loading-scout">Loading Scout</h1>
-<h2 id="institute">Institute</h2>
-<p>To load a institute into scout use the command <code>scout load institute</code>. As mentioned in the user guide an <a href="../user-guide/institutes.html">institute</a> has to have a unique internal id, this is specified on the command line with <code>-i/--internal-id</code>. Also a display name could be used if there is a need for that, specify with <code>-d/--display-name</code>. If no display name is choosen it will default to internal id.
-Note that internal id is unique.</p>
-<h2 id="user">User</h2>
-<p>To load a user into scout use the command <code>scout load user</code>. A user has to: </p>
-<ul>
-<li>belong to an <em>institute</em></li>
-<li>have a <em>name</em></li>
-<li>have a <em>email adress</em></li>
-</ul>
-<h2 id="case">Case</h2>
 <p>When loading a case into scout it is possible to use either a config file or to specify parameters on the command line.</p>
-<h3 id="scout-load-config">Scout Load Config</h3>
-<p>The loading config is a <code>.yaml</code> file and can include all the necessary information to scout. Command line options will overload information in the config file. For a complete spec of the config file see <a href="load-config.html">load config</a></p>
+<h2 id="scout-load-config">Scout Load Config</h2>
+<p>The loading config is a <code>.yaml</code> file and can include all the necessary information to scout. Command line options will overload information in the config file.</p>
+<p>The config file has the following specification:</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">owner:</span> str(mandatory)
+
+<span class="hljs-attr">family:</span> str(mandatory)
+<span class="hljs-attr">samples:</span>
+<span class="hljs-attr">  - analysis_type:</span> str(optional), [wgs,wes]
+<span class="hljs-attr">    sample_id:</span> str(mandatory)
+<span class="hljs-attr">    capture_kit:</span> str(optional)
+<span class="hljs-attr">    father:</span> str(mandatory)
+<span class="hljs-attr">    mother:</span> str(mandatory)
+<span class="hljs-attr">    sample_name:</span> str(mandatory)
+<span class="hljs-attr">    phenotype:</span> str(mandatory), [affected, unaffected, unknown]
+<span class="hljs-attr">    sex:</span> str(mandatory), [male, female, unknown]
+<span class="hljs-attr">    expected_coverage:</span> int(mandatory)
+
+<span class="hljs-attr">vcf_snv:</span> str(optional)
+<span class="hljs-attr">vcf_sv:</span> str(optional)
+<span class="hljs-attr">vcf_cancer:</span> str(optional)
+<span class="hljs-attr">vcf_snv_research:</span> str(optional)
+<span class="hljs-attr">vcf_sv_research:</span> str(optional)
+<span class="hljs-attr">vcf_cancer_research:</span> str(optional)
+
+<span class="hljs-attr">madeline:</span> str(optional)
+<span class="hljs-attr">default_gene_panels:</span> list[str](optional)
+<span class="hljs-attr">gene_panels:</span> list[str](optional)
+
+<span class="hljs-comment"># meta data</span>
+<span class="hljs-attr">rank_model_version:</span> float(optional)
+<span class="hljs-attr">rank_score_threshold:</span> float(optional)
+<span class="hljs-attr">analysis_date:</span> datetime(optional)
+<span class="hljs-attr">human_genome_build:</span> str(optional)
+</code></pre>
 <p>An example file, (this file is located in <code>scout/demo/643594.config.yaml</code>):</p>
 <pre><code class="lang-yaml"><span class="hljs-meta">---</span>
 
@@ -548,7 +517,7 @@ Note that internal id is unique.</p>
 <span class="hljs-attr">analysis_date:</span> <span class="hljs-number">2016</span><span class="hljs-bullet">-10</span><span class="hljs-bullet">-12</span> <span class="hljs-number">14</span>:<span class="hljs-number">00</span>:<span class="hljs-number">46</span>
 <span class="hljs-attr">human_genome_build:</span> <span class="hljs-number">37</span>
 </code></pre>
-<h3 id="load-case-from-cli-without-config">Load case from CLI without config</h3>
+<h2 id="load-case-from-cli-without-config">Load case from CLI without config</h2>
 <p>Cases can be loaded without config file, in that case the user needs to specify a ped file and optionally one or several VCF files. An example could look like</p>
 <pre><code>scout load case --ped path/to/file.ped --vcf-snv path/to/file.vcf
 </code></pre><p>Please use </p>
@@ -586,7 +555,7 @@ Note that internal id is unique.</p>
                 </a>
                 
                 
-                <a href="load-config.html" class="navigation navigation-next " aria-label="Next page: Load config">
+                <a href="../blog/" class="navigation navigation-next " aria-label="Next page: Blog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -597,7 +566,7 @@ Note that internal id is unique.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Loading","level":"1.6.1","depth":2,"next":{"title":"Load config","level":"1.6.2","depth":2,"path":"admin-guide/load-config.md","ref":"admin-guide/load-config.md","articles":[]},"previous":{"title":"Admin Guide","level":"1.6","depth":1,"path":"admin-guide/README.md","ref":"admin-guide/README.md","articles":[{"title":"Loading","level":"1.6.1","depth":2,"path":"admin-guide/loading.md","ref":"admin-guide/loading.md","articles":[]},{"title":"Load config","level":"1.6.2","depth":2,"path":"admin-guide/load-config.md","ref":"admin-guide/load-config.md","articles":[]},{"title":"Annotations","level":"1.6.3","depth":2,"path":"admin-guide/annotations.md","ref":"admin-guide/annotations.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"admin-guide/loading.md","mtime":"2017-08-21T13:47:45.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-22T10:39:49.126Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Loading","level":"1.6.1","depth":2,"next":{"title":"Blog","level":"1.7","depth":1,"path":"blog/README.md","ref":"blog/README.md","articles":[{"title":"What's new in 3.0?","level":"1.7.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},{"title":"What's new in 3.1?","level":"1.7.2","depth":2,"path":"blog/new-3.1.md","ref":"blog/new-3.1.md","articles":[]},{"title":"What's new in 3.2?","level":"1.7.3","depth":2,"path":"blog/new-3.2.md","ref":"blog/new-3.2.md","articles":[]},{"title":"What's new in 3.3?","level":"1.7.4","depth":2,"path":"blog/new-3.3.md","ref":"blog/new-3.3.md","articles":[]}]},"previous":{"title":"Admin Guide","level":"1.6","depth":1,"path":"admin-guide/README.md","ref":"admin-guide/README.md","articles":[{"title":"Loading","level":"1.6.1","depth":2,"path":"admin-guide/loading.md","ref":"admin-guide/loading.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"admin-guide/loading.md","mtime":"2017-09-14T12:44:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T12:44:52.891Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
