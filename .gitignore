@@ -13,3 +13,4 @@ htmlcov/
 instance/
 node_modules/
 *.egg-info/
+local/
