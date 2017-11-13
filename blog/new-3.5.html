@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>What's new in 3.1? · GitBook</title>
+        <title>What's new in 3.5? · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="new-3.2.html" />
     
-    
-    <link rel="prev" href="new-3.0.html" />
+    <link rel="prev" href="new-3.4.html" />
     
 
     </head>
@@ -407,7 +405,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.2" data-path="new-3.1.html">
+        <li class="chapter " data-level="1.7.2" data-path="new-3.1.html">
             
                 <a href="new-3.1.html">
             
@@ -459,7 +457,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" data-path="new-3.5.html">
+        <li class="chapter active" data-level="1.7.6" data-path="new-3.5.html">
             
                 <a href="new-3.5.html">
             
@@ -507,7 +505,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >What's new in 3.1?</a>
+        <a href=".." >What's new in 3.5?</a>
     </h1>
 </div>
 
@@ -522,28 +520,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="whats-new-in-31">What&apos;s new in 3.1?</h2>
-<p><em>Posted: 27 April 2017</em></p>
-<p>This updates contains many bug fixes and a few new features.</p>
-<h3 id="new-feature-cohort-tag">New feature: cohort tag</h3>
-<p>We have introduced &quot;cohort tags&quot;, where you can tag each case as belonging to one or several cohorts.</p>
-<p>Future release of Scout will include functionality to get statistics on selected cohorts or all cases. For instance, you will be able to get statistics on the number of samples within a cohort, how many are cases solved and which genes there were causative variants in. Or perhaps you want to know which phenotype terms are associated with a particular cohort.</p>
-<p>For now, the cohort tags are <em>specific</em> to CMMS, but we urge all user to supply to us their own set of tags to be used within the corresponding Scout instance. This applies to <strong>phenotype groups</strong> as well as we think this will be very useful in future to describe your cohorts clinically.</p>
-<h3 id="new-feature-pip-distribution">New feature: pip distribution</h3>
-<p>Scout is now installable via <code>pip</code>! This means installing the server and CLI is as simple as running:</p>
-<pre><code class="lang-bash">pip install scout-browser
-</code></pre>
-<p>Everything to setup the server; genes, HPO terms, OMIM information, etc. is included in the distribution.</p>
-<h3 id="bug-fixes">Bug fixes</h3>
+                                <h2 id="whats-new-in-35-&#x1F341;">What&apos;s new in 3.5? &#x1F341;</h2>
+<p><em>Posted: 13 Nov 2017</em></p>
+<p>The November update includes the following highlights:</p>
+<h2 id="new-features">New features</h2>
 <ul>
-<li>Compounds are now sorted on combined score</li>
-<li>The delivery report opens in a new tab</li>
-<li>A link from the variant page to the gene panel exists</li>
-<li>Cases are properly activated when variants are first viewed</li>
-<li>Fixed display of HGVS description</li>
-<li>Fixed issues with Sanger email</li>
-<li>Support for a new analysis type: TGA, Targeted Genome Analysis</li>
-<li>Fixed issue with filtering on 1000G frequency</li>
+<li><p>You can now add an entirely NEW <a href="https://scout.scilifelab.se/panels" target="_blank">gene panel</a> directly from Scout &#x1F195;</p>
+<p><img src="../img/blog/new-gene-panel.png" alt="New gene panel"></p>
+</li>
+<li><p>Scout now uploads ALL variants on the mitochondrial chromosome (MT) - independently of rank score</p>
+</li>
+<li><p>Improvements to SV variant view:</p>
+<ul>
+<li>New frequencies: ClinGen CGH and Decipher</li>
+<li>Callers are displayed under GT call table</li>
+<li>You can now tag (variant tag) and comment on SV variants</li>
+<li>Gene panels now are now displayed</li>
+<li>&quot;n.d.&quot; (Not Determined) is now displayed when the variant length is unknown</li>
+</ul>
+</li>
+<li><p>We now report if you filtered for a gene in the clinical list which isn&apos;t part of any gene panel</p>
+<p><img src="../img/blog/clinical-list-check.png" alt="Clinical list check"></p>
+</li>
+</ul>
+<h2 id="bugfixes">Bugfixes</h2>
+<ul>
+<li>Versions of transcripts are now kept for &quot;disease causing transcripts&quot; in the panels</li>
+<li>Ensembl transcript will now display in overview if no RefSeq transcript exists</li>
+<li>You can now reset the variant tag</li>
+<li>You can now filter variants on both HGNC ID and symbol</li>
+<li>We fixed an issue related to showing matching causative variants for a case</li>
+<li>Filtering on local observations will now include variant without any such annotations</li>
 </ul>
 
                                 
@@ -572,14 +579,10 @@
 
             
                 
-                <a href="new-3.0.html" class="navigation navigation-prev " aria-label="Previous page: What's new in 3.0?">
+                <a href="new-3.4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: What's new in 3.4?">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="new-3.2.html" class="navigation navigation-next " aria-label="Next page: What's new in 3.2?">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -588,7 +591,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What's new in 3.1?","level":"1.7.2","depth":2,"next":{"title":"What's new in 3.2?","level":"1.7.3","depth":2,"path":"blog/new-3.2.md","ref":"blog/new-3.2.md","articles":[]},"previous":{"title":"What's new in 3.0?","level":"1.7.1","depth":2,"path":"blog/new-3.0.md","ref":"blog/new-3.0.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/new-3.1.md","mtime":"2017-08-04T09:17:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T12:28:57.868Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What's new in 3.5?","level":"1.7.6","depth":2,"previous":{"title":"What's new in 3.4?","level":"1.7.5","depth":2,"path":"blog/new-3.4.md","ref":"blog/new-3.4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/new-3.5.md","mtime":"2017-11-13T12:28:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T12:28:57.868Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
