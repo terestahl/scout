@@ -362,6 +362,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.4" data-path="../admin-guide/server.html">
+            
+                <a href="../admin-guide/server.html">
+            
+                    
+                    Server
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -426,6 +439,32 @@
             
                     
                     What's new in 3.3?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../blog/new-3.4.html">
+            
+                <a href="../blog/new-3.4.html">
+            
+                    
+                    What's new in 3.4?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../blog/new-3.5.html">
+            
+                <a href="../blog/new-3.5.html">
+            
+                    
+                    What's new in 3.5?
             
                 </a>
             
@@ -501,6 +540,20 @@ A case can then be associated with one or several gene panels.</p>
 <li><strong>database_entry_version(str)</strong> The database entry version is a way to track when a a gene was added or modified. <em>Optional</em></li>
 </ul>
 <p>Each gene in a gene panel have to be identified with a hgnc id</p>
+<h3 id="file-format-2">File format 2</h3>
+<p>There is also an option to include all information about a panel in the header of the file. This could make uploading easier, just a matter of taste. In this case include a header with metadata, each of these lines are key-value separated by <code>=</code>. The meta data lines should start with <code>##</code></p>
+<p>Example:</p>
+<pre><code class="lang-csv">##panel_id=panel1
+##institute=cust000
+##version=1.0
+##date=2016-12-09
+##display_name=Test panel
+#hgnc_id    hgnc_symbol
+7481    MT-TF
+...
+...
+...
+</code></pre>
 <h3 id="notes-on-entries">Notes on entries</h3>
 <ul>
 <li><strong>hgnc_id</strong>: This one have to be a valid hgnc id that exists in scout</li>
@@ -516,6 +569,10 @@ A case can then be associated with one or several gene panels.</p>
 <li>choose <strong>&quot;Save as...&quot;</strong> in Excel and select <strong>&quot;Comma Separated Values (.csv)&quot;</strong> as the format</li>
 <li>fill out the form in Scout and upload the &quot;*.csv&quot; file to update your gene panel</li>
 </ol>
+<h3 id="upload-from-interface">Upload from interface</h3>
+<p>Choose the menu in top left corner, click <code>Gene Panel</code>. Then under &apos;new panel&apos; the user can point to a csv file and fill in name and display name.</p>
+<h3 id="upload-with-cli">Upload with CLI</h3>
+<p>When uploading from CLI there are more options. Use <code>scout load panel --help</code> for more information.</p>
 
                                 
                                 </section>
@@ -559,7 +616,7 @@ A case can then be associated with one or several gene panels.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Gene Panels","level":"1.5.8","depth":2,"next":{"title":"Annotations","level":"1.5.9","depth":2,"path":"user-guide/annotations.md","ref":"user-guide/annotations.md","articles":[]},"previous":{"title":"Variants","level":"1.5.7","depth":2,"path":"user-guide/variants.md","ref":"user-guide/variants.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"user-guide/panels.md","mtime":"2017-09-15T12:19:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-15T12:21:54.797Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Gene Panels","level":"1.5.8","depth":2,"next":{"title":"Annotations","level":"1.5.9","depth":2,"path":"user-guide/annotations.md","ref":"user-guide/annotations.md","articles":[]},"previous":{"title":"Variants","level":"1.5.7","depth":2,"path":"user-guide/variants.md","ref":"user-guide/variants.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"user-guide/panels.md","mtime":"2017-12-06T10:03:56.754Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-06T11:37:00.945Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
