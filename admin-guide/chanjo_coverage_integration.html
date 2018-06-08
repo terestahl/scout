@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Server · GitBook</title>
+        <title>Chanjo coverage integration · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="chanjo_coverage_integration.html" />
+    <link rel="next" href="indexes.html" />
     
     
-    <link rel="prev" href="annotations.html" />
+    <link rel="prev" href="server.html" />
     
 
     </head>
@@ -414,7 +414,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.7" data-path="server.html">
+        <li class="chapter " data-level="1.6.7" data-path="server.html">
             
                 <a href="server.html">
             
@@ -427,7 +427,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.8" data-path="chanjo_coverage_integration.html">
+        <li class="chapter active" data-level="1.6.8" data-path="chanjo_coverage_integration.html">
             
                 <a href="chanjo_coverage_integration.html">
             
@@ -598,7 +598,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Server</a>
+        <a href=".." >Chanjo coverage integration</a>
     </h1>
 </div>
 
@@ -613,81 +613,266 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="running-the-server">Running the server</h1>
-<p>This document will explain how we like to run Scout in both development and production settings.</p>
-<h2 id="config">Config</h2>
-<p>The server has it&apos;s own config file, separate from the command line tool. It&apos;s written in Python for full expressivity. These are the settings you can use:</p>
-<pre><code class="lang-python"><span class="hljs-comment"># flask.conf.py</span>
-
-<span class="hljs-comment"># to encrypt cookie data</span>
-SECRET_KEY = <span class="hljs-string">&apos;makeThisSomethingNonGuessable&apos;</span>  <span class="hljs-comment"># required</span>
-
-<span class="hljs-comment"># connection details for MongoDB</span>
-MONGO_DBNAME = <span class="hljs-string">&apos;scout&apos;</span>                        <span class="hljs-comment"># required</span>
-MONGO_PORT = <span class="hljs-number">27017</span>
-MONGO_USERNAME = <span class="hljs-string">&apos;mongoUser&apos;</span>
-MONGO_PASSWORD = <span class="hljs-string">&apos;mongoUserPassword&apos;</span>
-
-<span class="hljs-comment"># connection string for Chanjo coverage database</span>
-SQLALCHEMY_DATABASE_URI = <span class="hljs-string">&apos;mysql://chanjo:CHANJO_PASSWORD@localhost:3306/chanjo&apos;</span>
-
-<span class="hljs-comment"># connection details for LoqusDB MongoDB database</span>
-LOQUSDB_SETTINGS = dict(
-    database=<span class="hljs-string">&apos;loqusdb&apos;</span>,
-    uri=(<span class="hljs-string">&quot;mongodb://{}:{}@localhost:{}/loqusdb&quot;</span>
-         .format(MONGO_USERNAME, MONGO_PASSWORD, MONGO_PORT)),
-)
-
-<span class="hljs-comment"># default chanjo coverage report language: &apos;sv&apos; or &apos;en&apos;</span>
-REPORT_LANGUAGE = <span class="hljs-string">&apos;sv&apos;</span>
-
-<span class="hljs-comment"># Google email account to user for sending emails</span>
-MAIL_USERNAME = <span class="hljs-string">&apos;paul.anderson@gmail.com&apos;</span>
-MAIL_PASSWORD = <span class="hljs-string">&apos;mySecretPassw0rd&apos;</span>
-
-<span class="hljs-comment"># emails to send error log message to</span>
-ADMINS = [<span class="hljs-string">&apos;robin.andeer@scilifelab.se&apos;</span>]
-
-<span class="hljs-comment"># enable Google OAuth-based login</span>
-GOOGLE = dict(
-    consumer_key=<span class="hljs-string">&apos;CLIENT_ID.apps.googleusercontent.com&apos;</span>,
-    consumer_secret=<span class="hljs-string">&apos;CLIENT_SECRET&apos;</span>,
-    <span class="hljs-comment"># Prepend to all (non-absolute) request URLs</span>
-    base_url=<span class="hljs-string">&apos;https://www.googleapis.com/oauth2/v1/&apos;</span>,
-    authorize_url=<span class="hljs-string">&apos;https://accounts.google.com/o/oauth2/auth&apos;</span>,
-    request_token_url=<span class="hljs-keyword">None</span>,
-    request_token_params={
-        <span class="hljs-string">&apos;scope&apos;</span>: (<span class="hljs-string">&quot;https://www.googleapis.com/auth/userinfo.profile &quot;</span>
-                  <span class="hljs-string">&quot;https://www.googleapis.com/auth/userinfo.email&quot;</span>),
-    },
-    access_token_url=<span class="hljs-string">&apos;https://accounts.google.com/o/oauth2/token&apos;</span>,
-    access_token_method=<span class="hljs-string">&apos;POST&apos;</span>
-)
-
-<span class="hljs-comment"># enable the phenomizer service which links HPO phenotype terms to diseases/genes</span>
-PHENOMIZER_USERNAME = <span class="hljs-string">&apos;phenoUser&apos;</span>
-PHENOMIZER_PASSWORD = <span class="hljs-string">&apos;phenoPassword&apos;</span>
+                                <h1 id="chanjo-coverage-integration">Chanjo coverage integration</h1>
+<p>Scout may be configured to visualize coverage reports produced by <a href="https://github.com/Clinical-Genomics/chanjo" target="_blank">Chanjo</a>.
+To do so it is necessary to install the python package <a href="https://github.com/Clinical-Genomics/chanjo" target="_blank">Chanjo</a> and its report visualization app, <a href="https://github.com/robinandeer/chanjo-report" target="_blank">chanjo-report</a>.</p>
+<p>Both these programs require a database to store samples names, transcript specifications and statistics relative to the trascript coverage for all samples. Note that chanjo can be used as a standalone but chanjo-report needs to have access to the data produced by chanjo to generate coverage reports. <strong>Scout does not require chanjo installed in the path to visualize coverage reports, but it is necessary to install chanjo-report and set up the connection to a database containing coverage data in order to use this fuctionality</strong>.</p>
+<h2 id="chanjo-database">Chanjo database</h2>
+<p>Chanjo-report (and chanjo) work with MySQL and SQLite databases. This guide explains how to set up a MySQL database since this database is the one used in production at Clinical Genomics. For a guide on how to install MySQL on your server click <a href="https://dev.mysql.com/doc/mysql-getting-started/en/" target="_blank">here</a>. <br>
+Once the database and the administrator user and password are configured, you can create the new database to contain the chanjo structures. To do so, from a terminal type:</p>
+<pre><code class="lang-bash">mysql -u admin_user -padmin_password <span class="hljs-comment">#no space between -p and password</span>
+mysql&gt; create database chanjo4_demo;
+mysql&gt; <span class="hljs-built_in">exit</span>
 </code></pre>
-<h2 id="development">Development</h2>
-<p>Flask includes a decent server which works great for development. After you <a href="../install.html">install Scout</a> you can start the server with some relevant settings:</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># this line will help Flask find the server</span>
-FLASK_APP=scout.server.auto \
-<span class="hljs-comment"># this will enable debug mode of Flask and reload the server on code changes</span>
-FLASK_DEBUG=1 \
-<span class="hljs-comment"># this is a Scout specific variable that should point to the server config</span>
-SCOUT_CONFIG=<span class="hljs-string">&quot;/full/path/to/flask.conf.py&quot;</span> \
-flask run
+<p>To create a new empty database download the empty schema <code>chanjo4_structure.sql</code> under <code>scout/demo/resources</code>. The command to restore the database from this dump file is:</p>
+<pre><code class="lang-bash">mysql -u admin_user -padmin_password chanjo4_demo &lt; path/to/chanjo4_structure.sql <span class="hljs-comment">#no space between -p and password</span>
 </code></pre>
-<h2 id="production">Production</h2>
-<p>Now the built-in Flask server won&apos;t cut it anymore. We are a fan of using <a href="http://gunicorn.org/" target="_blank">Gunicorn</a> for running Python services. It&apos;s easy to setup and configure and handles things like multi-processing and SSL/HTTPS without problems. You can setup the server accordingly:</p>
-<pre><code class="lang-bash">SCOUT_CONFIG=<span class="hljs-string">&quot;/full/path/to/flask.conf.py&quot;</span> \
-gunicorn \
-    --workers=4 \
-    --bind=<span class="hljs-string">&quot;HOST:PORT&quot;</span> \
-    --keyfile=<span class="hljs-string">&quot;/path/to/myserver.key&quot;</span> \
-    --certfile=<span class="hljs-string">&quot;/path/to/server.crt&quot;</span> \
-    scout.server.auto:app
+<p>To create instead a demo database containing coverage data for genes in panel1 for the samples used in the demo version of scout, you might download the schema <code>chanjo4_demo.sql</code>. This file is present in the folder <code>scout/demo</code>, along with the rest of the demo data. The syntax to create the database is the same as above.</p>
+<p>Chanjo database consists of 3 tables:</p>
+<ul>
+<li><strong>sample</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Null</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>varchar(32)</td>
+<td>NO</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>varchar(128)</td>
+<td>YES</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>source</td>
+<td>varchar(256)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(128)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>group_name</td>
+<td>varchar(128)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td>&#xA0;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>transcript</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Null</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>varchar(32)</td>
+<td>NO</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>gene_id</td>
+<td>int(11)</td>
+<td>NO</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>gene_name</td>
+<td>varchar(32)</td>
+<td>YES</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>chromosome</td>
+<td>varchar(10)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>length</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td>&#xA0;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>transcript_stat</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Null</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int(11)</td>
+<td>NO</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+</tr>
+<tr>
+<td>mean_coverage</td>
+<td>float</td>
+<td>NO</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>completeness_10</td>
+<td>float</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>completeness_15</td>
+<td>float</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>completeness_20</td>
+<td>float</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>completeness_50</td>
+<td>float</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>completeness_100</td>
+<td>float</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>_incomplete_exons</td>
+<td>text</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>sample_id</td>
+<td>varchar(32)</td>
+<td>NO</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>transcript_id</td>
+<td>varchar(32)</td>
+<td>NO</td>
+<td>MUL</td>
+<td>NULL</td>
+<td>&#xA0;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chanjo-report">chanjo-report</h2>
+<p>This package might be downloaded and installed via <code>git clone</code> and using <code>pip install</code> command (instructions <a href="https://github.com/robinandeer/chanjo-report" target="_blank">here</a>), but perhaps the easiest way to make sure that it will serve pages once the app is invoked by scout is to install it with this command:</p>
+<pre><code class="lang-bash">pip install scout-browser[coverage]
 </code></pre>
+<p>Just make sure that both scout and chanjo-report are installed on the same virtual environment (if you are using one).
+Note that chanjo-report requires the package pymysql if it will be connecting to a MySQL database. So if it is not found in the environment you can install it with this command:</p>
+<pre><code class="lang-bash">pip install pymysql
+</code></pre>
+<h2 id="enabling-the-chanjo-coverage-integration-in-scout">Enabling the chanjo coverage integration in scout</h2>
+<p>In order to enable the support for the coverage report visualization in scout the configuration file named <code>config.py</code> under <code>scout/server</code> must be modified to include the following line:</p>
+<p><pre>
+SQLALCHEMY_DATABASE_URI = &apos;mysql+pymysql://username:password@host:port/chanjo4_demo&apos;
+</pre>
+The database URI provided in the line above refers to the MySQL database with the coverage data, so user and password are those used to connect to the database. Default database host and port are <code>localhost</code> and <code>3306</code> respectively.
+If your scout implementation is using another configuration file other than the default <code>config.py</code> then the database connection URI must be added to this file instead.</p>
+<p><br>
+Once all the above steps are executed you should see the &quot;Coverage report&quot; option on the left side bar under the scout case page. The buttons allow to generate HTML and PDF reports for the case samples.</p>
 
                                 
                                 </section>
@@ -715,12 +900,12 @@ gunicorn \
 
             
                 
-                <a href="annotations.html" class="navigation navigation-prev " aria-label="Previous page: Annotations">
+                <a href="server.html" class="navigation navigation-prev " aria-label="Previous page: Server">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="chanjo_coverage_integration.html" class="navigation navigation-next " aria-label="Next page: Chanjo coverage integration">
+                <a href="indexes.html" class="navigation navigation-next " aria-label="Next page: Indexes">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -731,7 +916,7 @@ gunicorn \
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Server","level":"1.6.7","depth":2,"next":{"title":"Chanjo coverage integration","level":"1.6.8","depth":2,"path":"admin-guide/chanjo_coverage_integration.md","ref":"admin-guide/chanjo_coverage_integration.md","articles":[]},"previous":{"title":"Annotations","level":"1.6.6","depth":2,"path":"admin-guide/annotations.md","ref":"admin-guide/annotations.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"admin-guide/server.md","mtime":"2018-06-08T09:03:26.479Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-06-08T09:04:28.653Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Chanjo coverage integration","level":"1.6.8","depth":2,"next":{"title":"Indexes","level":"1.6.9","depth":2,"path":"admin-guide/indexes.md","ref":"admin-guide/indexes.md","articles":[]},"previous":{"title":"Server","level":"1.6.7","depth":2,"path":"admin-guide/server.md","ref":"admin-guide/server.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"admin-guide/chanjo_coverage_integration.md","mtime":"2018-06-08T09:03:26.475Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-06-08T09:04:28.653Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
