@@ -1,0 +1,2738 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="http://www.clinicalgenomics.se/scout/user-guide/genes/">
+      
+      
+        <meta name="author" content="Clinical Genomics bioinfo team">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Genes - Scout Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#genes-and-transcripts" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://www.clinicalgenomics.se/scout/" title="Scout Docs" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo-only.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Scout Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Genes
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/Clinical-Genomics/scout/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://www.clinicalgenomics.se/scout/" title="Scout Docs" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo-only.png" width="48" height="48">
+      
+    </a>
+    Scout Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/Clinical-Genomics/scout/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Features
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../features/hpo/" title="HPO phenotypes" class="md-nav__link">
+      HPO phenotypes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../using-scout/" title="General" class="md-nav__link">
+      General
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pages/" title="Pages" class="md-nav__link">
+      Pages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../institutes/" title="Institutes" class="md-nav__link">
+      Institutes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../users/" title="Users" class="md-nav__link">
+      Users
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cases/" title="Cases" class="md-nav__link">
+      Cases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variants/" title="Variants" class="md-nav__link">
+      Variants
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Genes
+      </label>
+    
+    <a href="./" title="Genes" class="md-nav__link md-nav__link--active">
+      Genes
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#genes-with-missing-refseq-transcripts" title="Genes with missing RefSeq transcripts" class="md-nav__link">
+    Genes with missing RefSeq transcripts
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ttc25" title="TTC25" class="md-nav__link">
+    TTC25
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ptprq" title="PTPRQ" class="md-nav__link">
+    PTPRQ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srd5a2" title="SRD5A2" class="md-nav__link">
+    SRD5A2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pigy" title="PIGY" class="md-nav__link">
+    PIGY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgf16" title="FGF16" class="md-nav__link">
+    FGF16
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trac" title="TRAC" class="md-nav__link">
+    TRAC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padi6" title="PADI6" class="md-nav__link">
+    PADI6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdf1" title="GDF1" class="md-nav__link">
+    GDF1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tubb3" title="TUBB3" class="md-nav__link">
+    TUBB3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ighg2" title="IGHG2" class="md-nav__link">
+    IGHG2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ighm" title="IGHM" class="md-nav__link">
+    IGHM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#igkc" title="IGKC" class="md-nav__link">
+    IGKC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fcgr2c" title="FCGR2C" class="md-nav__link">
+    FCGR2C
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kmt2b" title="KMT2B" class="md-nav__link">
+    KMT2B
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nefl" title="NEFL" class="md-nav__link">
+    NEFL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nr2e3" title="NR2E3" class="md-nav__link">
+    NR2E3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map3k14" title="MAP3K14" class="md-nav__link">
+    MAP3K14
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../panels/" title="Gene panels" class="md-nav__link">
+      Gene panels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../annotations/" title="Annotations" class="md-nav__link">
+      Annotations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../acmg-criterias/" title="ACMG" class="md-nav__link">
+      ACMG
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Admin guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Admin guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/" title="Intro" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/setup-scout/" title="Setup" class="md-nav__link">
+      Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/loading/" title="Loading" class="md-nav__link">
+      Loading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/load-config/" title="Load config" class="md-nav__link">
+      Load config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/genes/" title="Gene definitions" class="md-nav__link">
+      Gene definitions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/hpo/" title="HPO terms" class="md-nav__link">
+      HPO terms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/annotations/" title="Annotations" class="md-nav__link">
+      Annotations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/server/" title="Server" class="md-nav__link">
+      Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/chanjo_coverage_integration/" title="Chanjo coverage integration" class="md-nav__link">
+      Chanjo coverage integration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/indexes/" title="Indexes" class="md-nav__link">
+      Indexes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/institute/" title="Institutes" class="md-nav__link">
+      Institutes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Blog
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Blog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/" title="Intro" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.0/" title="Whats new in 3.0?" class="md-nav__link">
+      Whats new in 3.0?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.1/" title="Whats new in 3.1?" class="md-nav__link">
+      Whats new in 3.1?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.2/" title="Whats new in 3.2?" class="md-nav__link">
+      Whats new in 3.2?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.3/" title="Whats new in 3.3?" class="md-nav__link">
+      Whats new in 3.3?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.4/" title="Whats new in 3.4?" class="md-nav__link">
+      Whats new in 3.4?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.5/" title="Whats new in 3.5?" class="md-nav__link">
+      Whats new in 3.5?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-4.0.0/" title="Whats new in 4.0?" class="md-nav__link">
+      Whats new in 4.0?
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GLOSSARY/" title="-Glossary" class="md-nav__link">
+      -Glossary
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#genes-with-missing-refseq-transcripts" title="Genes with missing RefSeq transcripts" class="md-nav__link">
+    Genes with missing RefSeq transcripts
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ttc25" title="TTC25" class="md-nav__link">
+    TTC25
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ptprq" title="PTPRQ" class="md-nav__link">
+    PTPRQ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srd5a2" title="SRD5A2" class="md-nav__link">
+    SRD5A2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pigy" title="PIGY" class="md-nav__link">
+    PIGY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgf16" title="FGF16" class="md-nav__link">
+    FGF16
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trac" title="TRAC" class="md-nav__link">
+    TRAC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padi6" title="PADI6" class="md-nav__link">
+    PADI6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdf1" title="GDF1" class="md-nav__link">
+    GDF1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tubb3" title="TUBB3" class="md-nav__link">
+    TUBB3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ighg2" title="IGHG2" class="md-nav__link">
+    IGHG2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ighm" title="IGHM" class="md-nav__link">
+    IGHM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#igkc" title="IGKC" class="md-nav__link">
+    IGKC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fcgr2c" title="FCGR2C" class="md-nav__link">
+    FCGR2C
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kmt2b" title="KMT2B" class="md-nav__link">
+    KMT2B
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nefl" title="NEFL" class="md-nav__link">
+    NEFL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nr2e3" title="NR2E3" class="md-nav__link">
+    NR2E3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map3k14" title="MAP3K14" class="md-nav__link">
+    MAP3K14
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Clinical-Genomics/scout/edit/master/docs/user-guide/genes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="genes-and-transcripts">Genes and transcripts</h1>
+<p>Scout stores information about genes and transcripts. The information is collected from a couple of resources, these can be updated manually if desired. Definition of what genes that exists and their correct id and symbols are collected from <a href="www.genenames.org">HGNC</a>. Unfortunately HGNC does only maintain a distribution for GRCh38, at this time (mid 2018) there are many resources that lack support for build 38 so many investigators still use build 37. We therefore load two gene sets, one for each build.</p>
+<h2 id="genes-with-missing-refseq-transcripts">Genes with missing RefSeq transcripts</h2>
+<p>There is a issue where this problem is discussed <a href="https://github.com/Clinical-Genomics/scout/issues/570">here</a>, please read that since it is important.
+When we first look at all genes we could see the following:</p>
+<p><code>Nr of genes: 33578</code>
+<code>Nr without transcripts: 11048</code></p>
+<p>So 1/3 of all genes are missing any refseq transcript. This came out as a high number at first, after some thought one might realise that many of these genes are not protein coding etc.</p>
+<p>If we look at disease causing genes from OMIM there are 16 genes that are missing refseq id for any transcript in ensembl build 37, 7 genes in build 38.</p>
+<p>The genes in OMIM without refseq transcripts in build 37 are the following:</p>
+<pre><code>TTC25
+PTPRQ
+SRD5A2
+PIGY
+FGF16
+TRAC
+PADI6
+GDF1
+TUBB3
+IGHG2
+IGHM
+IGKC
+FCGR2C
+KMT2B
+NEFL
+NR2E3
+</code></pre>
+
+<p>In the gene panels there are one more gene outside OMIM wihtout refseq transcripts: <code>MAP3K14</code></p>
+<p>We will here look at all these genes in detail:</p>
+<h3 id="ttc25">TTC25</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>37</td>
+<td>HG185_PATCH</td>
+<td>ENSG00000260703</td>
+<td>TTC25</td>
+<td>ENST00000569427</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>HG185_PATCH</td>
+<td>ENSG00000260703</td>
+<td>TTC25</td>
+<td>ENST00000561994</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>HG185_PATCH</td>
+<td>ENSG00000260703</td>
+<td>TTC25</td>
+<td>ENST00000569541</td>
+<td>NM_031421</td>
+</tr>
+<tr>
+<td>37</td>
+<td>HG185_PATCH</td>
+<td>ENSG00000260703</td>
+<td>TTC25</td>
+<td>ENST00000565052</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000593239</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000591658</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000585530</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000377540</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>38</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000593239</td>
+<td>-</td>
+</tr>
+<tr>
+<td>38</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000591658</td>
+<td>-</td>
+</tr>
+<tr>
+<td>38</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000377540</td>
+<td>NM_031421</td>
+</tr>
+<tr>
+<td>38</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000377540</td>
+<td>NM_031421</td>
+</tr>
+<tr>
+<td>38</td>
+<td>17</td>
+<td>ENSG00000204815</td>
+<td>TTC25</td>
+<td>ENST00000585530</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ptprq">PTPRQ</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000551042</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000547376</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000551573</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000526956</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000547485</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000551624</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000547881</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000549355</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000266688</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000623635</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000551042</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000547376</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000551573</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000614701</td>
+<td>NM_001145026</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000547485</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000551624</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000547881</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000549355</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>12</td>
+<td>ENSG00000139304</td>
+<td>PTPRQ</td>
+<td>ENST00000616559</td>
+<td>XM_017019274</td>
+</tr>
+</tbody>
+</table>
+<h3 id="srd5a2">SRD5A2</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>37</td>
+<td>2</td>
+<td>ENSG00000049319</td>
+<td>SRD5A2</td>
+<td>ENST00000405650</td>
+<td>-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>2</td>
+<td>ENSG00000049319</td>
+<td>SRD5A2</td>
+<td>ENST00000233139</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>38</td>
+<td>2</td>
+<td>ENSG00000277893</td>
+<td>SRD5A2</td>
+<td>ENST00000622030</td>
+<td>NM_000348</td>
+</tr>
+</tbody>
+</table>
+<p>Here we can see that two transcripts has been merged to one and been given a refseq identifier. Most probable one of the old transcripts match the new one. We can not be sure if variants are missed here.</p>
+<h3 id="pigy">PIGY</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>37</td>
+<td>4</td>
+<td>ENSG00000255072</td>
+<td>PIGY</td>
+<td>ENST00000527353</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>38</td>
+<td>4</td>
+<td>ENSG00000255072</td>
+<td>PIGY</td>
+<td>ENST00000527353</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Here the transcript is identical for both builds so we dear to guess that we do not miss any variants.</p>
+<h3 id="fgf16">FGF16</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>X</td>
+<td>ENSG00000196468</td>
+<td>FGF16</td>
+<td>ENST00000439435</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>HG1426_PATCH</td>
+<td>ENSG00000268853</td>
+<td>FGF16</td>
+<td>ENST00000600602</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>X</td>
+<td>ENSG00000196468</td>
+<td>FGF16</td>
+<td>ENST00000439435</td>
+<td>NM_003868</td>
+</tr>
+</tbody>
+</table>
+<p>The refseq transcript exists in build 37 but is missing the refseq identifier. We would NOT miss any variants here.</p>
+<h3 id="trac">TRAC</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>37</td>
+<td>14</td>
+<td>ENSG00000229164</td>
+<td>TRAC</td>
+<td>ENST00000478163</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>38</td>
+<td>14</td>
+<td>ENSG00000277734</td>
+<td>TRAC</td>
+<td>ENST00000611116</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Transcripts have different ENS ids in both builds but are most probably the same. No refseq identifier for any build.</p>
+<h3 id="padi6">PADI6</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>37</em></td>
+<td>1</td>
+<td>ENSG00000256049</td>
+<td>PADI6</td>
+<td>ENST00000434762</td>
+<td>-</td>
+</tr>
+<tr>
+<td><em>37</em></td>
+<td>1</td>
+<td>ENSG00000256049</td>
+<td>PADI6</td>
+<td>ENST00000358481</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><em>38</em></td>
+<td>1</td>
+<td>ENSG00000276747</td>
+<td>PADI6</td>
+<td>ENST00000619609</td>
+<td>NM_207421</td>
+</tr>
+<tr>
+<td><em>38</em></td>
+<td>CHR_HG2095_PATCH</td>
+<td>ENSG00000280949</td>
+<td>PADI6</td>
+<td>ENST00000625380</td>
+<td>NM_207421</td>
+</tr>
+</tbody>
+</table>
+<p>Unclear what happens here...</p>
+<h3 id="gdf1">GDF1</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>19</td>
+<td>ENSG00000130283</td>
+<td>GDF1</td>
+<td>ENST00000247005</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>19</td>
+<td>ENSG00000130283</td>
+<td>GDF1</td>
+<td>ENST00000247005</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Same transcripts, no refseq in both builds. No variants will be missed here</p>
+<h3 id="tubb3">TUBB3</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>16</td>
+<td>ENSG00000198211</td>
+<td>TUBB3</td>
+<td>ENST00000556922</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000555810</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000554444</td>
+<td>NM_001197181</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000556565</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000315491</td>
+<td>NM_006086</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000553656</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000556536</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000554116</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000554927</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000557262</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000557490</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000555576</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000554336</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000555609</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000553967</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>16</td>
+<td>ENSG00000258947</td>
+<td>TUBB3</td>
+<td>ENST00000625617</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>This is very unclear, it goes from one to many transcripts between the builds. Hard to say if variants are missed here.</p>
+<h3 id="ighg2">IGHG2</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>14</td>
+<td>ENSG00000211893</td>
+<td>IGHG2</td>
+<td>ENST00000390545</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>HG1592_PATCH</td>
+<td></td>
+<td>ENSG00000270895</td>
+<td>IGHG2</td>
+<td>ENST00000603473</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>CHR_HSCHR14_3_CTG1</td>
+<td>ENSG00000274497</td>
+<td>IGHG2</td>
+<td>ENST00000621803</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>14</td>
+<td>ENSG00000211893</td>
+<td>IGHG2</td>
+<td>ENST00000641095</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>14</td>
+<td>ENSG00000211893</td>
+<td>IGHG2</td>
+<td>ENST00000390545</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>No refseq in any build. Same transcripts in both builds except a new one in a patch. No variants would be missed here.</p>
+<h3 id="ighm">IGHM</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>14</td>
+<td>ENSG00000211899</td>
+<td>IGHM</td>
+<td>ENST00000390559</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>HG1592_PATCH</td>
+<td>ENSG00000271541</td>
+<td>IGHM</td>
+<td>ENST00000605693</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>CHR_HSCHR14_3_CTG1</td>
+<td>ENSG00000282657</td>
+<td>IGHM</td>
+<td>ENST00000626472</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>14</td>
+<td>ENSG00000211899</td>
+<td>IGHM</td>
+<td>ENST00000637539</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>14</td>
+<td>ENSG00000211899</td>
+<td>IGHM</td>
+<td>ENST00000390559</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Same as above, no variants missing here</p>
+<h3 id="igkc">IGKC</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>2</td>
+<td>ENSG00000211592</td>
+<td>IGKC</td>
+<td>ENST00000390237</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>2</td>
+<td>ENSG00000211592</td>
+<td>IGKC</td>
+<td>ENST00000390237</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Same in both builds. No variants would be missing here</p>
+<h3 id="fcgr2c">FCGR2C</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000502411</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000496692</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000466542</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000465075</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000473530</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000473712</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000482226</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000467903</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000507374</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000508651</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000543859</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000502411</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000496692</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000466542</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000465075</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000473530</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000473712</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000482226</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000467903</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000507374</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000508651</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000611236</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>1</td>
+<td>ENSG00000244682</td>
+<td>FCGR2C</td>
+<td>ENST00000543859</td>
+<td>NR_047648</td>
+</tr>
+</tbody>
+</table>
+<p>Most probably no variants would be missing here. All transcripts seems to be correct between the builds.</p>
+<h3 id="kmt2b">KMT2B</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>19</td>
+<td>ENSG00000105663</td>
+<td>KMT2B</td>
+<td>ENST00000606995</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>19</td>
+<td>ENSG00000105663</td>
+<td>KMT2B</td>
+<td>ENST00000607650</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>19</td>
+<td>ENSG00000105663</td>
+<td>KMT2B</td>
+<td>ENST00000592092</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>19</td>
+<td>ENSG00000105663</td>
+<td>KMT2B</td>
+<td>ENST00000585476</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>19</td>
+<td>ENSG00000105663</td>
+<td>KMT2B</td>
+<td>ENST00000586308</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>19</td>
+<td>ENSG00000272333</td>
+<td>KMT2B</td>
+<td>ENST00000420124</td>
+<td>NM_014727</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>19</td>
+<td>ENSG00000272333</td>
+<td>KMT2B</td>
+<td>ENST00000606995</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>19</td>
+<td>ENSG00000272333</td>
+<td>KMT2B</td>
+<td>ENST00000592092</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>19</td>
+<td>ENSG00000272333</td>
+<td>KMT2B</td>
+<td>ENST00000585476</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>19</td>
+<td>ENSG00000272333</td>
+<td>KMT2B</td>
+<td>ENST00000586308</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Here the transcript <code>ENST00000607650</code> in build 37 have probably changed id to <code>ENST00000420124</code> and been given a refseq identifier.</p>
+<h3 id="nefl">NEFL</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>8</td>
+<td>ENSG00000104725</td>
+<td>NEFL</td>
+<td>ENST00000221169</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>8</td>
+<td>ENSG00000277586</td>
+<td>NEFL</td>
+<td>ENST00000610854</td>
+<td>NM_006158</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>8</td>
+<td>ENSG00000277586</td>
+<td>NEFL</td>
+<td>ENST00000615973</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>8</td>
+<td>ENSG00000277586</td>
+<td>NEFL</td>
+<td>ENST00000639464</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>8</td>
+<td>ENSG00000277586</td>
+<td>NEFL</td>
+<td>ENST00000619417</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>This is unclear, probably ENST00000221169 has been renamed to ENST00000610854 and been given a refseq identifier.</p>
+<h3 id="nr2e3">NR2E3</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000561604</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000567496</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000562839</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000562925</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000563709</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000398840</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>15</td>
+<td>ENSG00000031544</td>
+<td>NR2E3</td>
+<td>ENST00000326995</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>15</td>
+<td>ENSG00000278570</td>
+<td>NR2E3</td>
+<td>ENST00000621736</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>15</td>
+<td>ENSG00000278570</td>
+<td>NR2E3</td>
+<td>ENST00000617575</td>
+<td>NM_014249</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>15</td>
+<td>ENSG00000278570</td>
+<td>NR2E3</td>
+<td>ENST00000621098</td>
+<td>NM_016346</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>15</td>
+<td>ENSG00000278570</td>
+<td>NR2E3</td>
+<td>ENST00000563709</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>This is unclear. We might miss variants here</p>
+<h3 id="map3k14">MAP3K14</h3>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Chrom</th>
+<th>EnsGeneID</th>
+<th>Gene Name</th>
+<th>EnsTransID</th>
+<th>RefSeq mRNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>37</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000587332</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000592267</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000586644</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000344686</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000376926</td>
+<td>-</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000344686</td>
+<td>NM_003954</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000640087</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000592267</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000586644</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000617331</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>17</td>
+<td>ENSG00000006062</td>
+<td>MAP3K14</td>
+<td>ENST00000376926</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>CHR_HSCHR17_2_CTG5</td>
+<td>ENSG00000282637</td>
+<td>MAP3K14</td>
+<td>ENST00000633437</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>CHR_HSCHR17_2_CTG5</td>
+<td>ENSG00000282637</td>
+<td>MAP3K14</td>
+<td>ENST00000634016</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Here one of the transcripts have been given a refseq identifier in build 38, that transcript exists in build 37 so no variants would be missed here. </p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../variants/" title="Variants" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Variants
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../panels/" title="Gene panels" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Gene panels
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

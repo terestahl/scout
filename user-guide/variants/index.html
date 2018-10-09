@@ -1,0 +1,1425 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="http://www.clinicalgenomics.se/scout/user-guide/variants/">
+      
+      
+        <meta name="author" content="Clinical Genomics bioinfo team">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Variants - Scout Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#variants" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://www.clinicalgenomics.se/scout/" title="Scout Docs" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo-only.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Scout Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Variants
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/Clinical-Genomics/scout/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://www.clinicalgenomics.se/scout/" title="Scout Docs" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo-only.png" width="48" height="48">
+      
+    </a>
+    Scout Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/Clinical-Genomics/scout/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Features
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../features/hpo/" title="HPO phenotypes" class="md-nav__link">
+      HPO phenotypes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../using-scout/" title="General" class="md-nav__link">
+      General
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pages/" title="Pages" class="md-nav__link">
+      Pages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../institutes/" title="Institutes" class="md-nav__link">
+      Institutes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../users/" title="Users" class="md-nav__link">
+      Users
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cases/" title="Cases" class="md-nav__link">
+      Cases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Variants
+      </label>
+    
+    <a href="./" title="Variants" class="md-nav__link md-nav__link--active">
+      Variants
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variants" title="Variants" class="md-nav__link">
+    Variants
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variant" title="Variant" class="md-nav__link">
+    Variant
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toolbar" title="Toolbar" class="md-nav__link">
+    Toolbar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed-header" title="Fixed header" class="md-nav__link">
+    Fixed header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sv-frequency-svdb" title="SV frequency - SVDB" class="md-nav__link">
+    SV frequency - SVDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" title="Details" class="md-nav__link">
+    Details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-annotation" title="Functional Annotation" class="md-nav__link">
+    Functional Annotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clinvar-submission-of-pinned-variants" title="Clinvar submission of pinned variants" class="md-nav__link">
+    Clinvar submission of pinned variants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-annotation" title="Region Annotation" class="md-nav__link">
+    Region Annotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gt-call" title="GT Call" class="md-nav__link">
+    GT Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-callers" title="Variant Callers" class="md-nav__link">
+    Variant Callers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snvs-and-indels" title="SNVs and indels" class="md-nav__link">
+    SNVs and indels
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gatk" title="GATK" class="md-nav__link">
+    GATK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freebayes" title="FreeBayes" class="md-nav__link">
+    FreeBayes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samtools" title="SAMtools" class="md-nav__link">
+    SAMtools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svs" title="SVs" class="md-nav__link">
+    SVs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tiddit" title="TIDDIT" class="md-nav__link">
+    TIDDIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cnvnator" title="CNVnator" class="md-nav__link">
+    CNVnator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manta" title="Manta" class="md-nav__link">
+    Manta
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delly" title="Delly" class="md-nav__link">
+    Delly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strs" title="STRs" class="md-nav__link">
+    STRs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expansionhunter" title="ExpansionHunter" class="md-nav__link">
+    ExpansionHunter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compounds-top-20" title="Compounds (top 20)" class="md-nav__link">
+    Compounds (top 20)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../genes/" title="Genes" class="md-nav__link">
+      Genes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../panels/" title="Gene panels" class="md-nav__link">
+      Gene panels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../annotations/" title="Annotations" class="md-nav__link">
+      Annotations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../acmg-criterias/" title="ACMG" class="md-nav__link">
+      ACMG
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Admin guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Admin guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/" title="Intro" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/setup-scout/" title="Setup" class="md-nav__link">
+      Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/loading/" title="Loading" class="md-nav__link">
+      Loading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/load-config/" title="Load config" class="md-nav__link">
+      Load config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/genes/" title="Gene definitions" class="md-nav__link">
+      Gene definitions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/hpo/" title="HPO terms" class="md-nav__link">
+      HPO terms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/annotations/" title="Annotations" class="md-nav__link">
+      Annotations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/server/" title="Server" class="md-nav__link">
+      Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/chanjo_coverage_integration/" title="Chanjo coverage integration" class="md-nav__link">
+      Chanjo coverage integration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/indexes/" title="Indexes" class="md-nav__link">
+      Indexes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../admin-guide/institute/" title="Institutes" class="md-nav__link">
+      Institutes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Blog
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Blog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/" title="Intro" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.0/" title="Whats new in 3.0?" class="md-nav__link">
+      Whats new in 3.0?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.1/" title="Whats new in 3.1?" class="md-nav__link">
+      Whats new in 3.1?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.2/" title="Whats new in 3.2?" class="md-nav__link">
+      Whats new in 3.2?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.3/" title="Whats new in 3.3?" class="md-nav__link">
+      Whats new in 3.3?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.4/" title="Whats new in 3.4?" class="md-nav__link">
+      Whats new in 3.4?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-3.5/" title="Whats new in 3.5?" class="md-nav__link">
+      Whats new in 3.5?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/new-4.0.0/" title="Whats new in 4.0?" class="md-nav__link">
+      Whats new in 4.0?
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GLOSSARY/" title="-Glossary" class="md-nav__link">
+      -Glossary
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variants" title="Variants" class="md-nav__link">
+    Variants
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variant" title="Variant" class="md-nav__link">
+    Variant
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toolbar" title="Toolbar" class="md-nav__link">
+    Toolbar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed-header" title="Fixed header" class="md-nav__link">
+    Fixed header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sv-frequency-svdb" title="SV frequency - SVDB" class="md-nav__link">
+    SV frequency - SVDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" title="Details" class="md-nav__link">
+    Details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-annotation" title="Functional Annotation" class="md-nav__link">
+    Functional Annotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clinvar-submission-of-pinned-variants" title="Clinvar submission of pinned variants" class="md-nav__link">
+    Clinvar submission of pinned variants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-annotation" title="Region Annotation" class="md-nav__link">
+    Region Annotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gt-call" title="GT Call" class="md-nav__link">
+    GT Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-callers" title="Variant Callers" class="md-nav__link">
+    Variant Callers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snvs-and-indels" title="SNVs and indels" class="md-nav__link">
+    SNVs and indels
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gatk" title="GATK" class="md-nav__link">
+    GATK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freebayes" title="FreeBayes" class="md-nav__link">
+    FreeBayes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samtools" title="SAMtools" class="md-nav__link">
+    SAMtools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svs" title="SVs" class="md-nav__link">
+    SVs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tiddit" title="TIDDIT" class="md-nav__link">
+    TIDDIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cnvnator" title="CNVnator" class="md-nav__link">
+    CNVnator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manta" title="Manta" class="md-nav__link">
+    Manta
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delly" title="Delly" class="md-nav__link">
+    Delly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strs" title="STRs" class="md-nav__link">
+    STRs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expansionhunter" title="ExpansionHunter" class="md-nav__link">
+    ExpansionHunter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compounds-top-20" title="Compounds (top 20)" class="md-nav__link">
+    Compounds (top 20)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Clinical-Genomics/scout/edit/master/docs/user-guide/variants.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Variants</h1>
+                
+                <h2 id="variants">Variants</h2>
+<p>The big list of variants. This page serves as an overview of all data and annotations for a single case. It's meant to allow you to skim through many variants ordered by the ranking.</p>
+<p>The first couple of columns are meant to give you a sense of place in the overall ranked list. The "Rank" column is especially useful after applying various filters.</p>
+<p>Hovering over both "1000 Genomes" (frequency) and "CADD score" (severity) columns will reveal additional metrics in a popup.</p>
+<p>Hovering over "Inheritance models" will pop up a list of all possible compounds if the variants follows this pattern.</p>
+<p>At the bottom of the list you will find a button to load the next batch of variants in the list. To return to the previous batch of variants, just press the browser back button.</p>
+<p>It's also possible to filter the variants using a number of different criteria. Open the filters panel by clicking the "filter" icon in the top right. Here you can fill in form and click "Filter variants" to update the list. This is also the place where you switch gene lists.</p>
+<hr />
+<h2 id="variant">Variant</h2>
+<p>This is the most complex view with a lot of related data presented to the user in a compact way. A lot of thought went into the design of the layout so here it the imagined workflow.</p>
+<h3 id="toolbar">Toolbar</h3>
+<p>Two options are added to the right side of the menu:</p>
+<ul>
+<li>Send Sanger email to an institute related email address.</li>
+<li>Pin the current variant as interesting so that it shows up in the case view.</li>
+<li>Mark variant as causative. This is only to be used when a variant is confirmed to be causative - it will set the case to "solved" automatically.</li>
+</ul>
+<h3 id="fixed-header">Fixed header</h3>
+<p>Introduces the basic facts of the variant that the user is often referring back to. As an example you need to refer back to the chromosome when assessing possible inheritance models.</p>
+<h3 id="summary">Summary</h3>
+<p>This is the first a user looks at when assesing the variant.</p>
+<ul>
+<li>Rank score/CADD score</li>
+<li>Disease gene model, possible inheritance models, OMIM model</li>
+<li>Frequencies</li>
+<li>CLINSIG number</li>
+</ul>
+<h4 id="sv-frequency-svdb">SV frequency - SVDB</h4>
+<pre><code> Structural variant database freqency is annotated with [SVDB](https://github.com/J35P312/SVDB), using a clustering algorithm [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN). Variant type and chromosome are exact, but start and end positions for matches are approximate, and depend on previous cases from the database. In a region with multiple, inexactly positioned events, matching will be more relaxed than if only tightly clustered variants with near similar start and end coordinates have been found. Databases include research cases from Clinical genetics (WGS at NGI), clinical cases with arrayCGH (benign or pathogenic collections), Decipher, SweGen and local cases.
+</code></pre>
+<h2 id="details">Details</h2>
+<p>see <a href="../annotations/">Annotations</a></p>
+<h3 id="functional-annotation">Functional Annotation</h3>
+<p>This is the worst functional impact of all transcripts</p>
+<h3 id="clinvar-submission-of-pinned-variants">Clinvar submission of pinned variants</h3>
+<p>Single nucleotide variants, indels, insertions, as well as larger structural variants can be used to create submissions to <a href="https://www.ncbi.nlm.nih.gov/clinvar/">Clinvar</a>, a free public database of phenotype-genotype associations. One of more pinned variants for a case with assigned phenotype might be used from the Clinvar submission page to create comma separated file to be used in the submission process. The Scout submission form mirrors the fields on the Clinvar submission spreadsheets. Optional case data for one or more pinned variants can also be generated and uploaded together with the variants during the file submission. Prior registration of a user and a submitting organization to the Clinvar portal is required to submit data to the Clinvar database.</p>
+<h3 id="region-annotation">Region Annotation</h3>
+<p>This is the region of the most severe functional impact</p>
+<h3 id="gt-call">GT Call</h3>
+<h3 id="variant-callers">Variant Callers</h3>
+<p>Badges below the GT Call table show the variant caller responsible for the calls and their filter status.
+A variant with Pass status passed all the filters from its variant callers, whereas a Filtered call was detected by the caller but not deemed passing filter quality.</p>
+<h4 id="snvs-and-indels">SNVs and indels</h4>
+<h5 id="gatk">GATK</h5>
+<h5 id="freebayes">FreeBayes</h5>
+<h5 id="samtools">SAMtools</h5>
+<h4 id="svs">SVs</h4>
+<p>SVs are structural variants, balanced or unbalanced chromosomal abberrations.</p>
+<p>Scout supports viewing general SVs as encoded in the VCF format specification.
+Some sample callers that we have worked with include:</p>
+<h5 id="tiddit">TIDDIT</h5>
+<p><a href="https://github.com/SciLifeLab/TIDDIT">TIDDIT</a> Locally developed structural variant caller that uses discordant read pair detection and supplementary alignments for split reads from the bam file to call structural variations, including deletions, duplications, inversions and translocations (BND). The number of supporting links is used to call the reliability of the call. Read depth information is used to infer the variant type as well as zygosity where possible. Delivers exact breakpoints when possible. Sensitivity for clinically relevant deletions is 100%, balanced events lower but at a best-in-class &gt;80%. Be advised to consider zygosity calls from balanced events as highly uncertain.</p>
+<p>Jesper Eisfeldt, Francesco Vezzi, Pall Olason, Daniel Nilsson, Anna Lindstrand
+<a href="https://f1000research.com/articles/6-664/v2">TIDDIT, an efficient and comprehensive structural variant caller for massive parallel sequencing data</a>
+F1000Research 2017, 6:664</p>
+<h5 id="cnvnator">CNVnator</h5>
+<p><a href="https://github.com/abyzovlab/CNVnator">CNVnator</a> Well established read depth aware CNV caller. Infers deletions and duplications from binning read depth. Will call inexact boundaries for the events. Effectively 100% sensitivity for large CNVs in accessible regions. Be wary if CNVnator did not call your large unbalanced variant - that may indicate a false positive. Comparatively decent zygosity-calls from v0.3.3.</p>
+<p>Abyzov A, Urban AE, Snyder M, Gerstein M.
+<a href="https://www.ncbi.nlm.nih.gov/pubmed/21324876">CNVnator: an approach to discover, genotype, and characterize typical and atypical CNVs from family and population genome sequencing.</a> Genome Res. 2011 Jun;21(6):974-84.</p>
+<h5 id="manta">Manta</h5>
+<p><a href="https://github.com/Illumina/manta">Manta</a>: Internationally well used de-facto standard for structural variant calling. Uses discordant read pairs and split read graphs to call variants. Comparatively good sensitivity for insertions. Specificity is not always optimal. Be adviced of potential false positive calls of long range connectivity, in particular when in conflict with callers that rely more on read-depth.</p>
+<p>Chen, X. et al. (2016) <a href="doi:10.1093/bioinformatics/btv710">Manta: rapid detection of structural variants and indels for germline and cancer sequencing applications.</a> Bioinformatics, 32, 1220-1222. Be advised to consider zygosity calls from balanced events as uncertain.</p>
+<h5 id="delly">Delly</h5>
+<p><a href="https://github.com/dellytools/delly">Delly</a>
+The long standing, well known and decently performing tool Delly uses discordant read-pairs and split reads to call structural variants. Calls made are reliable from &gt;300bp, but also sports an effective indel detection mode for sub-readlength indels. As with manta, Specificity is not always optimal. Be adviced of potential false positive calls of long range connectivity, in particular when in conflict with callers that rely more on read-depth. Be advised to consider zygosity calls as uncertain.</p>
+<p>Tobias Rausch, Thomas Zichner, Andreas Schlattl, Adrian M. Stuetz, Vladimir Benes, Jan O. Korbel.
+<a href="https://academic.oup.com/bioinformatics/article/28/18/i333/245403">Delly: structural variant discovery by integrated paired-end and split-read analysis.</a>
+Bioinformatics 2012 28: i333-i339.</p>
+<h4 id="strs">STRs</h4>
+<p>Scout supports viewing STRs, Short Tandem Repeats, initially only for a clinical panel.</p>
+<p>Tested callers include:</p>
+<h5 id="expansionhunter">ExpansionHunter</h5>
+<p><a href="https://github.com/Illumina/ExpansionHunter">ExpansionHunter</a> Longer-than-readlength analysis of STR sites. Requires a pre-made panel file noting the location of target sites to analyze, then rapidly analyses bam files. Dolzenko et al <a href="https://genome.cshlp.org/content/27/11/1895">Detection of long repeat expansions from PCR-free whole-genome sequence data</a>.</p>
+<h3 id="compounds-top-20">Compounds (top 20)</h3>
+<p>Only interesting when the compound inheritance pattern is required, the list can be very long but is by default cropped to the top 20 highest ranked ones as shown in the heading.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../cases/" title="Cases" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Cases
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../genes/" title="Genes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Genes
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
