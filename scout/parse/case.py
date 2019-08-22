@@ -46,7 +46,7 @@ def parse_case_data(config=None, ped=None, owner=None, vcf_snv=None,
     if 'analysis_date' not in config_data:
         config_data['analysis_date'] = datetime.datetime.now()
 
-    # If the family information is in a ped file we nned to parse that
+    # If the family information is in a ped file we need to parse that
     if ped:
         family_id, samples = parse_ped(ped)
         config_data['family'] = family_id
@@ -97,6 +97,7 @@ def parse_case_data(config=None, ped=None, owner=None, vcf_snv=None,
         config_data['track'] = 'cancer'
 
     return config_data
+
 
 
 def add_peddy_information(config_data):
@@ -222,6 +223,7 @@ def parse_individual(sample):
     ind_info['predicted_ancestry'] = sample.get('predicted_ancestry')
 
     ind_info['bam_file'] = sample.get('bam_path')
+    ind_info['wig_file'] = sample.get('wig_path')
 
     ind_info['mt_bam'] = sample.get('mt_bam')
     ind_info['analysis_type'] = sample.get('analysis_type')
@@ -373,14 +375,5 @@ def parse_ped(ped_stream, family_type='ped'):
 
 
 def removeNoneValues(dict):
-    """ If value = None in key/value pair, the pair is removed.
-        Python >3
-    Args:
-        dict: dictionary
-
-    Returns:
-        dictionary
-
-    """
-
+    """ If value is None in key/value pair, the pair is removed"""
     return {k:v for k,v in dict.items() if v is not None}

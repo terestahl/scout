@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-import logging
 import os.path
-
+import logging
 from flask import (abort, Blueprint, render_template, request, current_app, flash)
 
 from .partial import send_file_partial
@@ -11,14 +10,12 @@ alignviewers_bp = Blueprint('alignviewers', __name__, template_folder='templates
 
 LOG = logging.getLogger(__name__)
 
-
 @alignviewers_bp.route('/remote/static', methods=['OPTIONS', 'GET'])
 def remote_static():
     """Stream *large* static files with special requirements."""
     file_path = request.args.get('file')
-
     range_header = request.headers.get('Range', None)
-    if not range_header and file_path.endswith('.bam'):
+    if not range_header and (file_path.endswith('.bam') or file_path.endswith('.wig')):
         return abort(500)
 
     new_resp = send_file_partial(file_path)
@@ -31,9 +28,10 @@ def pileup():
     vcf_file = request.args.get('vcf')
     bam_files = request.args.getlist('bam')
     bai_files = request.args.getlist('bai')
+    wig_file = request.args.getlist('wig_file')
     samples = request.args.getlist('sample')
-    alignments = [{'bam': bam, 'bai': bai, 'sample': sample}
-                  for bam, bai, sample in zip(bam_files, bai_files, samples)]
+    alignments = [{'bam': bam, 'bai': bai, 'wig': wig_file, 'sample': sample}
+                  for bam, bai, sample in zip(bam_files, bai_files, wig_files, samples)]
 
     position = {
         'contig': request.args['contig'],
@@ -65,6 +63,12 @@ def pileup():
 
 
 @alignviewers_bp.route('/igv')
+
+
+
+
+
+
 def igv():
     """Visualize BAM alignments using igv.js (https://github.com/igvteam/igv.js)"""
     chrom = request.args.get('contig')
@@ -83,7 +87,9 @@ def igv():
     samples = request.args.getlist('sample')
     bam_files = request.args.getlist('bam')
     bai_files = request.args.getlist('bai')
-    LOG.debug('loading the following tracks: %s', bam_files)
+    wig_files = request.args.getlist('wig')
+    LOG.debug('loading the following BAM tracks: %s', bam_files)
+    LOG.debug('loading the following WIG tracks: %s', wig_files)
 
     display_obj={}
 
@@ -128,16 +134,28 @@ def igv():
     }
 
     sample_tracks = []
+    wig_tracks = []
     counter = 0
+
     for sample in samples:
-        # some samples might not have an associated bam file, take care if this
-        if bam_files[counter]:
-            sample_tracks.append({ 'name' : sample, 'url' : bam_files[counter],
-                                   'indexURL' : bai_files[counter],
-                                   'height' : 700, 'maxHeight' : 2000})
+        if bam_files:
+            sample_tracks.append({'name': sample,
+                                  'url': bam_files[counter],
+                                  'indexURL': bai_files[counter],
+                                  'height': 700,
+                                  'maxHeight': 2000})
+        if wig_files:
+            wig_tracks.append({'name': 'Coverage',
+                               'type': 'wig',
+                               'url': wig_files[counter],
+                               'min': 0.0,
+                               'indexed': 'false',
+                               'max': 30.0})
         counter += 1
 
     display_obj['sample_tracks'] = sample_tracks
+    display_obj['wig_tracks'] = wig_tracks
+    print("Display_ob wig: {}".format(display_obj['wig_tracks']))
 
     if request.args.get('center_guide'):
         display_obj['display_center_guide'] = True

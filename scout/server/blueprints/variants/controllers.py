@@ -433,19 +433,25 @@ def variant_case(store, case_obj, variant_obj):
     case_obj['mt_bams'] = []
     case_obj['bai_files'] = []
     case_obj['mt_bais'] = []
+    case_obj['wig_file'] = []
     case_obj['sample_names'] = []
 
-    bam_files = [('bam_file','bam_files', 'bai_files'), ('mt_bam', 'mt_bams', 'mt_bais')]
+    igv_files = [{'name':'bam_file', 'key':'bam_files', 'index_file':'bai_files'},
+                 {'name':'mt_bam', 'key':'mt_bams', 'index_file':'mt_bais'},
+                 {'name':'wig_file', 'key': 'wig_file', 'index_file': ''}]
     for individual in case_obj['individuals']:
         case_obj['sample_names'].append(individual.get('display_name'))
-        for bam in bam_files:
-            bam_path = individual.get(bam[0])
-            if bam_path and os.path.exists(bam_path):
-                case_obj[bam[1]].append(bam_path) # either bam_files or mt_bams
-                case_obj[bam[2]].append(find_bai_file(bam_path)) # either bai_files or mt_bais
+        for f in igv_files:
+            path = individual.get( f['name'] )
+            if path and os.path.exists(path):
+                case_obj[f['key']].append(path) # either bam_files, mt_bams, wig
+            index_path = find_index_file(path)
+            if index_path is not '':
+                case_obj[f['index_file']].append(index_path) # either bai_files or mt_bais
             else:
-                LOG.debug("%s: no bam file found", individual['individual_id'])
+                LOG.debug("{}: index file {} not found".format(individual['individual_id'], f['name']))
 
+                
     try:
         genes = variant_obj.get('genes', [])
         if len(genes) == 1:
@@ -466,13 +472,18 @@ def variant_case(store, case_obj, variant_obj):
         LOG.warning("skip VCF region for alignment view")
 
 
-def find_bai_file(bam_file):
-    """Find out BAI file by extension given the BAM file."""
-    bai_file = bam_file.replace('.bam', '.bai')
-    if not os.path.exists(bai_file):
-        # try the other convention
-        bai_file = "{}.bai".format(bam_file)
-    return bai_file
+
+
+
+def find_index_file(path):
+    """Find '.bai' or 'bam.bai' if it exists, otherwise empty string"""
+    prefix = os.path.splitext(path)[0] # remove_suffix
+    if os.path.exists(prefix + '.bai'):
+        return prefix + '.bai'
+    elif os.path.exists(prefix + '.bam' + '.bai'):
+        return prefix + '.bam' + '.bai'
+    else:
+        return ''
 
 
 def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, add_case=True,
