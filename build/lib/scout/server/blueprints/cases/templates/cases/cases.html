@@ -1,0 +1,315 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{ super() }} - {{ institute.display_name }} - Cases
+{% endblock %}
+
+{% block top_nav %}
+  {{ super() }}
+
+  <li>
+    <a href="{{ url_for('cases.index') }}">Institutes</a>
+  </li>
+  <li class="active">
+    <span class="navbar-text">{{ institute.display_name }} Cases</span>
+  </li>
+  {% if config.SHOW_CAUSATIVES %}
+    <li>
+      <a href="{{ url_for('cases.causatives', institute_id=institute._id) }}">Causatives</a>
+    </li>
+   {% endif %}
+    <li>
+      <a href="{{ url_for('cases.gene_variants', institute_id=institute._id, variant_type=['clinical'], rank_score=15) }}">All SNVs and INDELs</a>
+    </li>
+   <li>
+     <a href="{{ url_for('cases.clinvar_submissions', institute_id=institute._id) }}">Clinvar submissions</a>
+   </li>
+{% endblock %}
+
+{% block content_main %}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{ search_form() }}
+    </div>
+    <div class="panel-footer text-center">
+      Showing {{ limit if limit < found_cases else found_cases }} /  {{ found_cases }} cases
+    </div>
+  </div>
+
+  {% if sanger_unevaluated %}
+    <div class="alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {% if sanger_unevaluated|length > 1%}
+      You have <strong>{{ sanger_unevaluated|length }}</strong> cases with Sanger validations to evaluate!
+      {% else %}
+      You have <strong>1</strong> case with Sanger validations to evaluate!&nbsp;
+      {% endif %}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#evaluateModal">
+        evaluate
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="evaluateModal" tabindex="-1" role="dialog" aria-labelledby="sangerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sangerModalLabel">Sanger validations to evaluate:</h5>
+            </div>
+            <div class="modal-body">
+              <ul>
+                {% for uneval_obj in sanger_unevaluated %}
+                {% for case, var_list in uneval_obj.items() %}
+                <li>
+                  Case <strong><a href="{{ url_for('cases.case', institute_id=institute._id, case_name=case) }}" target="_blank">{{case}}</strong></a> ---> <strong>{{var_list|length}}</strong> variants:
+                  <ul>
+                    {% for var in var_list %}
+                      <li><a href="{{ url_for('variants.variant', institute_id=institute._id, case_name=case, variant_id=var) }}" target="_blank">{{var}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% set ordered_statuses = ['prioritized', 'inactive', 'active', 'archived', 'solved', ] -%}
+  {% for status in ordered_statuses %}
+    {% for group_name, case_group in cases %}
+      {% if status == group_name and case_group|length > 0 %}
+        <div class="table-responsive">{{ cases_table(group_name, case_group) }}</div>
+      {% endif %}    
+    {% endfor %}
+  {% endfor %}
+
+{% endblock %}
+
+{% macro search_form() %}
+  <form action="{{ url_for('cases.cases', institute_id=institute._id) }}" method="GET" accept-charset="utf-8">
+    <div class="row">
+      <div class="col-md-4 col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+          </span>
+          <input type="search" class="form-control" value="{{ query if query }}" name="query" placeholder="search cases"
+          data-toggle="tooltip" data-placement="right" data-html="true" title="
+            <div class='text-left'>
+              <u>Examples:</u><br>case_id=<strong>18201</strong>,
+              HPO&nbsp;term=<strong>HP:0001166</strong>,
+              synopsis=<strong>synopsis:epilepsy</strong>,
+              panel=<strong>panel:NMD</strong>,
+              status=<strong>status:active</strong>,
+              phenotype&nbsp;group=<strong>PG:0100022</strong>,
+              cohort=<strong>cohort:pedhep</strong>,
+              similar&nbsp;case=<strong>similar:18201</strong>,
+              gene_pinned=<strong>pinned:POT1</strong>,
+              gene_causative=<strong>causative:POT1</strong>,
+              assigned_user=<strong>Kent</strong>.<br><br>
+              Use key without value to search for cases with missing info (<strong>HP:</strong>, <strong>PG:</strong>, <strong>synopsis:</strong>).
+            </div>
+          "></input>
+        </div>
+      </div>
+      <div class="col-md-2 col-xs-2">
+        <button type="submit" class="form-control">Search</input>
+      </div>
+      <div class="col-md-2 col-xs-2">
+        <div class="number">
+          <label>
+              <input name="limit" type="number" step="100" class="form-control" placeholder="Limit" value={{limit}}>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-2 col-xs-2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="skip_assigned" {% if skip_assigned %}checked{% endif %}> Hide assigned
+          </label>
+        </div>
+      </div>
+      <div class="col-md-2 col-xs-2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="is_research" {% if is_research %}checked{% endif %}> Hide non-research
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endmacro %}
+
+{% macro cases_table(group_name, cases) %}
+  <table class="table table-hover table-special">
+    <thead>
+      <tr>
+        <th class="col-xs-2">{{ group_name|capitalize }} cases</th>
+        <th class="col-xs-1">Status<a href="" id="{{group_name}}_status" onclick="updateArgs('{{group_name}}','sort=status');" class="badge" style="color:black;background-color:white;"><i class="fa fa-sort" aria-hidden="true" data-toggle="tooltip" title="Sort cases by 'status'"></i></a></th>
+        <th class="col-xs-2">Analysis date<a href="" id="{{group_name}}_analysis_date" onclick="updateArgs('{{group_name}}','sort=analysis_date');" class="badge" style="color:black;background-color:white;"><i class="fa fa-sort" aria-hidden="true" data-toggle="tooltip" title="Sort by analysis date from the newest to the oldest"></i></a></th>
+        <th class="col-xs-2">Link</th>
+        <th class="col-xs-2">Sequencing</th>
+        <th class="col-xs-2">Track<a href="" id="{{group_name}}_track" onclick="updateArgs('{{group_name}}','sort=track');" class="badge" style="color:black;background-color:white;"><i class="fa fa-sort" aria-hidden="true" data-toggle="tooltip" title="Sort by analysis track: Rare Disease, Cancer.."></i></a></th>
+        <th class="col-xs-1">Clinvar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for case in cases %}
+        {{ case_row(case) }}
+      {% else %}
+        <tr>
+          <td colspan="5">No cases found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endmacro %}
+
+{% macro case_row(case) %}
+  <tr {% if case.status == 'solved' %} class="bg-success" {% endif %}>
+    <td>
+      <a href="{{ url_for('cases.case', institute_id=case.owner, case_name=case.display_name) }}">
+        {{ case.display_name }}
+      </a>
+      {% if case.individuals|length > 1 %}
+        <span class="label label-info">
+          {% for item in case.individuals %}
+            <span class="small glyphicon glyphicon-user"></span>
+          {% endfor %}
+        </span>
+      {% endif %}
+      {% for user in case.assignees %}
+        <span class="badge pull-right">{{ user.name }}</span>
+      {% endfor %}
+      {% if case.needs_check %}
+        <span class="label label-warning">decipher</span>
+      {% endif %}
+    </td>
+    <td>
+      <span class="label label-info">{{ case.status }}</span>
+      {% if case.is_migrated %}
+        <span class="label label-info">migrated</span>
+      {% endif %}
+    </td>
+    <td>
+      {{ case.analysis_date.date() }}
+      {% if case.is_rerun %}
+        <span class="badge pull-right">rerun</span>
+      {% endif %}
+    </td>
+    <td>
+      {% if case.is_research %}
+        {% if case.vcf_files.vcf_snv %}
+          <a href="{{ url_for('variants.variants', institute_id=case.owner, case_name=case.display_name, variant_type='research') }}">Research SNV and INDELs</a>
+        {% elif case.vcf_files.vcf_cancer %}
+          <a href="{{ url_for('variants.cancer_variants', institute_id=case.owner, case_name=case.display_name, variant_type='research') }}">Clinical cancer variants</a>
+        {% endif %}
+      {% else %}
+        {% if case.vcf_files.vcf_snv %}
+          <a href="{{ url_for('variants.variants', institute_id=case.owner, case_name=case.display_name, variant_type='clinical', gene_panels=case.panels|selectattr('is_default')|map(attribute='panel_name')|list) }}">Clinical SNV and INDELs</a>
+        {% elif case.vcf_files.vcf_cancer %}
+          <a href="{{ url_for('variants.cancer_variants', institute_id=case.owner, case_name=case.display_name, variant_type='clinical') }}">Clinical cancer variants</a>
+        {% endif %}
+      {% endif %}
+    </td>
+    <td>
+      {% for analysis_type in case.analysis_types %}
+        {% if analysis_type == 'wgs' %}
+          {% set label_class = 'primary' %}
+        {% elif analysis_type == 'wes' %}
+          {% set label_class = 'warning' %}
+        {% elif analysis_type == 'tga' %}
+          {% set label_class = 'info' %}
+        {% elif analysis_type == 'panel' %}
+          {% set label_class = 'info' %}
+        {% elif analysis_type == 'mixed' %}
+          {% set label_class = 'mixed' %}
+        {% elif analysis_type == 'external' %}
+          {% set label_class = 'danger' %}
+        {% else %}
+          {% set label_class = 'default' %}
+        {% endif %}
+
+        <span class="label label-{{ label_class }}">
+          {{ analysis_type|upper }}
+        </span>
+      {% endfor %}
+    </td>
+    <td>
+      {{ case.display_track }}
+    </td>
+    <td>
+      {% if case.clinvar_variants %}
+        <a href="#clinvar_{{case.display_name}}" data-toggle="modal">{{case.clinvar_variants|length}} variants</a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="clinvar_{{case.display_name}}" tabindex="-1" role="dialog" aria-labelledby="variantModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="variantModalLabel">Variants included in Clinvar submissions:</h5>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  {% for varname, clinvar in case.clinvar_variants.items() %}
+                    <li>
+                    {% if clinvar.category == 'snv' %}
+                      <a href="{{ url_for('variants.variant', institute_id=case.owner, case_name=case.display_name, variant_id=clinvar.local_id) }}" target="_blank">chr{{clinvar.chromosome}}:{{clinvar.start}}_{{clinvar.ref}}>{{clinvar.alt}}</a>
+                    {% else %}
+                      <a href="{{ url_for('variants.sv_variant', institute_id=case.owner, case_name=case.display_name, variant_id=clinvar.local_id) }}" target="_blank">chr{{clinvar.chromosome}}:{{clinvar.breakpoint1}}_{{clinvar.var_type}}</a>
+                    {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </td>
+  </tr>
+{% endmacro %}
+
+{% block scripts %}
+  {{ super() }}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-table-headers/0.1.19/js/jquery.stickytableheaders.min.js"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+      $('table').stickyTableHeaders({
+        fixedOffset: $(".navbar-fixed-top")
+      });
+    });
+
+    function updateArgs(caseGroup, sortItem) {
+      sort_items = ['sort=status', 'sort=analysis_date', 'sort=track'];
+      //modifying the sorting of cases
+      let searchList = window.location.search.split('&');
+      if(!searchList[0]){
+        //fix url if sorting is the only param
+        searchList[0] = '?';
+      }
+      //remove all sort params
+      searchList = searchList.filter(f => !sort_items.includes(f))
+      //add specific sort param
+      searchList.push(sortItem);
+      sort_link = document.getElementById( caseGroup.concat('_',sortItem.split('=')[1]));
+      const url = window.location.href.split('?')[0].concat(searchList.join('&'));
+      sort_link.href = url;
+      //submit link
+      sort_link.submit();
+    }
+
+  </script>
+{% endblock %}
