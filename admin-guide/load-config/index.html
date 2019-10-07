@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
     
@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.3.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
       
         <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
       
@@ -55,7 +55,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.962652e9.js"></script>
     
     
       
@@ -65,6 +65,10 @@
       
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
     
     
   </head>
@@ -102,7 +106,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#the-load-config" tabindex="1" class="md-skip">
+      <a href="#the-load-config" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -462,6 +466,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/dashboard/" title="Dashboard" class="md-nav__link">
+      Dashboard
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -662,6 +678,42 @@
     <a href="../institute/" title="Institutes" class="md-nav__link">
       Institutes
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-12" type="checkbox" id="nav-6-12">
+    
+    <label class="md-nav__link" for="nav-6-12">
+      Display data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-12">
+        Display data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../display-data/cases/" title="Cases" class="md-nav__link">
+      Cases
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -887,7 +939,7 @@ Here we can give scout some meta information about the analysis, how it was perf
 
 family: str(mandatory)
 samples:
-  - analysis_type: str(optional), [wgs,wes]
+  - analysis_type: str(optional), [wgs,wes,panel,external]
     sample_id: str(mandatory)
     capture_kit: str(optional)
     father: str(mandatory)
@@ -898,6 +950,12 @@ samples:
     expected_coverage: int(mandatory)
     vcf2cytosure: str(optional) # path to CGH file
     bam_file: str(optional) # path to bam file
+
+    tissue_type: str(optional)
+    tumor_type: str(optional)
+    tmb: str(optional) # Tumor mutational burder [0,1000]
+    msi: str(optional) # Microsatellite instability [0,60]
+    tumor_purity: str(optional) # [0,1]
 
 vcf_snv: str(optional)
 vcf_sv: str(optional)
@@ -917,8 +975,12 @@ multiqc: str(optional)
 default_gene_panels: list[str](optional)
 gene_panels: list[str](optional)
 
+# ATM rare or cancer
+track: list[str][optional]
+
 # meta data
 rank_model_version: str(optional)
+sv_rank_model_version: str(optional)
 rank_score_threshold: float(optional)
 analysis_date: datetime(optional)
 human_genome_build: str(optional)
@@ -928,7 +990,9 @@ human_genome_build: str(optional)
 <ul>
 <li><strong>owner</strong> each case has to have a owner, this refers to an existing institute in the scout instance</li>
 <li><strong>family</strong> each case has to have a family id</li>
-<li><strong>samples</strong> list of samples included in the case<ul>
+<li>
+<p><strong>samples</strong> list of samples included in the case</p>
+<ul>
 <li><em>analysis_type</em> specifies the analysis type for the sample</li>
 <li><em>samlple_id</em> identifyer for a sample</li>
 <li><em>capture_kit</em> for exome specifies the capture kit</li>
@@ -938,10 +1002,17 @@ human_genome_build: str(optional)
 <li><em>sex</em> specifies the sex of the sample in human readable format</li>
 <li><em>expected_coverage</em> the level of expected coverage</li>
 <li><em>bam_file</em> Path to bam file to view alignments</li>
+<li><em>vcf2cytosure</em> Path to CGH file to allow download per individual</li>
+<li><em>tumor_type</em> Type of tumor</li>
+<li><em>tissue_type</em> What tissue the sample originates from</li>
+<li><em>tmb</em> Tumor mutational burden</li>
+<li><em>msi</em> Microsatellite instability</li>
+<li><em>tumor_purity</em> Purity of tumor sample</li>
 </ul>
 </li>
-<li><em>vcf2cytosure</em> Path to CGH file to allow download per individual</li>
-<li><strong>vcf_snv</strong> path to snv vcf file</li>
+<li>
+<p><strong>vcf_snv</strong> path to snv vcf file</p>
+</li>
 <li><strong>vcf_sv</strong></li>
 <li><strong>vcf_snv_research</strong> path to vcf file with all variants</li>
 <li><strong>vcf_sv_research</strong></li>
@@ -955,6 +1026,7 @@ human_genome_build: str(optional)
 <li><strong>default_gene_panels</strong> list of default gene panels. Variants from the genes in the gene panels specified will be shown when opening the case in scout</li>
 <li><strong>gene_panels</strong> list of gene panels. This will specify what panels the case has been run with</li>
 <li><strong>rank model version</strong> which rank model that was used when scoring the variants</li>
+<li><strong>SV rank model version</strong> the SV rank model version used when scoring SV variants</li>
 <li><strong>rank_score_treshold</strong> only include variants with a rank score above this treshold</li>
 <li><strong>analysis_date</strong> time for analysis in datetime format. Defaults to time of uploading</li>
 <li><strong>human_genome_build</strong> what genome version was used.</li>
@@ -1055,12 +1127,9 @@ analysis tools. See <a href="https://github.com/NBISweden/vcf2cytosure/blob/mast
       
     </div>
     
-      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      <script src="../../assets/javascripts/application.a353778b.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
-      
-    
-    
       
     
   </body>

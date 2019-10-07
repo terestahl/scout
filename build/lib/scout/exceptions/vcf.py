@@ -1,2 +1,0 @@
-class VcfError(Exception):
-    pass
