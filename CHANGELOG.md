@@ -24,6 +24,7 @@ About changelog [here](https://keepachangelog.com/en/1.0.0/)
 - Keep sanger order + verification when updating/reloading variants
 - Fixed missing import for variants with comments
 - Reintroduced missing coverage report
+- Better inheritance models customization for genes in gene panels
 
 ## [4.7.3]
 
