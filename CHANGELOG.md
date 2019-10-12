@@ -25,6 +25,7 @@ About changelog [here](https://keepachangelog.com/en/1.0.0/)
 - Fixed missing import for variants with comments
 - Reintroduced missing coverage report
 - Better inheritance models customization for genes in gene panels
+- Fixed string conversion to number
 
 ## [4.7.3]
 
