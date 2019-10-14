@@ -29,6 +29,8 @@ About changelog [here](https://keepachangelog.com/en/1.0.0/)
 - Better inheritance models customization for genes in gene panels
 - Fixed string conversion to number
 - UCSC links for structural variants are now separated per breakpoint (and whole variant where applicable)
+- Reintroduced missing coverage report
+- Fixed a bug preventing loading samples using the command line
 
 
 ## [4.7.3]
