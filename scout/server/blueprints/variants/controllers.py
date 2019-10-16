@@ -547,6 +547,8 @@ def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, a
 
     """
     # If the variant is already collected we skip this part
+    flash('---------------------->Start of controllers.variant')
+    a = datetime.datetime.now()
     if not variant_obj:
         default_panels = []
         # Add default panel information to variant
@@ -562,6 +564,12 @@ def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, a
 
         # NOTE this will query with variant_id == document_id, not the variant_id.
         variant_obj = store.variant(variant_id, gene_panels=default_panels)
+    flash('---------------------->line 560')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
 
     genome_build = case_obj.get('genome_build', '37')
     if genome_build not in ['37','38']:
@@ -573,21 +581,49 @@ def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, a
     if add_case:
         variant_case(store, case_obj, variant_obj)
 
+    flash('---------------------->line 577')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
     # Collect all the events for the variant
     events = list(store.events(institute_obj, case=case_obj, variant_id=variant_obj['variant_id']))
     for event in events:
         event['verb'] = VERBS_MAP[event['verb']]
 
-    other_causatives = set()
+    flash('---------------------->line 588')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    LOG.info('---------------------->microsecs:{}'.format(c.microseconds))
+
+    other_causatives = []
     # Adds information about other causative variants
     if add_other:
-        for other_causative in store.other_causatives(case_obj, variant_obj):
-            # avoid adding other causatives duplicates
-            other_causatives.add(tuple(other_causative.items()))
-        # convert set of tuples into list of dictionaries
-        other_causatives = [ dict(item) for item in list(other_causatives)]
+        for other_variant in store.other_causatives(case_obj, variant_obj):
+            # This should work with old and new ids
+            case_id = other_variant['case_id']
+            other_case = store.case(case_id)
+            if not other_case:
+                continue
+            other_variant['case_display_name'] = other_case.get('display_name', case_id)
+            other_causatives.append(other_variant)
+
+    flash('---------------------->line 606')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
 
     variant_obj = parse_variant(store, institute_obj, case_obj, variant_obj, genome_build=genome_build)
+
+    LOG.info('---------------------->line 614')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
 
     variant_obj['end_position'] = end_position(variant_obj)
     variant_obj['frequency'] = frequency(variant_obj)
@@ -605,6 +641,12 @@ def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, a
     variant_obj['expected_inheritance'] = expected_inheritance(variant_obj)
     variant_obj['callers'] = callers(variant_obj, category='snv')
 
+    flash('---------------------->line 637')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
     individuals = {individual['individual_id']: individual for individual in
                    case_obj['individuals']}
     for sample_obj in variant_obj['samples']:
@@ -612,6 +654,12 @@ def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, a
         if not individual:
             return None
         sample_obj['is_affected'] = True if individual['phenotype'] == 2 else False
+
+    flash('---------------------->line 651')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
 
     gene_models = set()
     variant_obj['disease_associated_transcripts'] = []
@@ -634,24 +682,62 @@ def variant(store, institute_obj, case_obj, variant_id=None, variant_obj=None, a
 
         gene_models = gene_models | omim_models
 
+    flash('---------------------->line 678')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
     if variant_obj.get('genetic_models'):
         variant_models = set(model.split('_', 1)[0] for model in variant_obj['genetic_models'])
         variant_obj['is_matching_inheritance'] = variant_models & gene_models
+
+    flash('---------------------->line 688')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
 
     evaluations = []
     for evaluation_obj in store.get_evaluations(variant_obj):
         evaluation(store, evaluation_obj)
         evaluations.append(evaluation_obj)
 
+    flash('---------------------->line 699')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
+
     case_clinvars = store.case_to_clinVars(case_obj.get('display_name'))
+
+    flash('---------------------->line 708')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
 
     if variant_id in case_clinvars:
         variant_obj['clinvar_clinsig'] = case_clinvars.get(variant_id)['clinsig']
+
+    flash('---------------------->line 717')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
 
     svs = []
     if get_overlapping:
         svs = (parse_variant(store, institute_obj, case_obj, variant_obj) for
                             variant_obj in store.overlapping(variant_obj))
+
+    flash('---------------------->line 728')
+    b = datetime.datetime.now()
+    c = b - a
+    a = b
+    flash('---------------------->microsecs:{}'.format(c.microseconds))
+
 
     return {
         'variant': variant_obj,
