@@ -48,13 +48,15 @@
         </div>
       </form>
       <br>
-      <!--form id="dowload_var_stats" action="{{ url_for('cases.download_causative', variant_groups=variant_groups)}}" method="POST"></form-->
+      <!--form id="dowload_var_stats" action="{{ url_for('cases.download_causative')}}" method="POST">
+          <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download Causatives</button>
+          <input type="hidden" name="variant_groups" value=**variant_groups>
+      </form>
       <!--form id="dowload_var_stats" action="{{ url_for('cases.download_causative')}}" method="GET">
-        <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download
-          Causatives</button>
+        <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download Causatives</button>
         <input type="hidden" name="variant_groups" value={{variant_groups}}>
       </form-->
-      <a href="{{ url_for('cases.download_causative', variant_groups=variant_groups) }}" class="btn btn-primary " role="button" aria-pressed="true">Get Invoice Template</a>
+      <a href="{{ url_for('cases.download_causative', variant_groups=variant_groups) }}" class="btn btn-primary " role="button" aria-pressed="true">Download Causatives</a>
 
     </div>
   </div>

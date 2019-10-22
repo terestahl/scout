@@ -875,7 +875,7 @@ def causatives_file(variant_groups, temp_excel_dir):
     written_files = 0
     today = datetime.datetime.now().strftime('%Y-%m-%d')
     LOG.info('Creating verified variant document..')
-    print(dict(variant_groups).keys())
+    print(type(variant_groups))
     print('tjohot')
     for _, group in dict(variant_groups).items():
         for case, variant in group:

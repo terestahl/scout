@@ -865,15 +865,17 @@ def multiqc(institute_id, case_name):
 
 @cases_bp.route('/download_causative')
 def download_causative():
-    variant_groups = request.args.get('variant_groups')
-    print(variant_groups)
-    print('hejejej')
+    vstring = request.args.get('variant_groups')
+    vstring.replace('\'','\"')
+    
+    variant_groups= jsonify(vstring)
+    print(variant_groups.json)
     user_obj = store.user(current_user.email)
     user_institutes = user_obj.get('institutes')
     temp_excel_dir = os.path.join(cases_bp.static_folder, 'causatives_folder')
     os.makedirs(temp_excel_dir, exist_ok=True)
 
-    written_files = controllers.causatives_file(variant_groups, temp_excel_dir)
+    written_files = controllers.causatives_file(variant_groups.json, temp_excel_dir)
     if written_files:
         today = datetime.datetime.now().strftime('%Y-%m-%d')
         # zip the files on the fly and serve the archive to the user
