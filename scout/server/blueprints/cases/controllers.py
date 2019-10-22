@@ -860,7 +860,7 @@ def mme_match(case_obj, match_type, mme_base_url, mme_token, nodes=None, mme_acc
     return server_responses
 
 
-def verified_excel_file(store, institute_list, temp_excel_dir):
+def causatives_file(variant_groups, temp_excel_dir):
     """Collect all verified variants in a list on institutes and save them to file
 
     Args:
@@ -875,35 +875,35 @@ def verified_excel_file(store, institute_list, temp_excel_dir):
     written_files = 0
     today = datetime.datetime.now().strftime('%Y-%m-%d')
     LOG.info('Creating verified variant document..')
+    print(dict(variant_groups).keys())
+    print('tjohot')
+    for _, group in dict(variant_groups).items():
+        for case, variant in group:
+            if variant._id in case.causatives:
+                print(variant.display_name)
+                print(variant.rank_score)
+                for sample in variant.samples:
+                    for ind in case.individuals:
+                        if sample.sample_id == ind.individual_id:
+                            print(sample.genotype_call)
+                            if ind.phenotype == "2%":
+                                print('danger')
+                            else:
+                                print('success')
+                for model in variant.genetic_models:
+                    print(model)
+                if 'acmg_classification' in variant:
+                    print(variant.acmg_classification.short)
+                else:
+                    print('-')
+            print(case.display_name)
+            print(case.status)
 
-    for cust in institute_list:
-        verif_vars = store.verified(institute_id=cust)
-        LOG.info('Found {} verified variants for customer {}'.format(len(verif_vars), cust))
+        
 
-        if not verif_vars:
-            continue
-        unique_callers = set()
-        for var_type, var_callers in CALLERS.items():
-            for caller in var_callers:
-                unique_callers.add(caller.get('id'))
-        cust_verified = export_verified_variants(verif_vars, unique_callers)
-
-        document_name = '.'.join([cust, '_verified_variants', today]) + '.xlsx'
-        workbook = Workbook(os.path.join(temp_excel_dir,document_name))
-        Report_Sheet = workbook.add_worksheet()
-
-        # Write the column header
-        row = 0
-        for col,field in enumerate(VERIFIED_VARIANTS_HEADER + list(unique_callers)):
-            Report_Sheet.write(row,col,field)
-
-        # Write variant lines, after header (start at line 1)
-        for row, line in enumerate(cust_verified,1): # each line becomes a row in the document
-            for col, field in enumerate(line): # each field in line becomes a cell
-                Report_Sheet.write(row,col,field)
-        workbook.close()
-
-        if os.path.exists(os.path.join(temp_excel_dir,document_name)):
-            written_files += 1
-
-    return written_files
+    document_name = 'testar.xlsx'
+    workbook = Workbook(os.path.join(temp_excel_dir,document_name))
+    Report_Sheet = workbook.add_worksheet()
+    Report_Sheet.write(1,1,'field')
+    workbook.close()
+    return True

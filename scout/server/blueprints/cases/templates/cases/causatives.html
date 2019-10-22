@@ -1,7 +1,7 @@
 {% extends "layout_bs4.html" %}
 
 {% block title %}
-  {{ super() }} - Institutes
+{{ super() }} - Institutes
 {% endblock %}
 
 {% block top_nav %}
@@ -10,16 +10,20 @@
   <a class="nav-link" href="{{ url_for('cases.index') }}">Institutes</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="{{ url_for('cases.cases', institute_id=institute._id) }}">{{ institute.display_name }} Cases</a>
+  <a class="nav-link" href="{{ url_for('cases.cases', institute_id=institute._id) }}">{{ institute.display_name }}
+    Cases</a>
 </li>
 <li class="nav-item active">
   <a class="nav-link" href="{{ url_for('cases.causatives', institute_id=institute._id) }}">Causatives</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="{{ url_for('cases.gene_variants', institute_id=institute._id, variant_type=['clinical'], rank_score=15) }}">All SNVs and INDELs</a>
+  <a class="nav-link"
+    href="{{ url_for('cases.gene_variants', institute_id=institute._id, variant_type=['clinical'], rank_score=15) }}">All
+    SNVs and INDELs</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="{{ url_for('cases.clinvar_submissions', institute_id=institute._id) }}">Clinvar submissions</a>
+  <a class="nav-link" href="{{ url_for('cases.clinvar_submissions', institute_id=institute._id) }}">Clinvar
+    submissions</a>
 </li>
 {% endblock %}
 
@@ -34,7 +38,8 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-search"></span>
               </span>
-              <input name="query" class="typeahead form-control" data-provide="typeahead" autocomplete="off" placeholder="Search gene">
+              <input name="query" class="typeahead form-control" data-provide="typeahead" autocomplete="off"
+                placeholder="Search gene">
             </div>
           </div>
           <div class="col-xs-4">
@@ -43,13 +48,18 @@
         </div>
       </form>
       <br>
-          <form id="dowload_var_stats" action="{{ url_for('cases.download_causative')}}" method="GET">
-            <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download Causatives</button>
-          </form>
+      <!--form id="dowload_var_stats" action="{{ url_for('cases.download_causative', variant_groups=variant_groups)}}" method="POST"></form-->
+      <!--form id="dowload_var_stats" action="{{ url_for('cases.download_causative')}}" method="GET">
+        <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download
+          Causatives</button>
+        <input type="hidden" name="variant_groups" value={{variant_groups}}>
+      </form-->
+      <a href="{{ url_for('cases.download_causative', variant_groups=variant_groups) }}" class="btn btn-primary " role="button" aria-pressed="true">Get Invoice Template</a>
+
     </div>
   </div>
 </div>
-  </div>
+</div>
 
 <div class="list-group" style="margin-top: 25px">
   {% for _, group in variant_groups.items() %}
@@ -58,74 +68,76 @@
     <div class="d-flex justify-content-between">
       <h5 class="mb-1">{{ variant.hgnc_symbols|join(', ') }}</h5>
       <span class="text-muted" style="display: inline-block; margin-left: 10px;">
-          {{ variant.chromosome }}:{{ variant.position }} {% if variant.is_par %}
-          <span class="badge badge-info">PAR</span>
-          {% endif %}
-          {{ variant.reference|truncate(30, True) }} → {{ variant.alternative|truncate(30, True) }}
-        </span>
+        {{ variant.chromosome }}:{{ variant.position }} {% if variant.is_par %}
+        <span class="badge badge-info">PAR</span>
+        {% endif %}
+        {{ variant.reference|truncate(30, True) }} → {{ variant.alternative|truncate(30, True) }}
+      </span>
     </div>
     <ul class="list-group ist-group-flush">
       {% for case, variant in group %}
-        {% if variant._id in case.causatives %}
-          <div class="list-group-item">
-            <div class="row">
-              <div class="col-xs-8 col-md-2">
-                <a href="{{ url_for('variants.variant',
+      {% if variant._id in case.causatives %}
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-xs-8 col-md-2">
+            <a href="{{ url_for('variants.variant',
                                     institute_id=institute._id,
                                     case_name=case.display_name,
                                     variant_id=variant._id) }}">
-                  {{ variant.display_name|truncate(20, True) }}
-                </a>
-              </div>
-              <div class="col-xs-8 col-md-1">
-                <span class="badge badge-secondary">{{ variant.category|upper }}</span>
-              </div>
-              <div class="col-xs-8 col-md-2">
-                <a href="#">Rank score <span class="badge badge-pill badge-secondary">{{ variant.rank_score }}</span></a>
-              </div>
-              <div class="col-xs-8 col-md-2">
-                zygosity:
-                {% for sample in variant.samples %}
-                  {% for ind in case.individuals %}
-                    {% if sample.sample_id == ind.individual_id %}
-                        {% if ind.phenotype == 2%}
-                          <span class="badge badge-danger">{{sample.genotype_call}}</span>
-                        {% else %}
-                          <span class="badge badge-success">{{sample.genotype_call}}</span>
-                        {% endif %}
-                    {% endif %}
-                  {% endfor %}
-                {% endfor %}
-              </div>
-              <div class="col-xs-8 col-md-2">
-                inheritance:
-                {% for model in variant.genetic_models %}
-                  <span class="badge badge-info">{{model}}</span>
-                {% endfor %}
-              </div>
-              <div class="col-xs-8 col-md-1">
-                  <a href="#" data-toggle="tooltip" title="ACMG classification assigned by Scout users (not Clinvar)" style="text-decoration: none; color: #000;">ACMG:
-                  {% if 'acmg_classification' in variant %}
-                    <span class="badge badge-{{variant.acmg_classification.color}}">{{variant.acmg_classification.short}}</span>
-                  {% else %}
-                  -
-                  {% endif %}
-                  </a>
-                </div>
-              <div class="col-md-2">
-                <a href="{{ url_for('cases.case',
+              {{ variant.display_name|truncate(20, True) }}
+            </a>
+          </div>
+          <div class="col-xs-8 col-md-1">
+            <span class="badge badge-secondary">{{ variant.category|upper }}</span>
+          </div>
+          <div class="col-xs-8 col-md-2">
+            <a href="#">Rank score <span class="badge badge-pill badge-secondary">{{ variant.rank_score }}</span></a>
+          </div>
+          <div class="col-xs-8 col-md-2">
+            zygosity:
+            {% for sample in variant.samples %}
+            {% for ind in case.individuals %}
+            {% if sample.sample_id == ind.individual_id %}
+            {% if ind.phenotype == 2%}
+            <span class="badge badge-danger">{{sample.genotype_call}}</span>
+            {% else %}
+            <span class="badge badge-success">{{sample.genotype_call}}</span>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+          </div>
+          <div class="col-xs-8 col-md-2">
+            inheritance:
+            {% for model in variant.genetic_models %}
+            <span class="badge badge-info">{{model}}</span>
+            {% endfor %}
+          </div>
+          <div class="col-xs-8 col-md-1">
+            <a href="#" data-toggle="tooltip" title="ACMG classification assigned by Scout users (not Clinvar)"
+              style="text-decoration: none; color: #000;">ACMG:
+              {% if 'acmg_classification' in variant %}
+              <span
+                class="badge badge-{{variant.acmg_classification.color}}">{{variant.acmg_classification.short}}</span>
+              {% else %}
+              -
+              {% endif %}
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="{{ url_for('cases.case',
                                     institute_id=institute._id,
                                     case_name=case.display_name) }}">
-                  {{ case.display_name }}
-                </a>
-                <span class="badge badge-{{ 'success' if case.status == 'solved' else 'default' }} pull-right">
-                  {{ case.status }}
-                </span>
-              </div>
-
-            </div>
+              {{ case.display_name }}
+            </a>
+            <span class="badge badge-{{ 'success' if case.status == 'solved' else 'default' }} pull-right">
+              {{ case.status }}
+            </span>
           </div>
-        {% endif %}
+
+        </div>
+      </div>
+      {% endif %}
       {% endfor %}
     </ul>
   </li>
@@ -134,22 +146,22 @@
 {% endblock %}
 
 {% block scripts %}
-  {{ super() }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-    $(function () {
-      function getTerms(query, process) {
-        $.get("{{ url_for('genes.api_genes') }}", {query: query}, function(data) {
-          process(data)
-        });
-      }
-      $(".typeahead").typeahead({
-        source: getTerms,
-        minLength: 2,
+{{ super() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  $(function () {
+    function getTerms(query, process) {
+      $.get("{{ url_for('genes.api_genes') }}", { query: query }, function (data) {
+        process(data)
       });
-    })
-  </script>
+    }
+    $(".typeahead").typeahead({
+      source: getTerms,
+      minLength: 2,
+    });
+  })
+</script>
 {% endblock %}

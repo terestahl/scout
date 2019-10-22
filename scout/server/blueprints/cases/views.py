@@ -369,7 +369,6 @@ def causatives(institute_id):
 
             all_variants[variant_obj['variant_id']] = []
         all_variants[variant_obj['variant_id']].append((case_obj, variant_obj))
-    print(all_variants)
     return dict(institute=institute_obj, variant_groups=all_variants)
 
 @cases_bp.route('/<institute_id>/gene_variants', methods=['GET','POST'])
@@ -864,15 +863,17 @@ def multiqc(institute_id, case_name):
     return send_from_directory(out_dir, filename)
 
 
-@cases_bp.route('/download_causative', methods=['GET'])
+@cases_bp.route('/download_causative')
 def download_causative():
-  
+    variant_groups = request.args.get('variant_groups')
+    print(variant_groups)
+    print('hejejej')
     user_obj = store.user(current_user.email)
     user_institutes = user_obj.get('institutes')
     temp_excel_dir = os.path.join(cases_bp.static_folder, 'causatives_folder')
     os.makedirs(temp_excel_dir, exist_ok=True)
 
-    written_files = controllers.verified_excel_file(store, user_institutes, temp_excel_dir)
+    written_files = controllers.causatives_file(variant_groups, temp_excel_dir)
     if written_files:
         today = datetime.datetime.now().strftime('%Y-%m-%d')
         # zip the files on the fly and serve the archive to the user
