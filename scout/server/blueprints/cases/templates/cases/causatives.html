@@ -42,9 +42,15 @@
           </div>
         </div>
       </form>
+      <br>
+          <form id="dowload_var_stats" action="{{ url_for('cases.download_causative')}}" method="GET">
+            <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download Causatives</button>
+          </form>
     </div>
   </div>
 </div>
+  </div>
+
 <div class="list-group" style="margin-top: 25px">
   {% for _, group in variant_groups.items() %}
   {% set variant = group[0][1] %}

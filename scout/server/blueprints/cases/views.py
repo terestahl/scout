@@ -369,7 +369,7 @@ def causatives(institute_id):
 
             all_variants[variant_obj['variant_id']] = []
         all_variants[variant_obj['variant_id']].append((case_obj, variant_obj))
-
+    print(all_variants)
     return dict(institute=institute_obj, variant_groups=all_variants)
 
 @cases_bp.route('/<institute_id>/gene_variants', methods=['GET','POST'])
@@ -862,3 +862,38 @@ def multiqc(institute_id, case_name):
     out_dir = os.path.abspath(os.path.dirname(data['case']['multiqc']))
     filename = os.path.basename(data['case']['multiqc'])
     return send_from_directory(out_dir, filename)
+
+
+@cases_bp.route('/download_causative', methods=['GET'])
+def download_causative():
+  
+    user_obj = store.user(current_user.email)
+    user_institutes = user_obj.get('institutes')
+    temp_excel_dir = os.path.join(cases_bp.static_folder, 'causatives_folder')
+    os.makedirs(temp_excel_dir, exist_ok=True)
+
+    written_files = controllers.verified_excel_file(store, user_institutes, temp_excel_dir)
+    if written_files:
+        today = datetime.datetime.now().strftime('%Y-%m-%d')
+        # zip the files on the fly and serve the archive to the user
+        data = io.BytesIO()
+        with zipfile.ZipFile(data, mode='w') as z:
+            for f_name in pathlib.Path(temp_excel_dir).iterdir():
+                zipfile.ZipFile
+                z.write(f_name, os.path.basename(f_name))
+        data.seek(0)
+
+        # remove temp folder with excel files in it
+        shutil.rmtree(temp_excel_dir)
+
+        return send_file(
+            data,
+            mimetype='application/zip',
+            as_attachment=True,
+            attachment_filename='_'.join(['scout', 'verified_variants', today])+'.zip',
+            cache_timeout=0
+        )
+    else:
+        flash("No verified variants could be exported for user's institutes", 'warning')
+        return redirect(request.referrer)
+
