@@ -892,7 +892,7 @@ def all_causatives_per_institute(store, variants):
         all_variants[variant_obj['variant_id']].append((case_obj, variant_obj))
     return all_variants
 
-def causatives_file(variant_groups, temp_excel_dir):
+def causatives_file(variant_groups, temp_excel_dir, document_name):
     """Collect all verified variants in a list on institutes and save them to file
 
     Args:
@@ -905,40 +905,41 @@ def causatives_file(variant_groups, temp_excel_dir):
     """
     document_lines = []
     written_files = 0
-    today = datetime.datetime.now().strftime('%Y-%m-%d')
+    workbook = Workbook(os.path.join(temp_excel_dir,document_name))
+    Report_Sheet = workbook.add_worksheet()
     LOG.info('Creating verified variant document..')
-    print(type(variant_groups))
-    print('tjohot')
+    row = 0
     for _, group in dict(variant_groups).items():
         for case, variant in group:
             if variant.get('_id') in case.get('causatives'):
-                print(variant.get('display_name'))
-                print(variant.get('category').upper())
-                print(variant.get('rank_score'))
+                Report_Sheet.write(row, 0,variant.get('display_name'))
+                Report_Sheet.write(row, 1,variant.get('category').upper())
+                Report_Sheet.write(row, 2,variant.get('rank_score'))
                 for sample in variant.get('samples'):
                     for ind in case.get('individuals'):
+                        zygosity = []
                         if sample.get('sample_id') == ind.get('individual_id'):
-                            print(sample.get('genotype_call'))
-                            print(ind.get('phenotype'))
+                            zygosity.append(sample.get('genotype_call'))
+                            zygosity.append(str(ind.get('phenotype')))
                             if ind.get('phenotype') == 2:
-                                print('danger')
+                                zygosity.append('danger')
                             else:
-                                print('success')
+                                zygosity.append('success')
+                Report_Sheet.write(row, 3, ' '.join(zygosity))
+                
                 if variant.get('genetic_models'):
+                    models = ''
                     for model in variant.get('genetic_models'):
-                        print(model)
+                        models += model
+                    Report_Sheet.write(row, 4, model)
                 if 'acmg_classification' in variant:
-                    print(variant.get('acmg_classification').short)
+                    Report_Sheet.write(row, 5,variant.get('acmg_classification').short)
                 else:
-                    print('-')
-            print(case.get('display_name'))
-            print(case.get('status'))
+                    Report_Sheet.write(row, 5,'-')
+            Report_Sheet.write(row, 6,case.get('display_name'))
+            Report_Sheet.write(row, 7,case.get('status'))
+            row += 1
 
-        
 
-    document_name = 'testar.xlsx'
-    workbook = Workbook(os.path.join(temp_excel_dir,document_name))
-    Report_Sheet = workbook.add_worksheet()
-    Report_Sheet.write(1,1,'field')
     workbook.close()
     return True

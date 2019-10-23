@@ -355,7 +355,7 @@ def causatives(institute_id):
     all_variants = controllers.all_causatives_per_institute(store, variants)
     return dict(institute=institute_obj, variant_groups=all_variants)
 
-@cases_bp.route('/download_causative')
+@cases_bp.route('/download_causative', methods=['GET', 'POST'])
 def download_causative():
     institute_id = request.args.get('institute_id')
     institute_obj = institute_and_case(store, institute_id)
@@ -374,31 +374,15 @@ def download_causative():
     all_variants = controllers.all_causatives_per_institute(store, variants)
     temp_excel_dir = os.path.join(cases_bp.static_folder, 'causatives_folder')
     os.makedirs(temp_excel_dir, exist_ok=True)
-
-    written_files = controllers.causatives_file(all_variants, temp_excel_dir)
+    document_name='testar10000.xlsx'
+    written_files = controllers.causatives_file(all_variants, temp_excel_dir, document_name)
+    return redirect(request.referrer)
     if written_files:
-        today = datetime.datetime.now().strftime('%Y-%m-%d')
-        # zip the files on the fly and serve the archive to the user
-        data = io.BytesIO()
-        with zipfile.ZipFile(data, mode='w') as z:
-            for f_name in pathlib.Path(temp_excel_dir).iterdir():
-                zipfile.ZipFile
-                z.write(f_name, os.path.basename(f_name))
-        data.seek(0)
-
-        # remove temp folder with excel files in it
-        shutil.rmtree(temp_excel_dir)
-
-        return send_file(
-            data,
-            mimetype='application/zip',
-            as_attachment=True,
-            attachment_filename='_'.join(['scout', 'verified_variants', today])+'.zip',
-            cache_timeout=0
-        )
+        return send_from_directory(directory=temp_excel_dir, filename=document_name, as_attachment=True)
     else:
         flash("No verified variants could be exported for user's institutes", 'warning')
         return redirect(request.referrer)
+
 
 @cases_bp.route('/<institute_id>/gene_variants', methods=['GET','POST'])
 @templated('cases/gene_variants.html')
