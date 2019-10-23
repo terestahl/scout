@@ -56,7 +56,7 @@
         <button type="submit" name="verified_vars" value="verified" class="btn btn-primary btn-md">Download Causatives</button>
         <input type="hidden" name="variant_groups" value={{variant_groups}}>
       </form-->
-      <a href="{{ url_for('cases.download_causative', variant_groups=variant_groups) }}" class="btn btn-primary " role="button" aria-pressed="true">Download Causatives</a>
+      <a href="{{ url_for('cases.download_causative', institute_id=institute._id) }}" class="btn btn-primary " role="button" aria-pressed="true">Download Causatives</a>
 
     </div>
   </div>

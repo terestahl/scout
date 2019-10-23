@@ -860,6 +860,38 @@ def mme_match(case_obj, match_type, mme_base_url, mme_token, nodes=None, mme_acc
     return server_responses
 
 
+def all_causatives_per_institute(store, variants):
+    """Collect all causative variant groups for a specific institute
+
+    Args:
+        store(adapter.MongoAdapter)
+        institute_obj(dict): an institute object
+
+        variants(dicr): bla bla
+
+    Returns:
+        all_variants(dict): data to display in the html template
+    """
+
+    all_variants = {}
+    all_cases = {}
+    for variant_obj in variants:
+        if variant_obj['case_id'] not in all_cases:
+            case_obj = store.case(variant_obj['case_id'])
+            all_cases[variant_obj['case_id']] = case_obj
+        else:
+            case_obj = all_cases[variant_obj['case_id']]
+
+        if variant_obj['variant_id'] not in all_variants:
+            # capture ACMG classification for this variant
+            if isinstance(variant_obj.get('acmg_classification'), int):
+                acmg_code = ACMG_MAP[variant_obj['acmg_classification']]
+                variant_obj['acmg_classification'] = ACMG_COMPLETE_MAP[acmg_code]
+
+            all_variants[variant_obj['variant_id']] = []
+        all_variants[variant_obj['variant_id']].append((case_obj, variant_obj))
+    return all_variants
+
 def causatives_file(variant_groups, temp_excel_dir):
     """Collect all verified variants in a list on institutes and save them to file
 
@@ -879,25 +911,28 @@ def causatives_file(variant_groups, temp_excel_dir):
     print('tjohot')
     for _, group in dict(variant_groups).items():
         for case, variant in group:
-            if variant._id in case.causatives:
-                print(variant.display_name)
-                print(variant.rank_score)
-                for sample in variant.samples:
-                    for ind in case.individuals:
-                        if sample.sample_id == ind.individual_id:
-                            print(sample.genotype_call)
-                            if ind.phenotype == "2%":
+            if variant.get('_id') in case.get('causatives'):
+                print(variant.get('display_name'))
+                print(variant.get('category').upper())
+                print(variant.get('rank_score'))
+                for sample in variant.get('samples'):
+                    for ind in case.get('individuals'):
+                        if sample.get('sample_id') == ind.get('individual_id'):
+                            print(sample.get('genotype_call'))
+                            print(ind.get('phenotype'))
+                            if ind.get('phenotype') == 2:
                                 print('danger')
                             else:
                                 print('success')
-                for model in variant.genetic_models:
-                    print(model)
+                if variant.get('genetic_models'):
+                    for model in variant.get('genetic_models'):
+                        print(model)
                 if 'acmg_classification' in variant:
-                    print(variant.acmg_classification.short)
+                    print(variant.get('acmg_classification').short)
                 else:
                     print('-')
-            print(case.display_name)
-            print(case.status)
+            print(case.get('display_name'))
+            print(case.get('status'))
 
         
 
