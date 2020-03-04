@@ -9,8 +9,6 @@ from urllib.request import Request, urlopen
 
 LOG = logging.getLogger(__name__)
 
-HEADERS = {"Content-type": "application/json"}
-
 RESTAPI_GET_ENDPOINT = "http://api.genome.ucsc.edu/getData/track?genome={0};track={1};chrom={2};start={3};end={4}"
 
 class UCSCRestApiClient:
@@ -62,20 +60,6 @@ class UCSCRestApiClient:
         return json_track
 
 
-    def json_track_to_bigbed(self, track_items, fieldnames, file):
-        """Write json track data to a bigBed file
-
-        Accepts:
-            track_items(list): list of objects to write to file, one per line
-            fieldnames(list): item-specific keys to write to file
-            file(File): file to write to
-        """
-        with open(file, 'w') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter='\t')
-            writer.writeheader()
-            writer.writerows(track_items)
-
-
     def _compose_url(self, track_name, chrom, start, stop):
         """Compose the URL used to retrieve data from the UCSC rest API
 
@@ -91,3 +75,17 @@ class UCSCRestApiClient:
         """
         url = RESTAPI_GET_ENDPOINT.format(self.genome, track_name, chrom, start, stop)
         return url
+
+
+    def json_track_to_bigbed(self, track_items, fieldnames, file):
+        """Write json track data to a bigBed file
+
+        Accepts:
+            track_items(list): list of objects to write to file, one per line
+            fieldnames(list): item-specific keys to write to file
+            file(File): file to write to
+        """
+        with open(file, 'w') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter='\t')
+            writer.writeheader()
+            writer.writerows(track_items)
