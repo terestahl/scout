@@ -1,5 +1,6 @@
 # Everything needed in production
 
+csv
 BeautifulSoup4
 werkzeug<1.0 # This can be removed when switching from Flask-OAuthlib
 Flask>=0.10
