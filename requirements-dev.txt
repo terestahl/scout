@@ -17,4 +17,4 @@ invoke
 # docs
 mkdocs
 mkdocs-material==4.6.1
-
+markdown_include
