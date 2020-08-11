@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import logging
 import datetime
+import io
 
-from flask import abort, Blueprint, request, redirect, url_for, flash, render_template
-from flask_weasyprint import HTML, render_pdf
+from flask import abort, Blueprint, request, redirect, url_for, flash, render_template, make_response, send_file
+from weasyprint import HTML
 from flask_login import current_user
 
 from scout.server.extensions import store
@@ -189,15 +190,14 @@ def panel_export(panel_id):
     data = controllers.panel_export(store, panel_obj)
     data["report_created_at"] = datetime.datetime.now().strftime("%Y-%m-%d")
     html_report = render_template("panels/panel_pdf_simple.html", **data)
-    return render_pdf(
-        HTML(string=html_report),
-        download_filename=data["panel"]["panel_name"]
-        + "_"
-        + str(data["panel"]["version"])
-        + "_"
-        + datetime.datetime.now().strftime("%Y-%m-%d")
-        + "_scout.pdf",
-    )
+
+    pdf_file = HTML(string=html_report).write_pdf()
+
+    return make_response(
+        send_file(io.BytesIO(pdf_file),
+                  attachment_filename=f'{data["panel"]["panel_name"]}_{str(data["panel"]["version"])}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout.pdf',
+                  mimetype='application/pdf',
+                  as_attachment=True))
 
 
 @panels_bp.route("/panels/<panel_id>/update/<int:hgnc_id>", methods=["GET", "POST"])

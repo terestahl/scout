@@ -9,7 +9,6 @@ path.py
 Flask-Markdown
 Flask-WTF
 Flask-Mail
-Flask-WeasyPrint
 coloredlogs
 query_phenomizer
 Flask-Babel
