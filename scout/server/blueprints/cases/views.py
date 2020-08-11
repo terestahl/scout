@@ -23,7 +23,7 @@ from flask import (
     send_from_directory,
     Response,
     url_for,
-    make_response
+    make_response,
 )
 
 from flask_login import current_user
@@ -404,10 +404,13 @@ def pdf_case_report(institute_id, case_name):
     pdf_file = HTML(string=html_report).write_pdf()
 
     return make_response(
-        send_file(io.BytesIO(pdf_file),
-                  attachment_filename=f'{case_obj["display_name"]}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout.pdf',
-                  mimetype='application/pdf',
-                  as_attachment=True))
+        send_file(
+            io.BytesIO(pdf_file),
+            attachment_filename=f'{case_obj["display_name"]}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout.pdf',
+            mimetype="application/pdf",
+            as_attachment=True,
+        )
+    )
 
 
 @cases_bp.route("/<institute_id>/<case_name>/mt_report", methods=["GET"])
@@ -807,10 +810,13 @@ def delivery_report(institute_id, case_name):
             pdf_file = HTML(string=source_code).write_pdf()
 
             return make_response(
-                send_file(io.BytesIO(pdf_file),
-                          attachment_filename=f'{case_obj["display_name"]}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout_delivery.pdf',
-                          mimetype='application/pdf',
-                          as_attachment=True))
+                send_file(
+                    io.BytesIO(pdf_file),
+                    attachment_filename=f'{case_obj["display_name"]}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout_delivery.pdf',
+                    mimetype="application/pdf",
+                    as_attachment=True,
+                )
+            )
 
         except Exception as ex:
             flash(

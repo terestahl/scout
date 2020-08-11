@@ -3,7 +3,17 @@ import logging
 import datetime
 import io
 
-from flask import abort, Blueprint, request, redirect, url_for, flash, render_template, make_response, send_file
+from flask import (
+    abort,
+    Blueprint,
+    request,
+    redirect,
+    url_for,
+    flash,
+    render_template,
+    make_response,
+    send_file,
+)
 from weasyprint import HTML
 from flask_login import current_user
 
@@ -194,10 +204,13 @@ def panel_export(panel_id):
     pdf_file = HTML(string=html_report).write_pdf()
 
     return make_response(
-        send_file(io.BytesIO(pdf_file),
-                  attachment_filename=f'{data["panel"]["panel_name"]}_{str(data["panel"]["version"])}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout.pdf',
-                  mimetype='application/pdf',
-                  as_attachment=True))
+        send_file(
+            io.BytesIO(pdf_file),
+            attachment_filename=f'{data["panel"]["panel_name"]}_{str(data["panel"]["version"])}_{datetime.datetime.now().strftime("%Y-%m-%d")}_scout.pdf',
+            mimetype="application/pdf",
+            as_attachment=True,
+        )
+    )
 
 
 @panels_bp.route("/panels/<panel_id>/update/<int:hgnc_id>", methods=["GET", "POST"])
