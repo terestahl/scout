@@ -79,7 +79,7 @@
 	        <td>
 	          {% if case.madeline_info and case.individuals|length > 1 %}
 	            {% if format == 'html' %}
-	              {{ case.madeline_info|safe }}
+	              <img src="data:image/svg+xml,"+{{ case.madeline_info|safe }}>
 	            {% else %}
 	              <object data="{{url_for('cases.static', filename='madeline.svg')}}"/>
 	            {% endif %}
