@@ -31,13 +31,13 @@ def execute_command(cmd):
     output = ""
     cmd = [x for x in cmd if x != []]  # remove empty lists
     cmd_string = " ".join(cmd)  # add spacing to create a command string
-    LOG.error("Running command: %s", cmd_string)
+    LOG.info("Running command: %s", cmd_string)
     try:
         output = subprocess.check_output(cmd, shell=False)
     except CalledProcessError as err:
         LOG.warning("Something went wrong with loqusdb")
         raise err
-    LOG.error("output: %s", output)
+    LOG.info("output: %s", output)
     return output.decode("utf-8")
 
 
