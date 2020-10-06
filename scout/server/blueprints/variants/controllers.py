@@ -906,7 +906,7 @@ def dismiss_variant_list(store, institute_obj, case_obj, link_page, variants_lis
 
 
 def reset_dismiss_status(store, institute_obj, case_obj, link_page):
-    """ Resets the dismiss status of all variants
+    """Resets the dismiss status of all variants
 
     Args:
         store(adapter.MongoAdapter)
@@ -925,6 +925,4 @@ def reset_dismiss_status(store, institute_obj, case_obj, link_page):
                 case_name=case_obj["_id"],
             )
         # dismiss variant
-        store.update_dismiss_variant(
-            institute_obj, case_obj, user_obj, link, variant_obj
-        )
+        store.update_dismiss_variant(institute_obj, case_obj, user_obj, link, variant_obj)
