@@ -903,3 +903,28 @@ def dismiss_variant_list(store, institute_obj, case_obj, link_page, variants_lis
         store.update_dismiss_variant(
             institute_obj, case_obj, user_obj, link, variant_obj, dismiss_reasons
         )
+
+
+def reset_dismiss_status(store, institute_obj, case_obj, link_page):
+    """ Resets the dismiss status of all variants
+
+    Args:
+        store(adapter.MongoAdapter)
+        institute_obj(dict): an institute dictionary
+        case_obj(dict): a case dictionary
+        link_page(str): "variant.variant" for snvs, "variant.sv_variant" for SVs and so on
+    """
+    user_obj = store.user(current_user.email)
+    for variant_id in variants:
+        variant_obj = store.variant(variant_id)
+        if len(variant_obj["dismiss_variant"]) > 0:
+            # create variant link
+            link = link = url_for(
+                link_page,
+                institute_id=institute_obj["_id"],
+                case_name=case_obj["_id"],
+            )
+        # dismiss variant
+        store.update_dismiss_variant(
+            institute_obj, case_obj, user_obj, link, variant_obj
+        )
