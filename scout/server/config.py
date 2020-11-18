@@ -35,7 +35,6 @@ MAIL_USE_SSL = False
 # connection details for LoqusDB MongoDB database in the loqusdb config file
 #    uri=("mongodb://{}:{}@localhost:{}/loqusdb".format(MONGO_USERNAME, MONGO_PASSWORD, MONGO_PORT))
 
-
 # Chanjo-Report
 REPORT_LANGUAGE = "en"
 ACCEPT_LANGUAGES = ["en", "sv"]
@@ -52,3 +51,14 @@ RANK_MODEL_LINK_PREFIX = "https://github.com/Clinical-Genomics/reference-files/b
 RANK_MODEL_LINK_POSTFIX = "-.ini"
 SV_RANK_MODEL_LINK_PREFIX = "https://github.com/Clinical-Genomics/reference-files/blob/master/rare-disease/rank_model/svrank_model_-v"
 SV_RANK_MODEL_LINK_POSTFIX = "-.ini"
+
+#---------- Data sharing settings -----------#
+# Params to share case to MatchMaker Exchange (https://www.matchmakerexchange.org/)
+# Settings for connecting to a supported MME server (https://github.com/Clinical-Genomics/patientMatcher)
+#MME_ACCEPTS = "application/vnd.ga4gh.matchmaker.v1.0+json"
+#MME_URL = "http://localhost:9020"
+#MME_TOKEN = "matchmaker_auth_token"
+
+# Params to export variants to Beacon (https://beacon-network.org)
+# Settings for connecting to a supported Beacon server (https://github.com/Clinical-Genomics/cgbeacon2)
+#BEACON_URL = "http://localhost:9000"
